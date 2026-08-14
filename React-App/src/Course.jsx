@@ -1,12 +1,21 @@
-const course1="HTML"
-function Course(){
+import html from './assets/css.png'
+
+export const course1="html"
+
+function Course(Props){
+
+  
     return(
-        <div>
-            <img src="" alt="" />
-            <h3>{course1}</h3>
-            <b>This is Mohan's {course1} learning</b>
-            <footer></footer>
+        <div className="card">
+            <img src={props.image} />
+            <h3>{props.name}</h3>
+            <p>{props.price}</p>
         </div>
     );
+}
+Course.defaultProps={
+    name:"Mohan react ",
+    price: "1999",
+    image:css
 }
 export default Course;
