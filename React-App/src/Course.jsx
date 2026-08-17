@@ -1,5 +1,5 @@
 import { useState } from "react";
-import css from "./assets/css.png";
+// import css from "./assets/css.png";
 function Course(props) {
 
   // let purchased= false;

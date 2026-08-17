@@ -6,8 +6,8 @@ import './App.css'
 // import Navbar from './navbar'
 // import Footer from './footer'
 // import Course from './Course'
-import js  from './assets/js.png'
-import CourseList from './CourseList'
+import js  from '../data/assets/js.png'
+import CourseList from './CourseList.jsx'
 
 function App() {
   return (
