@@ -1,30 +1,13 @@
 import Course from "./Course";
+import useFetch from "./useFetch";
 // import html from "./assets/html.png";
 // import reactLogo from "./assets/react.svg";
 
 // import css from "./assets/css.png";
 // import js from "./assets/js.png";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 function CourseList() {
-  const [courses, setCourses] = useState(null);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    setTimeout(() => {
-      fetch("http://localhost:3000/coursess")
-        .then((response) => {
-          if (!response.ok) {
-            throw Error("couldn't retrive data");
-          }
-          console.log(response);
-          return response.json();
-        })
-        .then(setCourses)
-        .catch((error) => {
-          console.log(error.message);
-          setError(error.message);
-        });
-    },1000);
-  }, []);
+  const [courses, error] = useFetch("http://localhost:3000/courses");
 
   function handleDelete(id) {
     console.log(handleDelete);
@@ -38,8 +21,12 @@ function CourseList() {
   if (!courses) {
     return (
       <>
-      {!error && <p>loading...</p>}
-        {error &&<img className="errorgif" src="../data/assets/Error-404.gif"></img>}
+        {!error && (
+          <img className="errorgif" src="../data/assets/loading-spinner.gif" />
+        )}
+        {error && (
+          <img className="errorgif" src="../data/assets/Error-404.gif" />
+        )}
       </>
     );
   }
