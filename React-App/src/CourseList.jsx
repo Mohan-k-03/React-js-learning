@@ -7,13 +7,23 @@ import Course from "./Course";
 import { useState, useEffect } from "react";
 function CourseList() {
   const [courses, setCourses] = useState(null);
+  const [error, setError] = useState(null);
   useEffect(() => {
-    fetch('http://localhost:3000/courses')
-      .then(response => {
-        console.log(response);
-        return response.json()
-      })
-      .then(setCourses)
+    setTimeout(() => {
+      fetch("http://localhost:3000/coursess")
+        .then((response) => {
+          if (!response.ok) {
+            throw Error("couldn't retrive data");
+          }
+          console.log(response);
+          return response.json();
+        })
+        .then(setCourses)
+        .catch((error) => {
+          console.log(error.message);
+          setError(error.message);
+        });
+    },1000);
   }, []);
 
   function handleDelete(id) {
@@ -26,9 +36,13 @@ function CourseList() {
   // const vfmcourses=courses.filter((course)=>course.price<200)
 
   if (!courses) {
-    return <></>;
+    return (
+      <>
+      {!error && <p>loading...</p>}
+        {error &&<img className="errorgif" src="../data/assets/Error-404.gif"></img>}
+      </>
+    );
   }
-
   const coursesList = courses.map((course, id) => (
     <Course
       id={course.id}
