@@ -6,6 +6,7 @@ import useFetch from "./useFetch";
 // import css from "./assets/css.png";
 // import js from "./assets/js.png";
 // import { useState, useEffect } from "react";
+
 function CourseList() {
   const [courses, error] = useFetch("http://localhost:3000/courses");
 
@@ -22,7 +23,32 @@ function CourseList() {
     return (
       <>
         {!error && (
-          <img className="errorgif" src="../data/assets/loading-spinner.gif" />
+          <div className="m-5 text-center h1">
+            <div class="spinner-border  text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-secondary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-warning" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-info" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-light" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-dark" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
         )}
         {error && (
           <img className="errorgif" src="../data/assets/Error-404.gif" />
