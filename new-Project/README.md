@@ -1,16 +1,73 @@
-# React + Vite
+# new-Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small React project used for learning and experimentation.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This folder contains a minimal React application scaffolded with Vite. It is intended for practicing React fundamentals and building small components.
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js v14 or newer
+- npm or yarn
 
-## Expanding the Oxlint configuration
+## Install
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Install dependencies:
+
+```bash
+npm install
+# or
+# yarn install
+```
+
+## Run (development)
+
+Start the dev server with hot-reload:
+
+```bash
+npm start
+# or
+# npm run dev
+# or
+# yarn dev
+```
+
+The app will usually be available at http://localhost:5173 (Vite default) or http://localhost:3000 depending on your config.
+
+## Build
+
+Create a production bundle:
+
+```bash
+npm run build
+# or
+# yarn build
+```
+
+## Test
+
+Run tests (if configured):
+
+```bash
+npm test
+# or
+# yarn test
+```
+
+## Folder structure
+
+- public/ - static assets and index.html
+- src/ - application source (components, styles, pages)
+- package.json - scripts and dependencies
+
+Adjust these if you use a different scaffold or framework.
+
+## Notes
+
+- If this project was created with a specific template (Create React App, Vite, Next.js), update the commands above to match that scaffold.
+- Add screenshots, features, and environment variables as the project grows.
+
+## License
+
+Add a LICENSE file or include license information here.
