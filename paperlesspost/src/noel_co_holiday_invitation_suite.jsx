@@ -1786,7 +1786,19 @@ export default function App() {
           letter-spacing: 0.24em;
         }
 
-        .noel-bounce-arrow {
+        .noel-bou
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        e-arrow {
           animation: noelBounce 2s infinite;
         }
 

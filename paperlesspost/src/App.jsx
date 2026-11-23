@@ -1432,6 +1432,32 @@ export default function App() {
                 </span>
                 <h2
                   className="font-serif-editorial fw-bold mb-0"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   style={{ color: "#23140E" }}
                 >
                   Featured Suites &amp; Custom Studio
