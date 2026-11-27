@@ -975,11 +975,15 @@ export default function App() {
                   setDrawerOpen((isOpen) => !isOpen);
                   setSearchOpen(false);
                 }}
-                aria-label={drawerOpen ? "Close categories menu" : "Open categories menu"}
+                aria-label={
+                  drawerOpen ? "Close categories menu" : "Open categories menu"
+                }
                 aria-expanded={drawerOpen}
                 className={`noel-nav-icon-btn noel-mobile-menu-toggle d-lg-none ${drawerOpen ? "active" : ""}`}
               >
-                <i className={`bi ${drawerOpen ? "bi-x-lg" : "bi-list"} fs-4`} />
+                <i
+                  className={`bi ${drawerOpen ? "bi-x-lg" : "bi-list"} fs-4`}
+                />
               </button>
 
               {/* Item 2: Search Icon Button (bi-search) -> Immediately focuses input */}
@@ -1432,32 +1436,6 @@ export default function App() {
                 </span>
                 <h2
                   className="font-serif-editorial fw-bold mb-0"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                   style={{ color: "#23140E" }}
                 >
                   Featured Suites &amp; Custom Studio

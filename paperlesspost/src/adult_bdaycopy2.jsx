@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   Sparkles,
   Check,
@@ -19,7 +19,7 @@ import {
   Upload,
   Trash2,
   SlidersHorizontal,
-} from 'lucide-react';
+} from "lucide-react";
 
 /**
  * ============================================================================
@@ -30,132 +30,132 @@ import {
  */
 const HOLIDAY_THEMES = {
   christmas: {
-    id: 'christmas',
-    label: 'Christmas',
-    badge: 'Winter Edition',
-    title: 'A Candlelit Christmas Soirée',
-    subtitle: 'AN INTIMATE EVENING OF WINTER WARMTH & REVELRY',
+    id: "christmas",
+    label: "Christmas",
+    badge: "Winter Edition",
+    title: "A Candlelit Christmas Soirée",
+    subtitle: "AN INTIMATE EVENING OF WINTER WARMTH & REVELRY",
     hostNote:
-      'As winter settles softly over the city, Noel & Co. warmly invites you to gather by candlelight for seasonal tasting courses, aged vintages, and fireside conversation.',
-    date: 'December 20, 2026',
-    time: '7:30 PM until Midnight',
-    location: 'The Conservatory, 14 Mercer St.',
-    dressCode: 'Black Tie & Velvet Accents',
+      "As winter settles softly over the city, Noel & Co. warmly invites you to gather by candlelight for seasonal tasting courses, aged vintages, and fireside conversation.",
+    date: "December 20, 2026",
+    time: "7:30 PM until Midnight",
+    location: "The Conservatory, 14 Mercer St.",
+    dressCode: "Black Tie & Velvet Accents",
     colors: {
-      pageBg: '#FAF7F2',
-      pageText: '#1C1917',
-      mutedText: '#4A5D58',
-      primary: '#1B3B2B', // Deep Pine Green
-      secondary: '#8B2635', // Crimson
-      accent: '#C5A059', // Antique Champagne Gold
-      accentLight: '#E6D2A6',
-      envelopeBody: '#1B3B2B',
-      envelopeFlap: '#234B37',
-      envelopePocket: '#142D20',
-      waxSeal: '#8B2635',
-      waxSealRim: '#A62F41',
-      cardBg: '#FFFDF9',
-      cardBorder: '#C5A059',
-      particleColors: ['#FFFFFF', '#F3E5C2', '#C5A059'],
+      pageBg: "#FAF7F2",
+      pageText: "#1C1917",
+      mutedText: "#4A5D58",
+      primary: "#1B3B2B", // Deep Pine Green
+      secondary: "#8B2635", // Crimson
+      accent: "#C5A059", // Antique Champagne Gold
+      accentLight: "#E6D2A6",
+      envelopeBody: "#1B3B2B",
+      envelopeFlap: "#234B37",
+      envelopePocket: "#142D20",
+      waxSeal: "#8B2635",
+      waxSealRim: "#A62F41",
+      cardBg: "#FFFDF9",
+      cardBorder: "#C5A059",
+      particleColors: ["#FFFFFF", "#F3E5C2", "#C5A059"],
     },
-    particleMode: 'snow',
-    crestSymbol: '✦',
+    particleMode: "snow",
+    crestSymbol: "✦",
   },
   nye: {
-    id: 'nye',
+    id: "nye",
     label: "New Year's Eve",
-    badge: 'Midnight Edition',
-    title: 'Midnight Champagne Gala',
-    subtitle: 'RINGING IN A NEW CHAPTER IN BRUSHED GOLD & STARLIGHT',
+    badge: "Midnight Edition",
+    title: "Midnight Champagne Gala",
+    subtitle: "RINGING IN A NEW CHAPTER IN BRUSHED GOLD & STARLIGHT",
     hostNote:
-      'Join Noel & Co. above the skyline as the final hours of the year slip away. Expect vintage cuvées, live chamber strings, and a midnight toast beneath the glass atrium.',
-    date: 'December 31, 2026',
-    time: '9:00 PM — Midnight Toast',
-    location: 'The Astral Penthouse, Fifth Ave.',
-    dressCode: 'Midnight Formal & Metallic Foil',
+      "Join Noel & Co. above the skyline as the final hours of the year slip away. Expect vintage cuvées, live chamber strings, and a midnight toast beneath the glass atrium.",
+    date: "December 31, 2026",
+    time: "9:00 PM — Midnight Toast",
+    location: "The Astral Penthouse, Fifth Ave.",
+    dressCode: "Midnight Formal & Metallic Foil",
     colors: {
-      pageBg: '#F6F4EF',
-      pageText: '#1C1917',
-      mutedText: '#4B5262',
-      primary: '#141822', // Midnight Obsidian
-      secondary: '#2A3042', // Slate Indigo
-      accent: '#C5A059', // Champagne Gold
-      accentLight: '#E5D3A8',
-      envelopeBody: '#141822',
-      envelopeFlap: '#1E2433',
-      envelopePocket: '#0E1118',
-      waxSeal: '#9E7B34',
-      waxSealRim: '#C5A059',
-      cardBg: '#FFFDF8',
-      cardBorder: '#C5A059',
-      particleColors: ['#C5A059', '#E2E8F0', '#FDE68A'],
+      pageBg: "#F6F4EF",
+      pageText: "#1C1917",
+      mutedText: "#4B5262",
+      primary: "#141822", // Midnight Obsidian
+      secondary: "#2A3042", // Slate Indigo
+      accent: "#C5A059", // Champagne Gold
+      accentLight: "#E5D3A8",
+      envelopeBody: "#141822",
+      envelopeFlap: "#1E2433",
+      envelopePocket: "#0E1118",
+      waxSeal: "#9E7B34",
+      waxSealRim: "#C5A059",
+      cardBg: "#FFFDF8",
+      cardBorder: "#C5A059",
+      particleColors: ["#C5A059", "#E2E8F0", "#FDE68A"],
     },
-    particleMode: 'sparkle',
-    crestSymbol: '✧',
+    particleMode: "sparkle",
+    crestSymbol: "✧",
   },
   diwali: {
-    id: 'diwali',
-    label: 'Diwali',
-    badge: 'Festival of Lights',
-    title: 'Festival of Lights Celebration',
-    subtitle: 'AN EVENING OF GOLDEN LAMPS, SPICE & RADIANT HARMONY',
+    id: "diwali",
+    label: "Diwali",
+    badge: "Festival of Lights",
+    title: "Festival of Lights Celebration",
+    subtitle: "AN EVENING OF GOLDEN LAMPS, SPICE & RADIANT HARMONY",
     hostNote:
-      'In celebration of light triumphing over shadow, Noel & Co. welcomes you to a courtyard illuminated by a thousand hand-poured diyas, artisanal sweets, and celebratory music.',
-    date: 'November 8, 2026',
-    time: '7:00 PM onwards',
-    location: 'The Lotus Courtyard, Heritage Quarter',
-    dressCode: 'Festive Silk & Royal Jewel Tones',
+      "In celebration of light triumphing over shadow, Noel & Co. welcomes you to a courtyard illuminated by a thousand hand-poured diyas, artisanal sweets, and celebratory music.",
+    date: "November 8, 2026",
+    time: "7:00 PM onwards",
+    location: "The Lotus Courtyard, Heritage Quarter",
+    dressCode: "Festive Silk & Royal Jewel Tones",
     colors: {
-      pageBg: '#FDF8F1',
-      pageText: '#1C1917',
-      mutedText: '#5E3A58',
-      primary: '#2D132C', // Royal Plum
-      secondary: '#B45309', // Marigold Saffron
-      accent: '#C5A059', // Warm Antique Gold
-      accentLight: '#F3D899',
-      envelopeBody: '#2D132C',
-      envelopeFlap: '#3D1A3B',
-      envelopePocket: '#220E21',
-      waxSeal: '#8B2635',
-      waxSealRim: '#A62F41',
-      cardBg: '#FFFDF9',
-      cardBorder: '#C5A059',
-      particleColors: ['#F59E0B', '#FDE68A', '#FB923C'],
+      pageBg: "#FDF8F1",
+      pageText: "#1C1917",
+      mutedText: "#5E3A58",
+      primary: "#2D132C", // Royal Plum
+      secondary: "#B45309", // Marigold Saffron
+      accent: "#C5A059", // Warm Antique Gold
+      accentLight: "#F3D899",
+      envelopeBody: "#2D132C",
+      envelopeFlap: "#3D1A3B",
+      envelopePocket: "#220E21",
+      waxSeal: "#8B2635",
+      waxSealRim: "#A62F41",
+      cardBg: "#FFFDF9",
+      cardBorder: "#C5A059",
+      particleColors: ["#F59E0B", "#FDE68A", "#FB923C"],
     },
-    particleMode: 'diya',
-    crestSymbol: '❖',
+    particleMode: "diya",
+    crestSymbol: "❖",
   },
   autumn: {
-    id: 'autumn',
-    label: 'Autumn Harvest',
-    badge: 'Harvest Table',
-    title: 'The Harvest Table Gathering',
-    subtitle: 'A SEASONAL FEAST OF GRATITUDE, HEARTH & OAK',
+    id: "autumn",
+    label: "Autumn Harvest",
+    badge: "Harvest Table",
+    title: "The Harvest Table Gathering",
+    subtitle: "A SEASONAL FEAST OF GRATITUDE, HEARTH & OAK",
     hostNote:
-      'Gathered around a single long cedar table dressed in linen and heirloom botanicals, Noel & Co. invites you to share an unhurried evening of harvest fare and warm fellowship.',
-    date: 'November 26, 2026',
-    time: '5:30 PM — Fireside Supper',
-    location: 'Meadowbrook Orchard House',
-    dressCode: 'Autumnal Tailored & Cashmere',
+      "Gathered around a single long cedar table dressed in linen and heirloom botanicals, Noel & Co. invites you to share an unhurried evening of harvest fare and warm fellowship.",
+    date: "November 26, 2026",
+    time: "5:30 PM — Fireside Supper",
+    location: "Meadowbrook Orchard House",
+    dressCode: "Autumnal Tailored & Cashmere",
     colors: {
-      pageBg: '#FAF6F0',
-      pageText: '#1C1917',
-      mutedText: '#5C4D45',
-      primary: '#6E2B19', // Rich Terracotta
-      secondary: '#8B2635', // Crimson Berry
-      accent: '#C5A059', // Antique Gold
-      accentLight: '#E5CFA3',
-      envelopeBody: '#6E2B19',
-      envelopeFlap: '#82341F',
-      envelopePocket: '#582113',
-      waxSeal: '#1B3B2B',
-      waxSealRim: '#28543E',
-      cardBg: '#FFFDF9',
-      cardBorder: '#C5A059',
-      particleColors: ['#C26D38', '#D4A03E', '#9A4624'],
+      pageBg: "#FAF6F0",
+      pageText: "#1C1917",
+      mutedText: "#5C4D45",
+      primary: "#6E2B19", // Rich Terracotta
+      secondary: "#8B2635", // Crimson Berry
+      accent: "#C5A059", // Antique Gold
+      accentLight: "#E5CFA3",
+      envelopeBody: "#6E2B19",
+      envelopeFlap: "#82341F",
+      envelopePocket: "#582113",
+      waxSeal: "#1B3B2B",
+      waxSealRim: "#28543E",
+      cardBg: "#FFFDF9",
+      cardBorder: "#C5A059",
+      particleColors: ["#C26D38", "#D4A03E", "#9A4624"],
     },
-    particleMode: 'leaves',
-    crestSymbol: '❦',
+    particleMode: "leaves",
+    crestSymbol: "❦",
   },
 };
 
@@ -170,95 +170,100 @@ const HOLIDAY_THEMES = {
  */
 const INITIAL_INVITATION_TEMPLATES = [
   {
-    id: 'slot-01',
-    slotNumber: '01',
-    status: 'active',
+    id: "slot-01",
+    slotNumber: "01",
+    status: "active",
     isBuiltIn: true,
-    templateType: 'holiday',
-    title: 'Noel & Co. Holiday Inbox Invitation',
-    editionLabel: 'Signature Interactive Suite',
+    templateType: "holiday",
+    title: "Noel & Co. Holiday Inbox Invitation",
+    editionLabel: "Signature Interactive Suite",
     description:
-      'Tactile 3D inbox envelope with embossed gold wax seal, multi-holiday themes, scroll-triggered RSVP, and editorial brand reveal.',
-    tags: ['Christmas', "New Year's Eve", 'Diwali', 'Harvest'],
-    themeColor: '#1B3B2B',
-    accentColor: '#C5A059',
-    sealColor: '#8B2635',
-    videoSrc: '',
-    defaultHolidayId: 'christmas',
+      "Tactile 3D inbox envelope with embossed gold wax seal, multi-holiday themes, scroll-triggered RSVP, and editorial brand reveal.",
+    tags: ["Christmas", "New Year's Eve", "Diwali", "Harvest"],
+    themeColor: "#1B3B2B",
+    accentColor: "#C5A059",
+    sealColor: "#8B2635",
+    videoSrc: "",
+    defaultHolidayId: "christmas",
   },
   {
-    id: 'slot-02',
-    slotNumber: '02',
-    status: 'active',
+    id: "slot-02",
+    slotNumber: "02",
+    status: "active",
     isBuiltIn: true,
-    templateType: 'birthday',
-    title: 'Another Round — Adult Birthday',
-    editionLabel: 'Milestone Birthday Suite',
+    templateType: "birthday",
+    title: "Another Round — Adult Birthday",
+    editionLabel: "Milestone Birthday Suite",
     description:
-      'Hand-drawn ink bottle & cocktail illustration on warm peach cardstock over a matte charcoal terrazzo backdrop with 3D envelope reveal.',
-    tags: ['40th Birthday', 'Milestone', 'Cocktail Soirée', 'Terrazzo'],
-    themeColor: '#222220',
-    accentColor: '#edc6a8',
-    sealColor: '#181818',
-    videoSrc: '',
+      "Hand-drawn ink bottle & cocktail illustration on warm peach cardstock over a matte charcoal terrazzo backdrop with 3D envelope reveal.",
+    tags: ["40th Birthday", "Milestone", "Cocktail Soirée", "Terrazzo"],
+    themeColor: "#222220",
+    accentColor: "#edc6a8",
+    sealColor: "#181818",
+    videoSrc: "",
   },
   {
-    id: 'slot-03',
-    slotNumber: '03',
-    status: 'active',
+    id: "slot-03",
+    slotNumber: "03",
+    status: "active",
     isBuiltIn: true,
-    templateType: 'wedding',
-    title: 'Glimpse Into Forever — Classic Wedding',
-    editionLabel: 'Architectural Cameo Suite',
+    templateType: "wedding",
+    title: "Glimpse Into Forever — Classic Wedding",
+    editionLabel: "Architectural Cameo Suite",
     description:
-      'Scalloped-corner cotton cardstock with double-stepped debossed frame, vertical oval couple portrait cameo, and champagne-lined 3D envelope.',
-    tags: ['Classic Wedding', 'Cameo Portrait', 'Ivory Linen', '1920s Editorial'],
-    themeColor: '#f4f1e8',
-    accentColor: '#C5A059',
-    sealColor: '#dcd3c3',
-    videoSrc: '',
+      "Scalloped-corner cotton cardstock with double-stepped debossed frame, vertical oval couple portrait cameo, and champagne-lined 3D envelope.",
+    tags: [
+      "Classic Wedding",
+      "Cameo Portrait",
+      "Ivory Linen",
+      "1920s Editorial",
+    ],
+    themeColor: "#f4f1e8",
+    accentColor: "#C5A059",
+    sealColor: "#dcd3c3",
+    videoSrc: "",
   },
   {
-    id: 'slot-04',
-    slotNumber: '04',
-    status: 'empty',
+    id: "slot-04",
+    slotNumber: "04",
+    status: "empty",
     isBuiltIn: false,
-    title: '',
-    editionLabel: '',
-    description: '',
+    title: "",
+    editionLabel: "",
+    description: "",
     tags: [],
-    themeColor: '#1B3B2B',
-    accentColor: '#C5A059',
-    sealColor: '#8B2635',
-    videoSrc: '',
+    themeColor: "#1B3B2B",
+    accentColor: "#C5A059",
+    sealColor: "#8B2635",
+    videoSrc: "",
   },
   {
-    id: 'slot-05',
-    slotNumber: '05',
-    status: 'empty',
+    id: "slot-05",
+    slotNumber: "05",
+    status: "empty",
     isBuiltIn: false,
-    title: '',
-    editionLabel: '',
-    description: '',
+    title: "",
+    editionLabel: "",
+    description: "",
     tags: [],
-    themeColor: '#1C1917',
-    accentColor: '#C5A059',
-    sealColor: '#8B2635',
-    videoSrc: '',
+    themeColor: "#1C1917",
+    accentColor: "#C5A059",
+    sealColor: "#8B2635",
+    videoSrc: "",
   },
   {
-    id: 'slot-06',
-    slotNumber: '06',
-    status: 'empty',
+    id: "slot-06",
+    slotNumber: "06",
+    status: "empty",
     isBuiltIn: false,
-    title: '',
-    editionLabel: '',
-    description: '',
+    title: "",
+    editionLabel: "",
+    description: "",
     tags: [],
-    themeColor: '#1B3B2B',
-    accentColor: '#C5A059',
-    sealColor: '#8B2635',
-    videoSrc: '',
+    themeColor: "#1B3B2B",
+    accentColor: "#C5A059",
+    sealColor: "#8B2635",
+    videoSrc: "",
   },
 ];
 
@@ -266,11 +271,11 @@ const INITIAL_INVITATION_TEMPLATES = [
  * Curated luxury color swatches for the "+ Add Design to Slot" builder modal.
  */
 const STUDIO_SWATCHES = [
-  { name: 'Deep Pine Green', value: '#1B3B2B', seal: '#8B2635' },
-  { name: 'Festive Crimson', value: '#8B2635', seal: '#1B3B2B' },
-  { name: 'Crisp Charcoal', value: '#1C1917', seal: '#8B2635' },
-  { name: 'Royal Plum', value: '#2D132C', seal: '#C5A059' },
-  { name: 'Autumn Terracotta', value: '#6E2B19', seal: '#1B3B2B' },
+  { name: "Deep Pine Green", value: "#1B3B2B", seal: "#8B2635" },
+  { name: "Festive Crimson", value: "#8B2635", seal: "#1B3B2B" },
+  { name: "Crisp Charcoal", value: "#1C1917", seal: "#8B2635" },
+  { name: "Royal Plum", value: "#2D132C", seal: "#C5A059" },
+  { name: "Autumn Terracotta", value: "#6E2B19", seal: "#1B3B2B" },
 ];
 
 /**
@@ -278,7 +283,7 @@ const STUDIO_SWATCHES = [
  * ORNATE CORNER FILIGREE SVG COMPONENT
  * ============================================================================
  */
-const CornerFiligree = ({ color = '#C5A059', positionClass = '' }) => (
+const CornerFiligree = ({ color = "#C5A059", positionClass = "" }) => (
   <svg
     viewBox="0 0 64 64"
     fill="none"
@@ -313,7 +318,7 @@ const CornerFiligree = ({ color = '#C5A059', positionClass = '' }) => (
  * SUBTLE PRINTMAKER CORNER REGISTRATION MARKS (FOR EMPTY TEMPLATE SLOTS)
  * ============================================================================
  */
-const RegistrationMarks = ({ color = '#C5A059' }) => (
+const RegistrationMarks = ({ color = "#C5A059" }) => (
   <>
     <svg
       viewBox="0 0 24 24"
@@ -321,7 +326,14 @@ const RegistrationMarks = ({ color = '#C5A059' }) => (
       aria-hidden="true"
     >
       <path d="M12 2V10M2 12H10" stroke={color} strokeWidth="1" />
-      <circle cx="12" cy="12" r="2.5" fill="none" stroke={color} strokeWidth="0.9" />
+      <circle
+        cx="12"
+        cy="12"
+        r="2.5"
+        fill="none"
+        stroke={color}
+        strokeWidth="0.9"
+      />
     </svg>
     <svg
       viewBox="0 0 24 24"
@@ -329,7 +341,14 @@ const RegistrationMarks = ({ color = '#C5A059' }) => (
       aria-hidden="true"
     >
       <path d="M12 2V10M14 12H22" stroke={color} strokeWidth="1" />
-      <circle cx="12" cy="12" r="2.5" fill="none" stroke={color} strokeWidth="0.9" />
+      <circle
+        cx="12"
+        cy="12"
+        r="2.5"
+        fill="none"
+        stroke={color}
+        strokeWidth="0.9"
+      />
     </svg>
     <svg
       viewBox="0 0 24 24"
@@ -337,7 +356,14 @@ const RegistrationMarks = ({ color = '#C5A059' }) => (
       aria-hidden="true"
     >
       <path d="M12 14V22M2 12H10" stroke={color} strokeWidth="1" />
-      <circle cx="12" cy="12" r="2.5" fill="none" stroke={color} strokeWidth="0.9" />
+      <circle
+        cx="12"
+        cy="12"
+        r="2.5"
+        fill="none"
+        stroke={color}
+        strokeWidth="0.9"
+      />
     </svg>
     <svg
       viewBox="0 0 24 24"
@@ -345,7 +371,14 @@ const RegistrationMarks = ({ color = '#C5A059' }) => (
       aria-hidden="true"
     >
       <path d="M12 14V22M14 12H22" stroke={color} strokeWidth="1" />
-      <circle cx="12" cy="12" r="2.5" fill="none" stroke={color} strokeWidth="0.9" />
+      <circle
+        cx="12"
+        cy="12"
+        r="2.5"
+        fill="none"
+        stroke={color}
+        strokeWidth="0.9"
+      />
     </svg>
   </>
 );
@@ -355,7 +388,10 @@ const RegistrationMarks = ({ color = '#C5A059' }) => (
  * MATTE CHARCOAL TERRAZZO BACKDROP SVG PATTERN ("ANOTHER ROUND" EDITION)
  * ============================================================================
  */
-const TerrazzoBackdrop = ({ patternId = 'noel-terrazzo-pattern', className = '' }) => (
+const TerrazzoBackdrop = ({
+  patternId = "noel-terrazzo-pattern",
+  className = "",
+}) => (
   <svg
     className={`nc-no-pointer ${className}`}
     width="100%"
@@ -380,20 +416,35 @@ const TerrazzoBackdrop = ({ patternId = 'noel-terrazzo-pattern', className = '' 
         <polygon points="148,64 174,58 180,79 156,88 143,76" fill="#f3f0e8" />
         <polygon points="236,72 254,66 260,84 240,91" fill="#b5ada2" />
         <polygon points="18,116 42,108 50,129 27,139 14,128" fill="#8c8e8a" />
-        <polygon points="94,112 119,104 128,124 106,134 91,123" fill="#f3f0e8" />
+        <polygon
+          points="94,112 119,104 128,124 106,134 91,123"
+          fill="#f3f0e8"
+        />
         <polygon points="186,118 205,110 212,128 192,135" fill="#e8c3a5" />
-        <polygon points="268,114 294,108 302,131 276,140 262,127" fill="#3c3c3a" />
+        <polygon
+          points="268,114 294,108 302,131 276,140 262,127"
+          fill="#3c3c3a"
+        />
         <polygon points="54,168 76,160 84,179 62,188" fill="#e8c3a5" />
-        <polygon points="134,164 162,156 170,178 146,189 129,176" fill="#b5ada2" />
+        <polygon
+          points="134,164 162,156 170,178 146,189 129,176"
+          fill="#b5ada2"
+        />
         <polygon points="218,168 244,161 251,182 226,190" fill="#f3f0e8" />
         <polygon points="292,174 312,167 316,186 296,192" fill="#8c8e8a" />
         <polygon points="22,224 48,216 55,238 30,247 16,236" fill="#f3f0e8" />
         <polygon points="104,220 124,213 132,231 112,240" fill="#3c3c3a" />
-        <polygon points="178,226 206,218 214,241 188,250 173,238" fill="#f3f0e8" />
+        <polygon
+          points="178,226 206,218 214,241 188,250 173,238"
+          fill="#f3f0e8"
+        />
         <polygon points="262,224 286,216 293,237 269,246" fill="#e8c3a5" />
         <polygon points="66,274 92,266 99,288 74,297 60,285" fill="#b5ada2" />
         <polygon points="146,276 168,269 175,289 152,296" fill="#e8c3a5" />
-        <polygon points="224,272 252,265 259,287 233,296 218,284" fill="#8c8e8a" />
+        <polygon
+          points="224,272 252,265 259,287 233,296 218,284"
+          fill="#8c8e8a"
+        />
         <polygon points="294,278 313,272 318,290 298,296" fill="#f3f0e8" />
 
         {/* Small Fine Terrazzo Flecks */}
@@ -429,7 +480,7 @@ const TerrazzoBackdrop = ({ patternId = 'noel-terrazzo-pattern', className = '' 
  * HAND-DRAWN INK ILLUSTRATION SVG ("ANOTHER ROUND" COCKTAIL & BOTTLE ART)
  * ============================================================================
  */
-const AnotherRoundInkIllustration = ({ milestoneAge = '40' }) => (
+const AnotherRoundInkIllustration = ({ milestoneAge = "40" }) => (
   <svg
     viewBox="0 0 360 390"
     fill="none"
@@ -464,8 +515,14 @@ const AnotherRoundInkIllustration = ({ milestoneAge = '40' }) => (
         d="M165.5 92C151 103 145 118 145.5 142L147 238C147.2 243 151 245 156 245H204C209 245 212.8 243 213 238L214.5 142C215 118 209 103 194.5 92"
         strokeWidth="2.4"
       />
-      <path d="M163 96C152 107 148 122 148.5 145L149.5 236" strokeWidth="1.15" />
-      <path d="M197 96C208 107 212 122 211.5 145L210.5 236" strokeWidth="1.15" />
+      <path
+        d="M163 96C152 107 148 122 148.5 145L149.5 236"
+        strokeWidth="1.15"
+      />
+      <path
+        d="M197 96C208 107 212 122 211.5 145L210.5 236"
+        strokeWidth="1.15"
+      />
       <path
         d="M153 111C157 104 162 99 167 96M150 120C153 114 157 109 162 105M205 112C201 105 196 100 191 97"
         strokeWidth="1.2"
@@ -485,12 +542,13 @@ const AnotherRoundInkIllustration = ({ milestoneAge = '40' }) => (
         strokeWidth="0.6"
         style={{
           fontFamily: "'Caveat', cursive",
-          fontSize: milestoneAge && String(milestoneAge).length > 2 ? '30px' : '36px',
+          fontSize:
+            milestoneAge && String(milestoneAge).length > 2 ? "30px" : "36px",
           fontWeight: 700,
-          letterSpacing: '0.02em',
+          letterSpacing: "0.02em",
         }}
       >
-        {milestoneAge || '40'}
+        {milestoneAge || "40"}
       </text>
       <path
         d="M150 228C168 230 192 230 210 228M151 235C169 237 191 237 209 235M154 240L159 230M162 241L166 231M198 241L194 231M205 240L201 230"
@@ -501,7 +559,10 @@ const AnotherRoundInkIllustration = ({ milestoneAge = '40' }) => (
     {/* Left Stemmed Wine Glass (Cross-Hatched Red) */}
     <g stroke="#181818" strokeLinecap="round" strokeLinejoin="round">
       <ellipse cx="98" cy="108" rx="23" ry="4.5" strokeWidth="1.8" />
-      <path d="M75 108C72 132 76 164 98 168C120 164 124 132 121 108" strokeWidth="2.1" />
+      <path
+        d="M75 108C72 132 76 164 98 168C120 164 124 132 121 108"
+        strokeWidth="2.1"
+      />
       <path d="M77 112C75 134 79 161 98 165" strokeWidth="1" />
       <path d="M76 131C87 134 109 134 120 131" strokeWidth="1.8" />
       <path
@@ -513,19 +574,28 @@ const AnotherRoundInkIllustration = ({ milestoneAge = '40' }) => (
         strokeWidth="1.35"
       />
       <path d="M97 168L96.5 234M99.5 168L99 234" strokeWidth="1.9" />
-      <path d="M78 242C84 235 112 235 118 242C110 245 86 245 78 242Z" strokeWidth="1.9" />
+      <path
+        d="M78 242C84 235 112 235 118 242C110 245 86 245 78 242Z"
+        strokeWidth="1.9"
+      />
     </g>
 
     {/* Small Bowl of Olives / Grapes */}
     <g stroke="#181818" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M114 218C115 232 122 238 132 238C142 238 149 232 150 218Z" strokeWidth="1.8" />
+      <path
+        d="M114 218C115 232 122 238 132 238C142 238 149 232 150 218Z"
+        strokeWidth="1.8"
+      />
       <path d="M122 238L120 243H144L142 238" strokeWidth="1.6" />
       <circle cx="123" cy="214" r="4.2" strokeWidth="1.6" />
       <circle cx="132" cy="212" r="4.5" strokeWidth="1.6" />
       <circle cx="141" cy="215" r="4" strokeWidth="1.6" />
       <circle cx="128" cy="206" r="3.8" strokeWidth="1.5" />
       <circle cx="136" cy="207" r="3.6" strokeWidth="1.5" />
-      <path d="M144 212C151 206 156 207 158 210C153 213 148 213 144 212Z" strokeWidth="1.3" />
+      <path
+        d="M144 212C151 206 156 207 158 210C153 213 148 213 144 212Z"
+        strokeWidth="1.3"
+      />
       <circle cx="163" cy="240" r="3.2" strokeWidth="1.4" />
       <circle cx="170" cy="241" r="3.4" strokeWidth="1.4" />
       <circle cx="177" cy="240" r="3" strokeWidth="1.4" />
@@ -534,17 +604,26 @@ const AnotherRoundInkIllustration = ({ milestoneAge = '40' }) => (
     {/* Right Coupe Glass */}
     <g stroke="#181818" strokeLinecap="round" strokeLinejoin="round">
       <ellipse cx="236" cy="160" rx="22" ry="4" strokeWidth="1.7" />
-      <path d="M214 160C215 178 224 188 236 189C248 188 257 178 258 160" strokeWidth="1.9" />
+      <path
+        d="M214 160C215 178 224 188 236 189C248 188 257 178 258 160"
+        strokeWidth="1.9"
+      />
       <path d="M217 169C228 171 244 171 255 169" strokeWidth="1.3" />
       <path d="M222 175C230 176.5 242 176.5 250 175" strokeWidth="1" />
       <path d="M235 189L235 235M237.5 189L237.5 235" strokeWidth="1.8" />
-      <path d="M220 242C225 236 247 236 252 242C245 244.5 227 244.5 220 242Z" strokeWidth="1.8" />
+      <path
+        d="M220 242C225 236 247 236 252 242C245 244.5 227 244.5 220 242Z"
+        strokeWidth="1.8"
+      />
     </g>
 
     {/* Far Right Tall Bubbly Champagne Flute */}
     <g stroke="#181818" strokeLinecap="round" strokeLinejoin="round">
       <ellipse cx="277" cy="112" rx="12" ry="3" strokeWidth="1.7" />
-      <path d="M265 112C264 142 266 172 277 178C288 172 290 142 289 112" strokeWidth="1.9" />
+      <path
+        d="M265 112C264 142 266 172 277 178C288 172 290 142 289 112"
+        strokeWidth="1.9"
+      />
       <path d="M266 130C273 131.5 281 131.5 288 130" strokeWidth="1.3" />
       <circle cx="275" cy="142" r="1.3" fill="#181818" />
       <circle cx="280" cy="150" r="1.1" fill="#181818" />
@@ -552,7 +631,10 @@ const AnotherRoundInkIllustration = ({ milestoneAge = '40' }) => (
       <circle cx="278" cy="122" r="1.2" fill="#181818" />
       <circle cx="273" cy="105" r="1.2" fill="#181818" />
       <path d="M276 178L276 235M278.5 178L278.5 235" strokeWidth="1.8" />
-      <path d="M263 242C267 236 287 236 291 242C285 244.5 269 244.5 263 242Z" strokeWidth="1.8" />
+      <path
+        d="M263 242C267 236 287 236 291 242C285 244.5 269 244.5 263 242Z"
+        strokeWidth="1.8"
+      />
     </g>
 
     {/* Horizontal Serving Tray */}
@@ -600,17 +682,17 @@ const AnotherRoundInkIllustration = ({ milestoneAge = '40' }) => (
  */
 const AnotherRoundCardArtwork = ({
   honoreeTitle = "Sarah's Birthday",
-  milestoneAge = '40',
-  eventDate = 'June 25th',
-  eventTime = '7 p.m.',
-  venueText = '12th Knot\nSea Containers,\nLondon',
+  milestoneAge = "40",
+  eventDate = "June 25th",
+  eventTime = "7 p.m.",
+  venueText = "12th Knot\nSea Containers,\nLondon",
   compact = false,
 }) => {
   const titleLines = String(honoreeTitle || "Sarah's Birthday")
-    .split('\n')
+    .split("\n")
     .filter(Boolean);
-  const venueLines = String(venueText || '12th Knot\nSea Containers,\nLondon')
-    .split('\n')
+  const venueLines = String(venueText || "12th Knot\nSea Containers,\nLondon")
+    .split("\n")
     .filter(Boolean);
 
   return (
@@ -621,7 +703,7 @@ const AnotherRoundCardArtwork = ({
       {/* Top-Left Handwritten Script: "Sarah's Birthday" */}
       <div
         className={`position-absolute z-2 text-start ${
-          compact ? 'nc-bday-title-compact' : 'nc-bday-title-full'
+          compact ? "nc-bday-title-compact" : "nc-bday-title-full"
         }`}
       >
         {titleLines.length > 1 ? (
@@ -629,7 +711,7 @@ const AnotherRoundCardArtwork = ({
             <p
               key={idx}
               className={`nc-font-handwritten fw-semibold mb-0 nc-ink-text ${
-                compact ? 'nc-bday-text-xs' : 'nc-bday-heading'
+                compact ? "nc-bday-text-xs" : "nc-bday-heading"
               }`}
             >
               {line}
@@ -638,7 +720,9 @@ const AnotherRoundCardArtwork = ({
         ) : (
           <p
             className={`nc-font-handwritten fw-semibold mb-0 nc-ink-text ${
-              compact ? 'nc-bday-text-xs' : 'nc-bday-heading nc-bday-heading-wrap'
+              compact
+                ? "nc-bday-text-xs"
+                : "nc-bday-heading nc-bday-heading-wrap"
             }`}
           >
             {honoreeTitle}
@@ -649,7 +733,7 @@ const AnotherRoundCardArtwork = ({
       {/* Centerpiece Hand-Drawn Ink Illustration */}
       <div
         className={`position-relative z-1 mx-auto d-flex align-items-center justify-content-center ${
-          compact ? 'nc-bday-art-compact' : 'nc-bday-art-full'
+          compact ? "nc-bday-art-compact" : "nc-bday-art-full"
         }`}
       >
         <AnotherRoundInkIllustration milestoneAge={milestoneAge} />
@@ -658,14 +742,14 @@ const AnotherRoundCardArtwork = ({
       {/* Bottom-Left Handwritten Venue */}
       <div
         className={`position-absolute z-2 text-start ${
-          compact ? 'nc-bday-venue-compact' : 'nc-bday-venue-full'
+          compact ? "nc-bday-venue-compact" : "nc-bday-venue-full"
         }`}
       >
         {venueLines.map((line, i) => (
           <p
             key={i}
             className={`nc-font-handwritten fw-medium mb-0 nc-ink-text ${
-              compact ? 'nc-bday-sub-xs' : 'nc-bday-subtext'
+              compact ? "nc-bday-sub-xs" : "nc-bday-subtext"
             }`}
           >
             {line}
@@ -676,19 +760,19 @@ const AnotherRoundCardArtwork = ({
       {/* Bottom-Right Handwritten Date & Time */}
       <div
         className={`position-absolute z-2 text-start ${
-          compact ? 'nc-bday-date-compact' : 'nc-bday-date-full'
+          compact ? "nc-bday-date-compact" : "nc-bday-date-full"
         }`}
       >
         <p
           className={`nc-font-handwritten fw-medium mb-0 nc-ink-text ${
-            compact ? 'nc-bday-sub-xs' : 'nc-bday-subtext'
+            compact ? "nc-bday-sub-xs" : "nc-bday-subtext"
           }`}
         >
           {eventDate}
         </p>
         <p
           className={`nc-font-handwritten fw-medium mb-0 nc-ink-text ${
-            compact ? 'nc-bday-sub-xs' : 'nc-bday-subtext'
+            compact ? "nc-bday-sub-xs" : "nc-bday-subtext"
           }`}
         >
           {eventTime}
@@ -705,66 +789,66 @@ const AnotherRoundCardArtwork = ({
  */
 const WEDDING_COLORWAYS = {
   ivory: {
-    id: 'ivory',
-    label: 'Ivory Linen',
-    swatchBg: '#f6f4ee',
-    swatchRing: '#1f1e1c',
-    backdropBg: '#eceae4',
-    cardBg: '#f6f4ee',
-    inkColor: '#232220',
-    mutedInk: '#4d4a44',
-    debossOuter: 'rgba(130, 122, 108, 0.34)',
-    debossInner: 'rgba(165, 156, 140, 0.28)',
-    debossHighlight: 'rgba(255, 255, 255, 0.85)',
-    envelopeBody: '#f4f1e8',
-    envelopeFlap: '#ebe6d9',
-    envelopePocket: '#e5dfd0',
-    envelopeLiner: '#dcd3c3',
-    sealBg: '#e2dacb',
-    sealText: '#3b3731',
-    sealBorder: '#c5b9a5',
+    id: "ivory",
+    label: "Ivory Linen",
+    swatchBg: "#f6f4ee",
+    swatchRing: "#1f1e1c",
+    backdropBg: "#eceae4",
+    cardBg: "#f6f4ee",
+    inkColor: "#232220",
+    mutedInk: "#4d4a44",
+    debossOuter: "rgba(130, 122, 108, 0.34)",
+    debossInner: "rgba(165, 156, 140, 0.28)",
+    debossHighlight: "rgba(255, 255, 255, 0.85)",
+    envelopeBody: "#f4f1e8",
+    envelopeFlap: "#ebe6d9",
+    envelopePocket: "#e5dfd0",
+    envelopeLiner: "#dcd3c3",
+    sealBg: "#e2dacb",
+    sealText: "#3b3731",
+    sealBorder: "#c5b9a5",
     isDark: false,
   },
   noir: {
-    id: 'noir',
-    label: 'Noir Velvet',
-    swatchBg: '#1c1c1a',
-    swatchRing: '#c5a059',
-    backdropBg: '#141413',
-    cardBg: '#1c1c1a',
-    inkColor: '#f3efe6',
-    mutedInk: '#c8c1b4',
-    debossOuter: 'rgba(243, 239, 230, 0.28)',
-    debossInner: 'rgba(197, 160, 89, 0.34)',
-    debossHighlight: 'rgba(255, 255, 255, 0.08)',
-    envelopeBody: '#222220',
-    envelopeFlap: '#2a2a27',
-    envelopePocket: '#191917',
-    envelopeLiner: '#383530',
-    sealBg: '#2e2c28',
-    sealText: '#e6d2a6',
-    sealBorder: '#c5a059',
+    id: "noir",
+    label: "Noir Velvet",
+    swatchBg: "#1c1c1a",
+    swatchRing: "#c5a059",
+    backdropBg: "#141413",
+    cardBg: "#1c1c1a",
+    inkColor: "#f3efe6",
+    mutedInk: "#c8c1b4",
+    debossOuter: "rgba(243, 239, 230, 0.28)",
+    debossInner: "rgba(197, 160, 89, 0.34)",
+    debossHighlight: "rgba(255, 255, 255, 0.08)",
+    envelopeBody: "#222220",
+    envelopeFlap: "#2a2a27",
+    envelopePocket: "#191917",
+    envelopeLiner: "#383530",
+    sealBg: "#2e2c28",
+    sealText: "#e6d2a6",
+    sealBorder: "#c5a059",
     isDark: true,
   },
   sage: {
-    id: 'sage',
-    label: 'Sage Mist',
-    swatchBg: '#cbd7c6',
-    swatchRing: '#3e4d3b',
-    backdropBg: '#dde4da',
-    cardBg: '#cbd7c6',
-    inkColor: '#1e261d',
-    mutedInk: '#3d493b',
-    debossOuter: 'rgba(42, 56, 40, 0.3)',
-    debossInner: 'rgba(62, 77, 59, 0.24)',
-    debossHighlight: 'rgba(255, 255, 255, 0.55)',
-    envelopeBody: '#c5d2bf',
-    envelopeFlap: '#bccab6',
-    envelopePocket: '#b3c2ad',
-    envelopeLiner: '#e4ebe1',
-    sealBg: '#b8c6b2',
-    sealText: '#1e261d',
-    sealBorder: '#7d8e77',
+    id: "sage",
+    label: "Sage Mist",
+    swatchBg: "#cbd7c6",
+    swatchRing: "#3e4d3b",
+    backdropBg: "#dde4da",
+    cardBg: "#cbd7c6",
+    inkColor: "#1e261d",
+    mutedInk: "#3d493b",
+    debossOuter: "rgba(42, 56, 40, 0.3)",
+    debossInner: "rgba(62, 77, 59, 0.24)",
+    debossHighlight: "rgba(255, 255, 255, 0.55)",
+    envelopeBody: "#c5d2bf",
+    envelopeFlap: "#bccab6",
+    envelopePocket: "#b3c2ad",
+    envelopeLiner: "#e4ebe1",
+    sealBg: "#b8c6b2",
+    sealText: "#1e261d",
+    sealBorder: "#7d8e77",
     isDark: false,
   },
 };
@@ -772,7 +856,7 @@ const WEDDING_COLORWAYS = {
 /**
  * Helper to extract 2-letter couple monogram (e.g., "RENÉE & GÉRARD" -> "R & G")
  */
-const getCoupleMonogram = (coupleNames = 'RENÉE & GÉRARD') => {
+const getCoupleMonogram = (coupleNames = "RENÉE & GÉRARD") => {
   const parts = String(coupleNames)
     .split(/&|\+|and/i)
     .map((s) => s.trim())
@@ -780,7 +864,7 @@ const getCoupleMonogram = (coupleNames = 'RENÉE & GÉRARD') => {
   if (parts.length >= 2) {
     return `${parts[0][0].toUpperCase()} & ${parts[1][0].toUpperCase()}`;
   }
-  return 'R & G';
+  return "R & G";
 };
 
 /**
@@ -790,7 +874,7 @@ const getCoupleMonogram = (coupleNames = 'RENÉE & GÉRARD') => {
  * Detailed black-and-white outdoor embrace portrait featuring a groom in a
  * wide-brim Western hat and bride with flowing wavy hair & airy white dress.
  */
-const WeddingCoupleCameoIllustration = ({ uniqueId = 'cameo-art' }) => (
+const WeddingCoupleCameoIllustration = ({ uniqueId = "cameo-art" }) => (
   <svg
     viewBox="0 0 220 290"
     fill="none"
@@ -865,10 +949,7 @@ const WeddingCoupleCameoIllustration = ({ uniqueId = 'cameo-art' }) => (
     <rect x="81" y="198" width="9" height="8" rx="1.5" fill="#9c9c98" />
 
     {/* Groom's Back & Shoulder Shadow */}
-    <path
-      d="M52 136 C44 152 46 174 56 190 L76 184 L74 136 Z"
-      fill="#383836"
-    />
+    <path d="M52 136 C44 152 46 174 56 190 L76 184 L74 136 Z" fill="#383836" />
 
     {/* Bride's Flowing Wavy Dark Hair */}
     <path
@@ -914,11 +995,7 @@ const WeddingCoupleCameoIllustration = ({ uniqueId = 'cameo-art' }) => (
       d="M52 84 C54 64 64 56 76 57 C82 58 86 60 92 58 C100 56 106 65 106 82 Z"
       fill="#4c4c49"
     />
-    <path
-      d="M54 80 C68 83 92 82 105 79"
-      stroke="#242423"
-      strokeWidth="2.4"
-    />
+    <path d="M54 80 C68 83 92 82 105 79" stroke="#242423" strokeWidth="2.4" />
     {/* Wide Curved Hat Brim */}
     <path
       d="M32 86 C46 77 78 75 114 82 C121 84 123 88 116 90 C84 92 52 94 33 91 C29 90 29 88 32 86 Z"
@@ -963,48 +1040,50 @@ const WeddingCoupleCameoIllustration = ({ uniqueId = 'cameo-art' }) => (
  * uppercase date/time, and bottom venue signature.
  */
 const GlimpseIntoForeverCardArtwork = ({
-  coupleNames = 'RENÉE & GÉRARD',
-  invitationLine = 'invite you to celebrate their marriage',
-  eventDate = 'TUESDAY, JULY 21, 1925',
-  eventTime = 'AT FOUR IN THE AFTERNOON',
-  venueName = 'ANSONIA HOTEL',
-  colorwayId = 'ivory',
-  photoUrl = '',
+  coupleNames = "RENÉE & GÉRARD",
+  invitationLine = "invite you to celebrate their marriage",
+  eventDate = "TUESDAY, JULY 21, 1925",
+  eventTime = "AT FOUR IN THE AFTERNOON",
+  venueName = "ANSONIA HOTEL",
+  colorwayId = "ivory",
+  photoUrl = "",
   bwFilter = true,
   compact = false,
-  instanceId = 'full',
+  instanceId = "full",
 }) => {
   const palette = WEDDING_COLORWAYS[colorwayId] || WEDDING_COLORWAYS.ivory;
-  const clipId = `nc-scallop-clip-${instanceId}-${compact ? 'sm' : 'lg'}`;
+  const clipId = `nc-scallop-clip-${instanceId}-${compact ? "sm" : "lg"}`;
 
   // Concave scalloped-corner path on a 360x510 coordinate grid
   // Outer card boundary (normalized in clipPath using scale 1/360 and 1/510)
   const outerSvgPath =
-    'M 34 0 L 326 0 A 34 34 0 0 0 360 34 L 360 476 A 34 34 0 0 0 326 510 L 34 510 A 34 34 0 0 0 0 476 L 0 34 A 34 34 0 0 0 34 0 Z';
+    "M 34 0 L 326 0 A 34 34 0 0 0 360 34 L 360 476 A 34 34 0 0 0 326 510 L 34 510 A 34 34 0 0 0 0 476 L 0 34 A 34 34 0 0 0 34 0 Z";
   // First debossed frame step (inset 10px, concave radius 29)
   const frameStep1Path =
-    'M 39 10 L 321 10 A 29 29 0 0 0 350 39 L 350 471 A 29 29 0 0 0 321 500 L 39 500 A 29 29 0 0 0 10 471 L 10 39 A 29 29 0 0 0 39 10 Z';
+    "M 39 10 L 321 10 A 29 29 0 0 0 350 39 L 350 471 A 29 29 0 0 0 321 500 L 39 500 A 29 29 0 0 0 10 471 L 10 39 A 29 29 0 0 0 39 10 Z";
   // Second debossed frame step (inset 16px, concave radius 26)
   const frameStep2Path =
-    'M 42 16 L 318 16 A 26 26 0 0 0 344 42 L 344 468 A 26 26 0 0 0 318 494 L 42 494 A 26 26 0 0 0 16 468 L 16 42 A 26 26 0 0 0 42 16 Z';
+    "M 42 16 L 318 16 A 26 26 0 0 0 344 42 L 344 468 A 26 26 0 0 0 318 494 L 42 494 A 26 26 0 0 0 16 468 L 16 42 A 26 26 0 0 0 42 16 Z";
 
   return (
     <div
       className="position-relative w-100 h-100 nc-no-select"
       style={{
         filter: compact
-          ? 'drop-shadow(0 4px 10px rgba(0,0,0,0.12))'
-          : 'drop-shadow(0 22px 42px rgba(24, 22, 18, 0.22))',
+          ? "drop-shadow(0 4px 10px rgba(0,0,0,0.12))"
+          : "drop-shadow(0 22px 42px rgba(24, 22, 18, 0.22))",
       }}
     >
       {/* Hidden SVG ClipPath Definition for True Inverted-Corner Die-Cut */}
-      <svg width="0" height="0" className="position-absolute" aria-hidden="true">
+      <svg
+        width="0"
+        height="0"
+        className="position-absolute"
+        aria-hidden="true"
+      >
         <defs>
           <clipPath id={clipId} clipPathUnits="objectBoundingBox">
-            <path
-              transform="scale(0.00277778, 0.00196078)"
-              d={outerSvgPath}
-            />
+            <path transform="scale(0.00277778, 0.00196078)" d={outerSvgPath} />
           </clipPath>
         </defs>
       </svg>
@@ -1016,8 +1095,8 @@ const GlimpseIntoForeverCardArtwork = ({
           backgroundColor: palette.cardBg,
           color: palette.inkColor,
           clipPath: `url(#${clipId})`,
-          padding: compact ? '10% 10% 8%' : '9.5% 11% 8.5%',
-          transition: 'background-color 0.45s ease, color 0.45s ease',
+          padding: compact ? "10% 10% 8%" : "9.5% 11% 8.5%",
+          transition: "background-color 0.45s ease, color 0.45s ease",
         }}
       >
         {/* Fine Cotton Paper Grain Texture */}
@@ -1060,12 +1139,12 @@ const GlimpseIntoForeverCardArtwork = ({
             className="mb-0 text-uppercase fw-medium"
             style={{
               color: palette.inkColor,
-              fontSize: compact ? '0.42rem' : 'clamp(0.72rem, 1.8vw, 0.92rem)',
-              letterSpacing: '0.26em',
-              paddingLeft: '0.26em',
+              fontSize: compact ? "0.42rem" : "clamp(0.72rem, 1.8vw, 0.92rem)",
+              letterSpacing: "0.26em",
+              paddingLeft: "0.26em",
             }}
           >
-            {coupleNames || 'RENÉE & GÉRARD'}
+            {coupleNames || "RENÉE & GÉRARD"}
           </p>
         </div>
 
@@ -1073,10 +1152,10 @@ const GlimpseIntoForeverCardArtwork = ({
         <div
           className="position-relative z-1 my-auto d-flex align-items-center justify-content-center"
           style={{
-            width: compact ? '44%' : '45.5%',
-            aspectRatio: '3 / 4.05',
-            borderRadius: '50%',
-            padding: compact ? '2px' : '4px',
+            width: compact ? "44%" : "45.5%",
+            aspectRatio: "3 / 4.05",
+            borderRadius: "50%",
+            padding: compact ? "2px" : "4px",
             border: `1px solid ${palette.debossOuter}`,
             boxShadow: `inset 0 2px 6px rgba(0,0,0,0.12), 0 1px 0 ${palette.debossHighlight}`,
             backgroundColor: palette.cardBg,
@@ -1085,7 +1164,7 @@ const GlimpseIntoForeverCardArtwork = ({
           <div
             className="w-100 h-100 overflow-hidden position-relative"
             style={{
-              borderRadius: '50%',
+              borderRadius: "50%",
               border: `1px solid ${palette.debossInner}`,
             }}
           >
@@ -1095,19 +1174,21 @@ const GlimpseIntoForeverCardArtwork = ({
                 alt={coupleNames}
                 className="w-100 h-100"
                 style={{
-                  objectFit: 'cover',
-                  filter: bwFilter ? 'grayscale(100%) contrast(1.08)' : 'none',
+                  objectFit: "cover",
+                  filter: bwFilter ? "grayscale(100%) contrast(1.08)" : "none",
                 }}
               />
             ) : (
               <div
                 className="w-100 h-100"
                 style={{
-                  filter: bwFilter ? 'grayscale(100%) contrast(1.04)' : 'sepia(18%)',
+                  filter: bwFilter
+                    ? "grayscale(100%) contrast(1.04)"
+                    : "sepia(18%)",
                 }}
               >
                 <WeddingCoupleCameoIllustration
-                  uniqueId={`${instanceId}-${compact ? 'c' : 'f'}`}
+                  uniqueId={`${instanceId}-${compact ? "c" : "f"}`}
                 />
               </div>
             )}
@@ -1121,11 +1202,11 @@ const GlimpseIntoForeverCardArtwork = ({
             className="nc-font-serif fst-italic mb-1"
             style={{
               color: palette.inkColor,
-              fontSize: compact ? '0.46rem' : 'clamp(0.95rem, 2.3vw, 1.2rem)',
+              fontSize: compact ? "0.46rem" : "clamp(0.95rem, 2.3vw, 1.2rem)",
               lineHeight: 1.2,
             }}
           >
-            {invitationLine || 'invite you to celebrate their marriage'}
+            {invitationLine || "invite you to celebrate their marriage"}
           </p>
 
           {/* Date & Time in Wide-Tracked Uppercase */}
@@ -1133,25 +1214,25 @@ const GlimpseIntoForeverCardArtwork = ({
             className="mb-0 text-uppercase fw-medium"
             style={{
               color: palette.inkColor,
-              fontSize: compact ? '0.32rem' : 'clamp(0.56rem, 1.35vw, 0.68rem)',
-              letterSpacing: '0.2em',
-              paddingLeft: '0.2em',
+              fontSize: compact ? "0.32rem" : "clamp(0.56rem, 1.35vw, 0.68rem)",
+              letterSpacing: "0.2em",
+              paddingLeft: "0.2em",
               lineHeight: 1.55,
             }}
           >
-            {eventDate || 'TUESDAY, JULY 21, 1925'}
+            {eventDate || "TUESDAY, JULY 21, 1925"}
           </p>
           <p
             className="mb-0 text-uppercase fw-medium"
             style={{
               color: palette.inkColor,
-              fontSize: compact ? '0.32rem' : 'clamp(0.56rem, 1.35vw, 0.68rem)',
-              letterSpacing: '0.2em',
-              paddingLeft: '0.2em',
+              fontSize: compact ? "0.32rem" : "clamp(0.56rem, 1.35vw, 0.68rem)",
+              letterSpacing: "0.2em",
+              paddingLeft: "0.2em",
               lineHeight: 1.55,
             }}
           >
-            {eventTime || 'AT FOUR IN THE AFTERNOON'}
+            {eventTime || "AT FOUR IN THE AFTERNOON"}
           </p>
 
           {/* Bottom Venue in Wide-Tracked Small Uppercase */}
@@ -1159,13 +1240,13 @@ const GlimpseIntoForeverCardArtwork = ({
             className="mb-0 text-uppercase fw-semibold"
             style={{
               color: palette.mutedInk,
-              marginTop: compact ? '4px' : '14px',
-              fontSize: compact ? '0.28rem' : 'clamp(0.5rem, 1.2vw, 0.6rem)',
-              letterSpacing: '0.24em',
-              paddingLeft: '0.24em',
+              marginTop: compact ? "4px" : "14px",
+              fontSize: compact ? "0.28rem" : "clamp(0.5rem, 1.2vw, 0.6rem)",
+              letterSpacing: "0.24em",
+              paddingLeft: "0.24em",
             }}
           >
-            {venueName || 'ANSONIA HOTEL'}
+            {venueName || "ANSONIA HOTEL"}
           </p>
         </div>
       </div>
@@ -1178,12 +1259,16 @@ const GlimpseIntoForeverCardArtwork = ({
  * SLOT PREVIEW STAGE: LIVE LOOPING ENVELOPE "SAMPLE VIDEO" + REAL VIDEO PLAYER
  * ============================================================================
  */
-const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive }) => {
+const TemplatePreviewStage = ({
+  template,
+  onUpdateVideoSrc,
+  onOpenInteractive,
+}) => {
   const [isPlayingLoop, setIsPlayingLoop] = useState(true);
   const [loopOpenState, setLoopOpenState] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [showVideoInput, setShowVideoInput] = useState(false);
-  const [videoUrlDraft, setVideoUrlDraft] = useState(template.videoSrc || '');
+  const [videoUrlDraft, setVideoUrlDraft] = useState(template.videoSrc || "");
   const [useVideoMode, setUseVideoMode] = useState(Boolean(template.videoSrc));
 
   useEffect(() => {
@@ -1231,23 +1316,23 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
     setShowVideoInput(false);
   };
 
-  const isBirthday = template.templateType === 'birthday';
-  const isWedding = template.templateType === 'wedding';
+  const isBirthday = template.templateType === "birthday";
+  const isWedding = template.templateType === "wedding";
   const envelopeColor = isBirthday
-    ? '#edc6a8'
+    ? "#edc6a8"
     : isWedding
-    ? '#f4f1e8'
-    : template.themeColor || '#1B3B2B';
+      ? "#f4f1e8"
+      : template.themeColor || "#1B3B2B";
   const sealColor = isBirthday
-    ? '#181818'
+    ? "#181818"
     : isWedding
-    ? '#e2dacb'
-    : template.sealColor || '#8B2635';
+      ? "#e2dacb"
+      : template.sealColor || "#8B2635";
   const goldColor = isBirthday
-    ? '#edc6a8'
+    ? "#edc6a8"
     : isWedding
-    ? '#c5b9a5'
-    : template.accentColor || '#C5A059';
+      ? "#c5b9a5"
+      : template.accentColor || "#C5A059";
 
   return (
     <div
@@ -1255,8 +1340,12 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
       onMouseLeave={() => setIsHovered(false)}
       className="position-relative w-100 overflow-hidden border-bottom nc-no-select nc-preview-stage"
       style={{
-        backgroundColor: isBirthday ? '#222220' : isWedding ? '#eceae4' : '#F3EDE2',
-        borderColor: 'rgba(197, 160, 89, 0.35)',
+        backgroundColor: isBirthday
+          ? "#222220"
+          : isWedding
+            ? "#eceae4"
+            : "#F3EDE2",
+        borderColor: "rgba(197, 160, 89, 0.35)",
       }}
     >
       {/* Matte Terrazzo, Woven Linen, or Warm Spotlight Backdrop */}
@@ -1274,9 +1363,12 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
       {/* Top Overlay Badges & Video Toggle */}
       <div className="position-absolute top-0 start-0 end-0 p-3 z-3 d-flex align-items-center justify-content-between gap-2">
         <span className="badge rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 nc-stage-badge">
-          <span className="nc-pulse-dot" style={{ backgroundColor: '#8B2635' }} />
-          Slot {template.slotNumber} •{' '}
-          {useVideoMode && template.videoSrc ? 'Sample Video' : 'Live Motion'}
+          <span
+            className="nc-pulse-dot"
+            style={{ backgroundColor: "#8B2635" }}
+          />
+          Slot {template.slotNumber} •{" "}
+          {useVideoMode && template.videoSrc ? "Sample Video" : "Live Motion"}
         </span>
 
         <div className="d-flex align-items-center gap-2">
@@ -1288,8 +1380,16 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
                 setIsPlayingLoop((p) => !p);
               }}
               className="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center nc-icon-circle-btn"
-              title={isPlayingLoop ? 'Pause animated preview' : 'Play animated preview'}
-              aria-label={isPlayingLoop ? 'Pause animated preview' : 'Play animated preview'}
+              title={
+                isPlayingLoop
+                  ? "Pause animated preview"
+                  : "Play animated preview"
+              }
+              aria-label={
+                isPlayingLoop
+                  ? "Pause animated preview"
+                  : "Play animated preview"
+              }
             >
               {isPlayingLoop ? <Pause size={12} /> : <Play size={12} />}
             </button>
@@ -1302,12 +1402,12 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
               setShowVideoInput((prev) => !prev);
             }}
             className={`btn btn-sm rounded-pill d-inline-flex align-items-center gap-1 px-3 py-1 nc-video-toggle-btn ${
-              useVideoMode ? 'nc-video-toggle-active' : ''
+              useVideoMode ? "nc-video-toggle-active" : ""
             }`}
             title="Attach or preview a sample invitation video"
           >
-            <Film size={12} style={{ color: '#C5A059' }} />
-            <span>{template.videoSrc ? 'Video' : 'Sample Video'}</span>
+            <Film size={12} style={{ color: "#C5A059" }} />
+            <span>{template.videoSrc ? "Video" : "Sample Video"}</span>
           </button>
         </div>
       </div>
@@ -1319,7 +1419,9 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
           className="position-absolute start-0 end-0 mx-3 p-3 rounded-3 shadow-lg nc-video-drawer nc-fade-in-up"
         >
           <div className="d-flex align-items-center justify-content-between mb-2">
-            <span className="nc-micro-label text-dark">Sample Invitation Video</span>
+            <span className="nc-micro-label text-dark">
+              Sample Invitation Video
+            </span>
             <button
               type="button"
               onClick={() => setShowVideoInput(false)}
@@ -1362,7 +1464,7 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
                     }}
                     className="btn btn-sm rounded-2 nc-btn-outline-gold"
                   >
-                    {useVideoMode ? 'Show 3D Loop' : 'Play Video'}
+                    {useVideoMode ? "Show 3D Loop" : "Play Video"}
                   </button>
                 )}
                 <button
@@ -1404,7 +1506,7 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
           role="button"
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
+            if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
               onOpenInteractive();
             }
@@ -1427,7 +1529,7 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
             {/* Ground Shadow */}
             <div
               className="nc-mini-shadow"
-              style={{ backgroundColor: isWedding ? '#3b3731' : envelopeColor }}
+              style={{ backgroundColor: isWedding ? "#3b3731" : envelopeColor }}
             />
 
             {/* Envelope Back & Inner Liner */}
@@ -1435,15 +1537,15 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
               className="position-absolute top-0 start-0 end-0 bottom-0 rounded-3 shadow border"
               style={{
                 backgroundColor: isBirthday
-                  ? '#f5f2e9'
+                  ? "#f5f2e9"
                   : isWedding
-                  ? '#dcd3c3'
-                  : envelopeColor,
+                    ? "#dcd3c3"
+                    : envelopeColor,
                 borderColor: isBirthday
-                  ? 'rgba(237, 198, 168, 0.65)'
+                  ? "rgba(237, 198, 168, 0.65)"
                   : isWedding
-                  ? 'rgba(197, 185, 165, 0.7)'
-                  : `${goldColor}60`,
+                    ? "rgba(197, 185, 165, 0.7)"
+                    : `${goldColor}60`,
               }}
             />
 
@@ -1452,22 +1554,27 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
               className="position-absolute rounded-2 overflow-hidden nc-mini-card"
               style={{
                 backgroundColor: isBirthday
-                  ? '#f1ccb0'
+                  ? "#f1ccb0"
                   : isWedding
-                  ? 'transparent'
-                  : '#FFFDF9',
+                    ? "transparent"
+                    : "#FFFDF9",
                 border: isWedding
-                  ? 'none'
-                  : `1px solid ${isBirthday ? '#d8ae8e' : goldColor}`,
-                boxShadow: isWedding ? 'none' : '0 2px 6px rgba(0,0,0,0.12)',
-                transform: effectiveOpen ? 'translateY(-44%)' : 'translateY(0%)',
+                  ? "none"
+                  : `1px solid ${isBirthday ? "#d8ae8e" : goldColor}`,
+                boxShadow: isWedding ? "none" : "0 2px 6px rgba(0,0,0,0.12)",
+                transform: effectiveOpen
+                  ? "translateY(-44%)"
+                  : "translateY(0%)",
                 zIndex: effectiveOpen ? 15 : 2,
               }}
             >
               {isBirthday ? (
                 <AnotherRoundCardArtwork compact />
               ) : isWedding ? (
-                <GlimpseIntoForeverCardArtwork compact instanceId={template.id} />
+                <GlimpseIntoForeverCardArtwork
+                  compact
+                  instanceId={template.id}
+                />
               ) : (
                 <div className="px-2 pt-2 text-center">
                   <p
@@ -1477,7 +1584,9 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
                     Noel &amp; Co.
                   </p>
                   <p className="nc-font-serif fw-semibold mb-1 nc-mini-title">
-                    {template.isBuiltIn ? 'Candlelit Christmas Soirée' : template.title}
+                    {template.isBuiltIn
+                      ? "Candlelit Christmas Soirée"
+                      : template.title}
                   </p>
                   <div
                     className="mx-auto my-1 nc-mini-rule"
@@ -1499,14 +1608,20 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
                 className="position-absolute top-0 start-0 end-0 bottom-0 nc-pocket-left"
                 style={{
                   backgroundColor: envelopeColor,
-                  filter: isBirthday || isWedding ? 'brightness(0.96)' : 'brightness(0.86)',
+                  filter:
+                    isBirthday || isWedding
+                      ? "brightness(0.96)"
+                      : "brightness(0.86)",
                 }}
               />
               <div
                 className="position-absolute top-0 start-0 end-0 bottom-0 nc-pocket-right"
                 style={{
                   backgroundColor: envelopeColor,
-                  filter: isBirthday || isWedding ? 'brightness(0.96)' : 'brightness(0.86)',
+                  filter:
+                    isBirthday || isWedding
+                      ? "brightness(0.96)"
+                      : "brightness(0.86)",
                 }}
               />
               <div
@@ -1521,7 +1636,9 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
                 <polyline
                   points="0,100 50,44 100,100"
                   fill="none"
-                  stroke={isBirthday ? '#c99f7e' : isWedding ? '#c5b9a5' : goldColor}
+                  stroke={
+                    isBirthday ? "#c99f7e" : isWedding ? "#c5b9a5" : goldColor
+                  }
                   strokeWidth="0.6"
                   strokeOpacity="0.75"
                 />
@@ -1533,14 +1650,18 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
               className="position-absolute top-0 start-0 end-0 nc-mini-flap nc-no-pointer"
               style={{
                 zIndex: effectiveOpen ? 1 : 20,
-                transform: effectiveOpen ? 'rotateX(180deg)' : 'rotateX(0deg)',
+                transform: effectiveOpen ? "rotateX(180deg)" : "rotateX(0deg)",
               }}
             >
               <div
                 className="w-100 h-100 rounded-top-3 nc-flap-triangle"
                 style={{
                   backgroundColor: envelopeColor,
-                  filter: isBirthday ? 'brightness(1.02)' : isWedding ? 'brightness(0.98)' : 'brightness(1.12)',
+                  filter: isBirthday
+                    ? "brightness(1.02)"
+                    : isWedding
+                      ? "brightness(0.98)"
+                      : "brightness(1.12)",
                 }}
               />
             </div>
@@ -1548,7 +1669,7 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
             {/* Embossed Wax / Monogram Seal */}
             <div
               className={`position-absolute nc-mini-seal-wrap ${
-                effectiveOpen ? 'nc-seal-hidden' : 'nc-seal-visible'
+                effectiveOpen ? "nc-seal-hidden" : "nc-seal-visible"
               }`}
               style={{ zIndex: 30 }}
             >
@@ -1556,18 +1677,28 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
                 className="rounded-circle d-flex align-items-center justify-content-center shadow border nc-mini-seal"
                 style={{
                   backgroundColor: sealColor,
-                  borderColor: isBirthday ? '#f1ccb0' : isWedding ? '#c5b9a5' : goldColor,
+                  borderColor: isBirthday
+                    ? "#f1ccb0"
+                    : isWedding
+                      ? "#c5b9a5"
+                      : goldColor,
                 }}
               >
                 <span
                   className={`${
-                    isBirthday ? 'nc-font-handwritten fs-6' : 'nc-font-serif nc-mini-seal-text'
+                    isBirthday
+                      ? "nc-font-handwritten fs-6"
+                      : "nc-font-serif nc-mini-seal-text"
                   } fw-semibold`}
                   style={{
-                    color: isBirthday ? '#f1ccb0' : isWedding ? '#3b3731' : '#F3E5C2',
+                    color: isBirthday
+                      ? "#f1ccb0"
+                      : isWedding
+                        ? "#3b3731"
+                        : "#F3E5C2",
                   }}
                 >
-                  {isBirthday ? '40' : isWedding ? 'R&G' : 'N&C'}
+                  {isBirthday ? "40" : isWedding ? "R&G" : "N&C"}
                 </span>
               </div>
             </div>
@@ -1577,15 +1708,17 @@ const TemplatePreviewStage = ({ template, onUpdateVideoSrc, onOpenInteractive })
           <span
             className="position-absolute bottom-0 mb-2 px-3 py-1 rounded-pill nc-stage-caption"
             style={{
-              color: isBirthday ? '#f3f0e8' : isWedding ? '#3b3731' : '#4A5D58',
+              color: isBirthday ? "#f3f0e8" : isWedding ? "#3b3731" : "#4A5D58",
               backgroundColor: isBirthday
-                ? 'rgba(34, 34, 32, 0.72)'
+                ? "rgba(34, 34, 32, 0.72)"
                 : isWedding
-                ? 'rgba(246, 244, 238, 0.85)'
-                : 'transparent',
+                  ? "rgba(246, 244, 238, 0.85)"
+                  : "transparent",
             }}
           >
-            {effectiveOpen ? 'Invitation Revealed • Click to Launch' : 'Opening Envelope Preview...'}
+            {effectiveOpen
+              ? "Invitation Revealed • Click to Launch"
+              : "Opening Envelope Preview..."}
           </span>
         </div>
       )}
@@ -1618,8 +1751,8 @@ const ActiveTemplateCard = ({
         <div>
           {/* Edition Overline & Optional Reset Control */}
           <div className="d-flex align-items-center justify-content-between gap-2 mb-2">
-            <span className="nc-micro-label" style={{ color: '#C5A059' }}>
-              {template.editionLabel || 'Bespoke Edition'}
+            <span className="nc-micro-label" style={{ color: "#C5A059" }}>
+              {template.editionLabel || "Bespoke Edition"}
             </span>
 
             {!template.isBuiltIn && (
@@ -1641,15 +1774,16 @@ const ActiveTemplateCard = ({
           </h3>
 
           {/* Concise Description */}
-          <p className="small mb-3 nc-muted-copy">
-            {template.description}
-          </p>
+          <p className="small mb-3 nc-muted-copy">{template.description}</p>
 
           {/* Holiday / Occasion Tags */}
           {template.tags && template.tags.length > 0 && (
             <div className="d-flex flex-wrap gap-2 mb-4">
               {template.tags.map((tag) => (
-                <span key={tag} className="badge rounded-pill fw-medium nc-tag-pill">
+                <span
+                  key={tag}
+                  className="badge rounded-pill fw-medium nc-tag-pill"
+                >
                   {tag}
                 </span>
               ))}
@@ -1663,12 +1797,12 @@ const ActiveTemplateCard = ({
           onClick={() => onOpenInteractive(template)}
           className="btn w-100 py-2 px-3 rounded-3 d-inline-flex align-items-center justify-content-center gap-2 nc-launch-card-btn"
           style={{
-            backgroundColor: template.themeColor || '#1B3B2B',
-            color: '#FAF7F2',
-            borderColor: 'rgba(197, 160, 89, 0.55)',
+            backgroundColor: template.themeColor || "#1B3B2B",
+            color: "#FAF7F2",
+            borderColor: "rgba(197, 160, 89, 0.55)",
           }}
         >
-          <Eye size={15} style={{ color: '#C5A059' }} />
+          <Eye size={15} style={{ color: "#C5A059" }} />
           <span>Open Live Interactive Card</span>
         </button>
       </div>
@@ -1697,10 +1831,10 @@ const EmptyTemplateSlotCard = ({ slot, onAddDesignClick }) => {
       {/* Center Architectural Placeholder Content */}
       <div className="my-auto d-flex flex-column align-items-center py-4 nc-empty-body">
         <div className="rounded-circle d-flex align-items-center justify-content-center mb-3 nc-empty-icon-ring">
-          <Layers size={20} style={{ color: '#C5A059' }} />
+          <Layers size={20} style={{ color: "#C5A059" }} />
         </div>
 
-        <p className="nc-micro-label mb-1" style={{ color: '#C5A059' }}>
+        <p className="nc-micro-label mb-1" style={{ color: "#C5A059" }}>
           Available Template Slot
         </p>
 
@@ -1709,8 +1843,8 @@ const EmptyTemplateSlotCard = ({ slot, onAddDesignClick }) => {
         </h3>
 
         <p className="small mb-0 nc-muted-copy">
-          Reserved modular slot in the Noel &amp; Co. suite. Add a bespoke holiday, gala, or
-          seasonal stationery card here.
+          Reserved modular slot in the Noel &amp; Co. suite. Add a bespoke
+          holiday, gala, or seasonal stationery card here.
         </p>
       </div>
 
@@ -1721,7 +1855,7 @@ const EmptyTemplateSlotCard = ({ slot, onAddDesignClick }) => {
           onClick={() => onAddDesignClick(slot)}
           className="btn w-100 py-2 px-3 rounded-3 d-inline-flex align-items-center justify-content-center gap-2 nc-add-slot-btn"
         >
-          <Plus size={15} style={{ color: '#8B2635' }} />
+          <Plus size={15} style={{ color: "#8B2635" }} />
           <span>Add Design to Slot</span>
         </button>
       </div>
@@ -1734,14 +1868,20 @@ const EmptyTemplateSlotCard = ({ slot, onAddDesignClick }) => {
  * MODAL: "+ ADD DESIGN TO SLOT" TEMPLATE BUILDER (BOOTSTRAP 5 STYLED)
  * ============================================================================
  */
-const AddDesignModal = ({ isOpen, targetSlot, emptySlots, onClose, onSaveDesign }) => {
-  const [selectedSlotId, setSelectedSlotId] = useState('');
-  const [title, setTitle] = useState('');
-  const [occasionInput, setOccasionInput] = useState('Christmas, Winter Gala');
+const AddDesignModal = ({
+  isOpen,
+  targetSlot,
+  emptySlots,
+  onClose,
+  onSaveDesign,
+}) => {
+  const [selectedSlotId, setSelectedSlotId] = useState("");
+  const [title, setTitle] = useState("");
+  const [occasionInput, setOccasionInput] = useState("Christmas, Winter Gala");
   const [selectedSwatch, setSelectedSwatch] = useState(STUDIO_SWATCHES[0]);
-  const [videoSrc, setVideoSrc] = useState('');
-  const [description, setDescription] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [videoSrc, setVideoSrc] = useState("");
+  const [description, setDescription] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     if (!isOpen) return;
@@ -1750,21 +1890,21 @@ const AddDesignModal = ({ isOpen, targetSlot, emptySlots, onClose, onSaveDesign 
     } else if (emptySlots.length > 0) {
       setSelectedSlotId(emptySlots[0].id);
     }
-    setTitle('');
-    setOccasionInput('Christmas, Winter Gala');
+    setTitle("");
+    setOccasionInput("Christmas, Winter Gala");
     setSelectedSwatch(STUDIO_SWATCHES[0]);
-    setVideoSrc('');
-    setDescription('');
-    setErrorMsg('');
+    setVideoSrc("");
+    setDescription("");
+    setErrorMsg("");
   }, [isOpen, targetSlot, emptySlots]);
 
   useEffect(() => {
     if (!isOpen) return;
     const handleKey = (e) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape") onClose();
     };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -1773,28 +1913,28 @@ const AddDesignModal = ({ isOpen, targetSlot, emptySlots, onClose, onSaveDesign 
     e.preventDefault();
     const cleanTitle = title.trim();
     if (!cleanTitle) {
-      setErrorMsg('Please enter an invitation template title.');
+      setErrorMsg("Please enter an invitation template title.");
       return;
     }
     if (!selectedSlotId) {
-      setErrorMsg('No empty slot selected.');
+      setErrorMsg("No empty slot selected.");
       return;
     }
 
     const parsedTags = occasionInput
-      .split(',')
+      .split(",")
       .map((t) => t.trim())
       .filter(Boolean);
 
     onSaveDesign(selectedSlotId, {
       title: cleanTitle,
-      editionLabel: `${parsedTags[0] || 'Seasonal'} Edition`,
+      editionLabel: `${parsedTags[0] || "Seasonal"} Edition`,
       description:
         description.trim() ||
-        'Bespoke Noel & Co. digital stationery card with tactile envelope reveal and interactive guest RSVP.',
-      tags: parsedTags.length > 0 ? parsedTags : ['Holiday Edition'],
+        "Bespoke Noel & Co. digital stationery card with tactile envelope reveal and interactive guest RSVP.",
+      tags: parsedTags.length > 0 ? parsedTags : ["Holiday Edition"],
       themeColor: selectedSwatch.value,
-      accentColor: '#C5A059',
+      accentColor: "#C5A059",
       sealColor: selectedSwatch.seal,
       videoSrc: videoSrc.trim(),
     });
@@ -1813,7 +1953,10 @@ const AddDesignModal = ({ isOpen, targetSlot, emptySlots, onClose, onSaveDesign 
         onClick={(e) => e.stopPropagation()}
         className="card w-100 rounded-4 p-4 p-sm-5 shadow-lg position-relative overflow-auto nc-builder-modal-card"
       >
-        <CornerFiligree color="#C5A059" positionClass="nc-filigree-tl nc-opacity-60" />
+        <CornerFiligree
+          color="#C5A059"
+          positionClass="nc-filigree-tl nc-opacity-60"
+        />
         <CornerFiligree
           color="#C5A059"
           positionClass="nc-filigree-tr nc-rotate-90 nc-opacity-60"
@@ -1822,7 +1965,7 @@ const AddDesignModal = ({ isOpen, targetSlot, emptySlots, onClose, onSaveDesign 
         {/* Modal Header */}
         <div className="position-relative z-1 d-flex align-items-start justify-content-between gap-3 mb-4">
           <div>
-            <span className="nc-micro-label" style={{ color: '#C5A059' }}>
+            <span className="nc-micro-label" style={{ color: "#C5A059" }}>
               Noel &amp; Co. Template Studio
             </span>
             <h2
@@ -1872,7 +2015,7 @@ const AddDesignModal = ({ isOpen, targetSlot, emptySlots, onClose, onSaveDesign 
               value={title}
               onChange={(e) => {
                 setTitle(e.target.value);
-                if (errorMsg) setErrorMsg('');
+                if (errorMsg) setErrorMsg("");
               }}
               placeholder="e.g., Winter Solstice Velvet Dinner"
               className="form-control rounded-3 nc-input-ivory"
@@ -1907,7 +2050,7 @@ const AddDesignModal = ({ isOpen, targetSlot, emptySlots, onClose, onSaveDesign 
                       type="button"
                       onClick={() => setSelectedSwatch(swatch)}
                       className={`btn w-100 d-flex align-items-center gap-2 px-2 py-2 rounded-3 text-start nc-swatch-btn ${
-                        isSelected ? 'nc-swatch-selected' : ''
+                        isSelected ? "nc-swatch-selected" : ""
                       }`}
                     >
                       <span
@@ -1953,7 +2096,10 @@ const AddDesignModal = ({ isOpen, targetSlot, emptySlots, onClose, onSaveDesign 
           </div>
 
           {errorMsg && (
-            <div className="alert alert-danger py-2 px-3 small mb-3" role="alert">
+            <div
+              className="alert alert-danger py-2 px-3 small mb-3"
+              role="alert"
+            >
               {errorMsg}
             </div>
           )}
@@ -1971,7 +2117,7 @@ const AddDesignModal = ({ isOpen, targetSlot, emptySlots, onClose, onSaveDesign 
               type="submit"
               className="btn px-4 py-2 rounded-3 d-inline-flex align-items-center gap-2 nc-btn-pine"
             >
-              <Check size={14} style={{ color: '#C5A059' }} />
+              <Check size={14} style={{ color: "#C5A059" }} />
               <span>Publish to Grid</span>
             </button>
           </div>
@@ -1998,7 +2144,13 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
   useEffect(() => {
     if (!burstTrigger) return;
     const { x, y } = burstTrigger;
-    const palette = ['#C5A059', '#E6D2A6', themeRef.current.colors.primary, '#8B2635', '#FFFFFF'];
+    const palette = [
+      "#C5A059",
+      "#E6D2A6",
+      themeRef.current.colors.primary,
+      "#8B2635",
+      "#FFFFFF",
+    ];
 
     for (let i = 0; i < 46; i++) {
       const angle = (Math.PI * 2 * i) / 46 + (Math.random() - 0.5) * 0.25;
@@ -2021,7 +2173,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let animationFrameId;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
@@ -2031,7 +2183,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     const particleCount = width < 640 ? 26 : 44;
     const particles = Array.from({ length: particleCount }, () => ({
@@ -2055,7 +2207,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
         p.phase += 0.02;
         const color = colors[p.colorIndex % colors.length];
 
-        if (mode === 'snow') {
+        if (mode === "snow") {
           p.y += p.speedY;
           p.x += Math.sin(p.phase) * 0.35 + p.speedX * 0.2;
           if (p.y > height + 10) {
@@ -2069,7 +2221,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
           ctx.globalAlpha = p.alpha * 0.75;
           ctx.fill();
           ctx.restore();
-        } else if (mode === 'sparkle') {
+        } else if (mode === "sparkle") {
           p.y -= p.speedY * 0.9;
           p.x += Math.sin(p.phase * 1.4) * 0.25;
           if (p.y < -10) {
@@ -2090,7 +2242,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
           ctx.quadraticCurveTo(0, 0, 0, -s);
           ctx.fill();
           ctx.restore();
-        } else if (mode === 'diya') {
+        } else if (mode === "diya") {
           p.y -= p.speedY * 0.55;
           p.x += Math.sin(p.phase * 0.8) * 0.4;
           if (p.y < -20) {
@@ -2099,9 +2251,16 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
           }
           const glow = 0.6 + 0.4 * Math.sin(p.phase * 1.5);
           const radius = p.r * 2.4;
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 2);
+          const grad = ctx.createRadialGradient(
+            p.x,
+            p.y,
+            0,
+            p.x,
+            p.y,
+            radius * 2,
+          );
           grad.addColorStop(0, color);
-          grad.addColorStop(1, 'rgba(245, 158, 11, 0)');
+          grad.addColorStop(1, "rgba(245, 158, 11, 0)");
           ctx.save();
           ctx.globalAlpha = p.alpha * glow * 0.7;
           ctx.fillStyle = grad;
@@ -2109,7 +2268,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
           ctx.arc(p.x, p.y, radius * 2, 0, Math.PI * 2);
           ctx.fill();
           ctx.restore();
-        } else if (mode === 'leaves') {
+        } else if (mode === "leaves") {
           p.y += p.speedY * 0.8;
           p.x += Math.sin(p.phase) * 0.7 + 0.2;
           if (p.y > height + 15) {
@@ -2157,7 +2316,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
     animationFrameId = requestAnimationFrame(render);
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -2181,12 +2340,12 @@ const FullInteractivePreviewModal = ({
   totalSlotsCount = 6,
   onClose,
 }) => {
-  const isBirthday = template?.templateType === 'birthday';
-  const isWedding = template?.templateType === 'wedding';
+  const isBirthday = template?.templateType === "birthday";
+  const isWedding = template?.templateType === "wedding";
 
   // Holiday switcher state
   const [activeHolidayId, setActiveHolidayId] = useState(
-    template?.defaultHolidayId || 'christmas'
+    template?.defaultHolidayId || "christmas",
   );
 
   // Living 3D Envelope & Scroll states
@@ -2194,27 +2353,31 @@ const FullInteractivePreviewModal = ({
   const [cardElevated, setCardElevated] = useState(false);
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
   const [rsvpStatus, setRsvpStatus] = useState(null); // 'yes' | 'no' | null
-  const [guestName, setGuestName] = useState('');
-  const [savedName, setSavedName] = useState('');
+  const [guestName, setGuestName] = useState("");
+  const [savedName, setSavedName] = useState("");
   const [burstTrigger, setBurstTrigger] = useState(null);
   const [modalScrollProgress, setModalScrollProgress] = useState(0);
 
   // Live Inline Customizer state for "Another Round" Adult Birthday
   const [showCustomizer, setShowCustomizer] = useState(false);
   const [bdayHonoree, setBdayHonoree] = useState("Sarah's Birthday");
-  const [bdayAge, setBdayAge] = useState('40');
-  const [bdayDate, setBdayDate] = useState('June 25th');
-  const [bdayTime, setBdayTime] = useState('7 p.m.');
-  const [bdayVenue, setBdayVenue] = useState('12th Knot\nSea Containers,\nLondon');
+  const [bdayAge, setBdayAge] = useState("40");
+  const [bdayDate, setBdayDate] = useState("June 25th");
+  const [bdayTime, setBdayTime] = useState("7 p.m.");
+  const [bdayVenue, setBdayVenue] = useState(
+    "12th Knot\nSea Containers,\nLondon",
+  );
 
   // Live Inline Customizer state for "Glimpse Into Forever" Classic Wedding
-  const [weddingColorwayId, setWeddingColorwayId] = useState('ivory');
-  const [wedCouple, setWedCouple] = useState('RENÉE & GÉRARD');
-  const [wedInviteLine, setWedInviteLine] = useState('invite you to celebrate their marriage');
-  const [wedDate, setWedDate] = useState('TUESDAY, JULY 21, 1925');
-  const [wedTime, setWedTime] = useState('AT FOUR IN THE AFTERNOON');
-  const [wedVenue, setWedVenue] = useState('ANSONIA HOTEL');
-  const [wedPhotoUrl, setWedPhotoUrl] = useState('');
+  const [weddingColorwayId, setWeddingColorwayId] = useState("ivory");
+  const [wedCouple, setWedCouple] = useState("RENÉE & GÉRARD");
+  const [wedInviteLine, setWedInviteLine] = useState(
+    "invite you to celebrate their marriage",
+  );
+  const [wedDate, setWedDate] = useState("TUESDAY, JULY 21, 1925");
+  const [wedTime, setWedTime] = useState("AT FOUR IN THE AFTERNOON");
+  const [wedVenue, setWedVenue] = useState("ANSONIA HOTEL");
+  const [wedPhotoUrl, setWedPhotoUrl] = useState("");
   const [wedBwFilter, setWedBwFilter] = useState(true);
 
   const scrollContainerRef = useRef(null);
@@ -2224,14 +2387,15 @@ const FullInteractivePreviewModal = ({
     setIsEnvelopeOpen(false);
     setCardElevated(false);
     setRsvpStatus(null);
-    setSavedName('');
+    setSavedName("");
     setShowCustomizer(false);
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTo({ top: 0 });
     }
   }, [template?.id]);
 
-  const wedPalette = WEDDING_COLORWAYS[weddingColorwayId] || WEDDING_COLORWAYS.ivory;
+  const wedPalette =
+    WEDDING_COLORWAYS[weddingColorwayId] || WEDDING_COLORWAYS.ivory;
   const coupleMonogram = getCoupleMonogram(wedCouple);
 
   const handleWeddingPhotoUpload = (e) => {
@@ -2244,72 +2408,77 @@ const FullInteractivePreviewModal = ({
   const baseTheme = HOLIDAY_THEMES[activeHolidayId] || HOLIDAY_THEMES.christmas;
   const theme = isBirthday
     ? {
-        id: 'birthday',
-        label: 'Milestone Birthday',
-        badge: 'Another Round Edition',
+        id: "birthday",
+        label: "Milestone Birthday",
+        badge: "Another Round Edition",
         title: bdayHonoree || "Sarah's Birthday",
-        subtitle: 'ANOTHER ROUND • MILESTONE BIRTHDAY COCKTAIL SOIRÉE',
+        subtitle: "ANOTHER ROUND • MILESTONE BIRTHDAY COCKTAIL SOIRÉE",
         colors: {
-          pageBg: '#222220',
-          pageText: '#f3f0e8',
-          mutedText: '#d6cfc4',
-          primary: '#edc6a8',
-          secondary: '#8B2635',
-          accent: '#C5A059',
-          accentLight: '#f5f2e9',
-          envelopeBody: '#edc6a8',
-          envelopeFlap: '#e5ba99',
-          envelopePocket: '#e2b593',
-          waxSeal: '#181818',
-          cardBg: '#f1ccb0',
-          cardBorder: '#edc6a8',
-          particleColors: ['#edc6a8', '#f3f0e8', '#C5A059'],
+          pageBg: "#222220",
+          pageText: "#f3f0e8",
+          mutedText: "#d6cfc4",
+          primary: "#edc6a8",
+          secondary: "#8B2635",
+          accent: "#C5A059",
+          accentLight: "#f5f2e9",
+          envelopeBody: "#edc6a8",
+          envelopeFlap: "#e5ba99",
+          envelopePocket: "#e2b593",
+          waxSeal: "#181818",
+          cardBg: "#f1ccb0",
+          cardBorder: "#edc6a8",
+          particleColors: ["#edc6a8", "#f3f0e8", "#C5A059"],
         },
-        particleMode: 'sparkle',
+        particleMode: "sparkle",
       }
     : isWedding
-    ? {
-        id: 'wedding',
-        label: 'Classic Wedding',
-        badge: 'Glimpse Into Forever',
-        title: wedCouple || 'RENÉE & GÉRARD',
-        subtitle: 'ARCHITECTURAL CAMEO EDITION',
-        colors: {
-          pageBg: wedPalette.backdropBg,
-          pageText: wedPalette.inkColor,
-          mutedText: wedPalette.mutedInk,
-          primary: wedPalette.isDark ? '#e6d2a6' : '#2c2a27',
-          secondary: '#8B2635',
-          accent: '#C5A059',
-          accentLight: '#f6f4ee',
-          envelopeBody: wedPalette.envelopeBody,
-          envelopeFlap: wedPalette.envelopeFlap,
-          envelopePocket: wedPalette.envelopePocket,
-          waxSeal: wedPalette.sealBg,
-          cardBg: wedPalette.cardBg,
-          cardBorder: wedPalette.sealBorder,
-          particleColors: wedPalette.isDark
-            ? ['#e6d2a6', '#ffffff', '#C5A059']
-            : ['#ffffff', '#e6d2a6', '#d8cfbe'],
-        },
-        particleMode: 'sparkle',
-      }
-    : template?.isBuiltIn
-    ? baseTheme
-    : {
-        ...baseTheme,
-        title: template?.title || baseTheme.title,
-        subtitle: (template?.editionLabel || baseTheme.subtitle).toUpperCase(),
-        hostNote: template?.description || baseTheme.hostNote,
-        colors: {
-          ...baseTheme.colors,
-          primary: template?.themeColor || baseTheme.colors.primary,
-          envelopeBody: template?.themeColor || baseTheme.colors.envelopeBody,
-          envelopeFlap: template?.themeColor || baseTheme.colors.envelopeFlap,
-          envelopePocket: template?.themeColor || baseTheme.colors.envelopePocket,
-          waxSeal: template?.sealColor || baseTheme.colors.waxSeal,
-        },
-      };
+      ? {
+          id: "wedding",
+          label: "Classic Wedding",
+          badge: "Glimpse Into Forever",
+          title: wedCouple || "RENÉE & GÉRARD",
+          subtitle: "ARCHITECTURAL CAMEO EDITION",
+          colors: {
+            pageBg: wedPalette.backdropBg,
+            pageText: wedPalette.inkColor,
+            mutedText: wedPalette.mutedInk,
+            primary: wedPalette.isDark ? "#e6d2a6" : "#2c2a27",
+            secondary: "#8B2635",
+            accent: "#C5A059",
+            accentLight: "#f6f4ee",
+            envelopeBody: wedPalette.envelopeBody,
+            envelopeFlap: wedPalette.envelopeFlap,
+            envelopePocket: wedPalette.envelopePocket,
+            waxSeal: wedPalette.sealBg,
+            cardBg: wedPalette.cardBg,
+            cardBorder: wedPalette.sealBorder,
+            particleColors: wedPalette.isDark
+              ? ["#e6d2a6", "#ffffff", "#C5A059"]
+              : ["#ffffff", "#e6d2a6", "#d8cfbe"],
+          },
+          particleMode: "sparkle",
+        }
+      : template?.isBuiltIn
+        ? baseTheme
+        : {
+            ...baseTheme,
+            title: template?.title || baseTheme.title,
+            subtitle: (
+              template?.editionLabel || baseTheme.subtitle
+            ).toUpperCase(),
+            hostNote: template?.description || baseTheme.hostNote,
+            colors: {
+              ...baseTheme.colors,
+              primary: template?.themeColor || baseTheme.colors.primary,
+              envelopeBody:
+                template?.themeColor || baseTheme.colors.envelopeBody,
+              envelopeFlap:
+                template?.themeColor || baseTheme.colors.envelopeFlap,
+              envelopePocket:
+                template?.themeColor || baseTheme.colors.envelopePocket,
+              waxSeal: template?.sealColor || baseTheme.colors.waxSeal,
+            },
+          };
 
   useEffect(() => {
     let timer;
@@ -2325,7 +2494,7 @@ const FullInteractivePreviewModal = ({
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         if (showCustomizer) {
           setShowCustomizer(false);
         } else {
@@ -2333,15 +2502,16 @@ const FullInteractivePreviewModal = ({
         }
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onClose, showCustomizer]);
 
   const handleContainerScroll = () => {
     const el = scrollContainerRef.current;
     if (!el) return;
     const maxScroll = el.scrollHeight - el.clientHeight;
-    const progress = maxScroll > 0 ? Math.min(1, Math.max(0, el.scrollTop / maxScroll)) : 0;
+    const progress =
+      maxScroll > 0 ? Math.min(1, Math.max(0, el.scrollTop / maxScroll)) : 0;
     setModalScrollProgress(progress);
   };
 
@@ -2357,7 +2527,7 @@ const FullInteractivePreviewModal = ({
 
   const handleSelectRsvp = (choice, event) => {
     setRsvpStatus(choice);
-    if (choice === 'yes' && event) {
+    if (choice === "yes" && event) {
       const rect = event.currentTarget.getBoundingClientRect();
       setBurstTrigger({
         x: rect.left + rect.width / 2,
@@ -2368,15 +2538,21 @@ const FullInteractivePreviewModal = ({
   };
 
   const scrollToRsvp = () => {
-    rsvpSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    rsvpSectionRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
   };
 
   const scrollToTop = () => {
-    scrollContainerRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const holidays = Object.values(HOLIDAY_THEMES);
-  const bottomFactor = Math.max(0, Math.min(1, (modalScrollProgress - 0.62) / 0.38));
+  const bottomFactor = Math.max(
+    0,
+    Math.min(1, (modalScrollProgress - 0.62) / 0.38),
+  );
 
   return (
     <div
@@ -2397,7 +2573,10 @@ const FullInteractivePreviewModal = ({
       {/* Terrazzo Matte Charcoal Background (Fixed across scroll stages for Birthday Edition) */}
       {isBirthday && (
         <div className="position-fixed top-0 start-0 end-0 bottom-0 nc-no-pointer nc-z-0">
-          <TerrazzoBackdrop patternId="fullscreen-terrazzo-pattern" className="w-100 h-100" />
+          <TerrazzoBackdrop
+            patternId="fullscreen-terrazzo-pattern"
+            className="w-100 h-100"
+          />
           <div className="position-absolute top-0 start-0 end-0 bottom-0 nc-terrazzo-vignette" />
         </div>
       )}
@@ -2417,7 +2596,7 @@ const FullInteractivePreviewModal = ({
         className="position-fixed top-0 start-0 nc-scroll-progress"
         style={{
           width: `${modalScrollProgress * 100}%`,
-          backgroundColor: isBirthday ? '#edc6a8' : theme.colors.accent,
+          backgroundColor: isBirthday ? "#edc6a8" : theme.colors.accent,
         }}
       />
 
@@ -2426,15 +2605,15 @@ const FullInteractivePreviewModal = ({
         className="position-sticky top-0 w-100 px-3 py-3 border-bottom nc-sticky-topbar"
         style={{
           backgroundColor: isBirthday
-            ? 'rgba(28, 28, 26, 0.92)'
+            ? "rgba(28, 28, 26, 0.92)"
             : isWedding
-            ? wedPalette.isDark
-              ? 'rgba(20, 20, 19, 0.92)'
-              : 'rgba(246, 244, 238, 0.92)'
-            : 'rgba(250, 247, 242, 0.92)',
+              ? wedPalette.isDark
+                ? "rgba(20, 20, 19, 0.92)"
+                : "rgba(246, 244, 238, 0.92)"
+              : "rgba(250, 247, 242, 0.92)",
           borderColor: isBirthday
-            ? 'rgba(237, 198, 168, 0.28)'
-            : 'rgba(197, 160, 89, 0.38)',
+            ? "rgba(237, 198, 168, 0.28)"
+            : "rgba(197, 160, 89, 0.38)",
         }}
       >
         <div className="container d-flex flex-wrap align-items-center justify-content-between gap-2">
@@ -2445,20 +2624,22 @@ const FullInteractivePreviewModal = ({
             className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 nc-topbar-back-btn"
             style={{
               backgroundColor: isBirthday
-                ? '#2c2c29'
+                ? "#2c2c29"
                 : isWedding && wedPalette.isDark
-                ? '#242421'
-                : '#FFFDF9',
+                  ? "#242421"
+                  : "#FFFDF9",
               borderColor: isBirthday
-                ? 'rgba(237, 198, 168, 0.55)'
-                : 'rgba(197, 160, 89, 0.6)',
+                ? "rgba(237, 198, 168, 0.55)"
+                : "rgba(197, 160, 89, 0.6)",
               color:
-                isBirthday || (isWedding && wedPalette.isDark) ? '#f3f0e8' : '#1C1917',
+                isBirthday || (isWedding && wedPalette.isDark)
+                  ? "#f3f0e8"
+                  : "#1C1917",
             }}
           >
             <ArrowLeft
               size={14}
-              style={{ color: isBirthday ? '#edc6a8' : '#8B2635' }}
+              style={{ color: isBirthday ? "#edc6a8" : "#8B2635" }}
             />
             <span>
               Template Grid ({activeSlotsCount} / {totalSlotsCount} Slots)
@@ -2473,13 +2654,15 @@ const FullInteractivePreviewModal = ({
                 onClick={() => setShowCustomizer((prev) => !prev)}
                 className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 nc-topbar-back-btn"
                 style={{
-                  backgroundColor: showCustomizer ? '#edc6a8' : '#2c2c29',
-                  borderColor: '#edc6a8',
-                  color: showCustomizer ? '#181818' : '#f3f0e8',
+                  backgroundColor: showCustomizer ? "#edc6a8" : "#2c2c29",
+                  borderColor: "#edc6a8",
+                  color: showCustomizer ? "#181818" : "#f3f0e8",
                 }}
               >
                 <SlidersHorizontal size={14} />
-                <span>{showCustomizer ? 'Done Customizing' : 'Customize Card'}</span>
+                <span>
+                  {showCustomizer ? "Done Customizing" : "Customize Card"}
+                </span>
               </button>
             </div>
           ) : isWedding ? (
@@ -2489,15 +2672,15 @@ const FullInteractivePreviewModal = ({
                 className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill border"
                 style={{
                   backgroundColor: wedPalette.isDark
-                    ? 'rgba(36, 36, 33, 0.9)'
-                    : 'rgba(255, 253, 249, 0.9)',
-                  borderColor: 'rgba(197, 160, 89, 0.5)',
+                    ? "rgba(36, 36, 33, 0.9)"
+                    : "rgba(255, 253, 249, 0.9)",
+                  borderColor: "rgba(197, 160, 89, 0.5)",
                 }}
                 aria-label="Paper Color Swatches"
               >
                 <span
                   className="nc-micro-label d-none d-sm-inline"
-                  style={{ color: wedPalette.mutedInk, fontSize: '0.6rem' }}
+                  style={{ color: wedPalette.mutedInk, fontSize: "0.6rem" }}
                 >
                   Paper
                 </span>
@@ -2515,9 +2698,9 @@ const FullInteractivePreviewModal = ({
                         backgroundColor: cw.swatchBg,
                         boxShadow: selected
                           ? `0 0 0 2px ${
-                              wedPalette.isDark ? '#141413' : '#FFFDF9'
+                              wedPalette.isDark ? "#141413" : "#FFFDF9"
                             }, 0 0 0 3.5px #C5A059`
-                          : 'inset 0 0 0 1px rgba(0,0,0,0.22)',
+                          : "inset 0 0 0 1px rgba(0,0,0,0.22)",
                       }}
                     />
                   );
@@ -2530,20 +2713,22 @@ const FullInteractivePreviewModal = ({
                 className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 nc-topbar-back-btn"
                 style={{
                   backgroundColor: showCustomizer
-                    ? '#1B3B2B'
+                    ? "#1B3B2B"
                     : wedPalette.isDark
-                    ? '#242421'
-                    : '#FFFDF9',
-                  borderColor: '#C5A059',
+                      ? "#242421"
+                      : "#FFFDF9",
+                  borderColor: "#C5A059",
                   color: showCustomizer
-                    ? '#FAF7F2'
+                    ? "#FAF7F2"
                     : wedPalette.isDark
-                    ? '#f3f0e8'
-                    : '#1C1917',
+                      ? "#f3f0e8"
+                      : "#1C1917",
                 }}
               >
-                <SlidersHorizontal size={14} style={{ color: '#C5A059' }} />
-                <span>{showCustomizer ? 'Done Customizing' : 'Customize Card'}</span>
+                <SlidersHorizontal size={14} style={{ color: "#C5A059" }} />
+                <span>
+                  {showCustomizer ? "Done Customizing" : "Customize Card"}
+                </span>
               </button>
             </div>
           ) : (
@@ -2561,8 +2746,10 @@ const FullInteractivePreviewModal = ({
                       onClick={() => setActiveHolidayId(holiday.id)}
                       className="btn btn-sm rounded-pill px-3 py-1 nc-holiday-pill"
                       style={{
-                        backgroundColor: isActive ? theme.colors.primary : 'transparent',
-                        color: isActive ? '#FAF7F2' : '#1C1917',
+                        backgroundColor: isActive
+                          ? theme.colors.primary
+                          : "transparent",
+                        color: isActive ? "#FAF7F2" : "#1C1917",
                       }}
                     >
                       {holiday.label}
@@ -2579,7 +2766,10 @@ const FullInteractivePreviewModal = ({
           <div className="container mt-3 pt-3 border-top border-secondary nc-fade-in-up">
             <div className="row g-3 text-start">
               <div className="col-12 col-sm-6 col-lg-3">
-                <label className="form-label nc-micro-label mb-1" style={{ color: '#edc6a8' }}>
+                <label
+                  className="form-label nc-micro-label mb-1"
+                  style={{ color: "#edc6a8" }}
+                >
                   Honoree Title
                 </label>
                 <input
@@ -2591,7 +2781,10 @@ const FullInteractivePreviewModal = ({
               </div>
 
               <div className="col-12 col-sm-6 col-lg-3">
-                <label className="form-label nc-micro-label mb-1" style={{ color: '#edc6a8' }}>
+                <label
+                  className="form-label nc-micro-label mb-1"
+                  style={{ color: "#edc6a8" }}
+                >
                   Bottle Milestone Age
                 </label>
                 <input
@@ -2604,7 +2797,10 @@ const FullInteractivePreviewModal = ({
               </div>
 
               <div className="col-12 col-sm-6 col-lg-3">
-                <label className="form-label nc-micro-label mb-1" style={{ color: '#edc6a8' }}>
+                <label
+                  className="form-label nc-micro-label mb-1"
+                  style={{ color: "#edc6a8" }}
+                >
                   Date &amp; Time
                 </label>
                 <div className="d-flex gap-2">
@@ -2626,7 +2822,10 @@ const FullInteractivePreviewModal = ({
               </div>
 
               <div className="col-12 col-sm-6 col-lg-3">
-                <label className="form-label nc-micro-label mb-1" style={{ color: '#edc6a8' }}>
+                <label
+                  className="form-label nc-micro-label mb-1"
+                  style={{ color: "#edc6a8" }}
+                >
                   Venue (3 lines)
                 </label>
                 <textarea
@@ -2644,11 +2843,14 @@ const FullInteractivePreviewModal = ({
         {isWedding && showCustomizer && (
           <div
             className="container mt-3 pt-3 border-top nc-fade-in-up"
-            style={{ borderColor: 'rgba(197, 160, 89, 0.35)' }}
+            style={{ borderColor: "rgba(197, 160, 89, 0.35)" }}
           >
             <div className="row g-3 text-start">
               <div className="col-12 col-sm-6 col-lg-3">
-                <label className="form-label nc-micro-label mb-1" style={{ color: '#C5A059' }}>
+                <label
+                  className="form-label nc-micro-label mb-1"
+                  style={{ color: "#C5A059" }}
+                >
                   Couple Names
                 </label>
                 <input
@@ -2656,13 +2858,16 @@ const FullInteractivePreviewModal = ({
                   value={wedCouple}
                   onChange={(e) => setWedCouple(e.target.value)}
                   className={`form-control form-control-sm ${
-                    wedPalette.isDark ? 'nc-input-dark' : 'nc-input-ivory'
+                    wedPalette.isDark ? "nc-input-dark" : "nc-input-ivory"
                   }`}
                 />
               </div>
 
               <div className="col-12 col-sm-6 col-lg-3">
-                <label className="form-label nc-micro-label mb-1" style={{ color: '#C5A059' }}>
+                <label
+                  className="form-label nc-micro-label mb-1"
+                  style={{ color: "#C5A059" }}
+                >
                   Invitation Line
                 </label>
                 <input
@@ -2670,13 +2875,16 @@ const FullInteractivePreviewModal = ({
                   value={wedInviteLine}
                   onChange={(e) => setWedInviteLine(e.target.value)}
                   className={`form-control form-control-sm ${
-                    wedPalette.isDark ? 'nc-input-dark' : 'nc-input-ivory'
+                    wedPalette.isDark ? "nc-input-dark" : "nc-input-ivory"
                   }`}
                 />
               </div>
 
               <div className="col-12 col-sm-6 col-lg-3">
-                <label className="form-label nc-micro-label mb-1" style={{ color: '#C5A059' }}>
+                <label
+                  className="form-label nc-micro-label mb-1"
+                  style={{ color: "#C5A059" }}
+                >
                   Date &amp; Time
                 </label>
                 <div className="d-flex gap-2">
@@ -2686,7 +2894,7 @@ const FullInteractivePreviewModal = ({
                     onChange={(e) => setWedDate(e.target.value)}
                     placeholder="Date"
                     className={`form-control form-control-sm w-50 ${
-                      wedPalette.isDark ? 'nc-input-dark' : 'nc-input-ivory'
+                      wedPalette.isDark ? "nc-input-dark" : "nc-input-ivory"
                     }`}
                   />
                   <input
@@ -2695,14 +2903,17 @@ const FullInteractivePreviewModal = ({
                     onChange={(e) => setWedTime(e.target.value)}
                     placeholder="Time"
                     className={`form-control form-control-sm w-50 ${
-                      wedPalette.isDark ? 'nc-input-dark' : 'nc-input-ivory'
+                      wedPalette.isDark ? "nc-input-dark" : "nc-input-ivory"
                     }`}
                   />
                 </div>
               </div>
 
               <div className="col-12 col-sm-6 col-lg-3">
-                <label className="form-label nc-micro-label mb-1" style={{ color: '#C5A059' }}>
+                <label
+                  className="form-label nc-micro-label mb-1"
+                  style={{ color: "#C5A059" }}
+                >
                   Venue &amp; Cameo Photo
                 </label>
                 <input
@@ -2710,13 +2921,15 @@ const FullInteractivePreviewModal = ({
                   value={wedVenue}
                   onChange={(e) => setWedVenue(e.target.value)}
                   className={`form-control form-control-sm mb-2 ${
-                    wedPalette.isDark ? 'nc-input-dark' : 'nc-input-ivory'
+                    wedPalette.isDark ? "nc-input-dark" : "nc-input-ivory"
                   }`}
                 />
                 <div className="d-flex flex-wrap align-items-center gap-2">
                   <label className="btn btn-sm rounded-2 d-inline-flex align-items-center gap-1 nc-btn-outline-pine mb-0">
                     <Upload size={12} />
-                    <span>{wedPhotoUrl ? 'Change Photo' : 'Upload Portrait'}</span>
+                    <span>
+                      {wedPhotoUrl ? "Change Photo" : "Upload Portrait"}
+                    </span>
                     <input
                       type="file"
                       accept="image/*"
@@ -2729,15 +2942,15 @@ const FullInteractivePreviewModal = ({
                     type="button"
                     onClick={() => setWedBwFilter((prev) => !prev)}
                     className="btn btn-sm rounded-2 nc-btn-outline-gold"
-                    style={{ fontSize: '0.64rem', padding: '0.25rem 0.55rem' }}
+                    style={{ fontSize: "0.64rem", padding: "0.25rem 0.55rem" }}
                   >
-                    {wedBwFilter ? 'B&W: On' : 'B&W: Off'}
+                    {wedBwFilter ? "B&W: On" : "B&W: Off"}
                   </button>
 
                   {wedPhotoUrl && (
                     <button
                       type="button"
-                      onClick={() => setWedPhotoUrl('')}
+                      onClick={() => setWedPhotoUrl("")}
                       className="btn btn-sm p-0 border-0 nc-reset-slot-btn"
                     >
                       Reset
@@ -2759,28 +2972,30 @@ const FullInteractivePreviewModal = ({
           className="badge rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 border nc-delivery-pill"
           style={{
             borderColor: isBirthday
-              ? 'rgba(237, 198, 168, 0.45)'
+              ? "rgba(237, 198, 168, 0.45)"
               : `${theme.colors.accent}60`,
-            color: isBirthday ? '#f3f0e8' : theme.colors.mutedText,
+            color: isBirthday ? "#f3f0e8" : theme.colors.mutedText,
             backgroundColor: isBirthday
-              ? 'rgba(34, 34, 32, 0.82)'
+              ? "rgba(34, 34, 32, 0.82)"
               : isWedding && wedPalette.isDark
-              ? 'rgba(28, 28, 26, 0.85)'
-              : 'rgba(255,253,249,0.85)',
+                ? "rgba(28, 28, 26, 0.85)"
+                : "rgba(255,253,249,0.85)",
           }}
         >
           <span
             className="nc-pulse-dot"
-            style={{ backgroundColor: isBirthday ? '#edc6a8' : theme.colors.accent }}
+            style={{
+              backgroundColor: isBirthday ? "#edc6a8" : theme.colors.accent,
+            }}
           />
           <span>
             {isEnvelopeOpen
               ? `Noel & Co. • ${theme.badge}`
               : isBirthday
-              ? 'Another Round • Tap Seal or Envelope to Open'
-              : isWedding
-              ? 'Glimpse Into Forever • Tap Monogram Seal to Open'
-              : 'Private Digital Delivery • Tap Envelope to Open'}
+                ? "Another Round • Tap Seal or Envelope to Open"
+                : isWedding
+                  ? "Glimpse Into Forever • Tap Monogram Seal to Open"
+                  : "Private Digital Delivery • Tap Envelope to Open"}
           </span>
         </div>
 
@@ -2789,7 +3004,9 @@ const FullInteractivePreviewModal = ({
           {/* STATE A: SEALED / OPENING 3D ENVELOPE */}
           <div
             className={`w-100 d-flex flex-column align-items-center nc-envelope-state ${
-              cardElevated ? 'nc-state-hidden position-absolute' : 'nc-state-visible position-relative'
+              cardElevated
+                ? "nc-state-hidden position-absolute"
+                : "nc-state-visible position-relative"
             }`}
           >
             <div
@@ -2798,7 +3015,7 @@ const FullInteractivePreviewModal = ({
               aria-label={`Open ${theme.title} envelope`}
               onClick={() => setIsEnvelopeOpen(true)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+                if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
                   setIsEnvelopeOpen(true);
                 }
@@ -2806,14 +3023,16 @@ const FullInteractivePreviewModal = ({
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               className={`position-relative nc-pointer nc-no-select nc-hero-envelope ${
-                !isEnvelopeOpen ? 'nc-animate-float' : ''
+                !isEnvelopeOpen ? "nc-animate-float" : ""
               }`}
             >
               {/* Ground Shadow */}
               <div
                 className="nc-hero-shadow"
                 style={{
-                  backgroundColor: isBirthday ? '#000000' : theme.colors.primary,
+                  backgroundColor: isBirthday
+                    ? "#000000"
+                    : theme.colors.primary,
                   opacity: isBirthday ? 0.55 : 0.25,
                 }}
               />
@@ -2822,7 +3041,7 @@ const FullInteractivePreviewModal = ({
                 className="position-relative w-100 h-100 rounded-4 nc-preserve-3d nc-tilt-transition"
                 style={{
                   transform: isEnvelopeOpen
-                    ? 'rotateX(0deg) rotateY(0deg)'
+                    ? "rotateX(0deg) rotateY(0deg)"
                     : `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
                 }}
               >
@@ -2831,15 +3050,15 @@ const FullInteractivePreviewModal = ({
                   className="position-absolute top-0 start-0 end-0 bottom-0 rounded-4 shadow-lg border"
                   style={{
                     backgroundColor: isBirthday
-                      ? '#f5f2e9'
+                      ? "#f5f2e9"
                       : isWedding
-                      ? wedPalette.envelopeLiner
-                      : theme.colors.envelopeBody,
+                        ? wedPalette.envelopeLiner
+                        : theme.colors.envelopeBody,
                     borderColor: isBirthday
-                      ? 'rgba(237, 198, 168, 0.7)'
+                      ? "rgba(237, 198, 168, 0.7)"
                       : isWedding
-                      ? `${wedPalette.sealBorder}90`
-                      : `${theme.colors.accent}45`,
+                        ? `${wedPalette.sealBorder}90`
+                        : `${theme.colors.accent}45`,
                   }}
                 />
 
@@ -2847,12 +3066,18 @@ const FullInteractivePreviewModal = ({
                 <div
                   className="position-absolute rounded-3 overflow-hidden nc-hero-rising-card"
                   style={{
-                    backgroundColor: isWedding ? 'transparent' : theme.colors.cardBg,
+                    backgroundColor: isWedding
+                      ? "transparent"
+                      : theme.colors.cardBg,
                     border: isWedding
-                      ? 'none'
-                      : `1px solid ${isBirthday ? '#d8ae8e' : theme.colors.cardBorder}`,
-                    boxShadow: isWedding ? 'none' : '0 4px 14px rgba(0,0,0,0.14)',
-                    transform: isEnvelopeOpen ? 'translateY(-44%)' : 'translateY(0%)',
+                      ? "none"
+                      : `1px solid ${isBirthday ? "#d8ae8e" : theme.colors.cardBorder}`,
+                    boxShadow: isWedding
+                      ? "none"
+                      : "0 4px 14px rgba(0,0,0,0.14)",
+                    transform: isEnvelopeOpen
+                      ? "translateY(-44%)"
+                      : "translateY(0%)",
                     zIndex: isEnvelopeOpen ? 15 : 2,
                   }}
                 >
@@ -2927,10 +3152,10 @@ const FullInteractivePreviewModal = ({
                       fill="none"
                       stroke={
                         isBirthday
-                          ? '#c59877'
+                          ? "#c59877"
                           : isWedding
-                          ? wedPalette.sealBorder
-                          : theme.colors.accent
+                            ? wedPalette.sealBorder
+                            : theme.colors.accent
                       }
                       strokeWidth="0.45"
                       strokeOpacity="0.7"
@@ -2941,10 +3166,10 @@ const FullInteractivePreviewModal = ({
                       className="mb-0 nc-envelope-overlabel"
                       style={{
                         color: isBirthday
-                          ? '#5a4334'
+                          ? "#5a4334"
                           : isWedding
-                          ? wedPalette.mutedInk
-                          : theme.colors.accentLight,
+                            ? wedPalette.mutedInk
+                            : theme.colors.accentLight,
                       }}
                     >
                       You&apos;re Invited
@@ -2952,18 +3177,20 @@ const FullInteractivePreviewModal = ({
                     <p
                       className={`mb-0 ${
                         isBirthday
-                          ? 'nc-font-handwritten fs-5 nc-ink-text'
+                          ? "nc-font-handwritten fs-5 nc-ink-text"
                           : isWedding
-                          ? 'nc-font-serif fst-italic small'
-                          : 'nc-font-serif fst-italic small text-white'
+                            ? "nc-font-serif fst-italic small"
+                            : "nc-font-serif fst-italic small text-white"
                       }`}
-                      style={isWedding ? { color: wedPalette.inkColor } : undefined}
+                      style={
+                        isWedding ? { color: wedPalette.inkColor } : undefined
+                      }
                     >
                       {isBirthday
                         ? bdayHonoree
                         : isWedding
-                        ? wedCouple
-                        : `${theme.label} Edition`}
+                          ? wedCouple
+                          : `${theme.label} Edition`}
                     </p>
                   </div>
                 </div>
@@ -2973,7 +3200,9 @@ const FullInteractivePreviewModal = ({
                   className="position-absolute top-0 start-0 end-0 nc-hero-flap nc-no-pointer"
                   style={{
                     zIndex: isEnvelopeOpen ? 1 : 20,
-                    transform: isEnvelopeOpen ? 'rotateX(180deg)' : 'rotateX(0deg)',
+                    transform: isEnvelopeOpen
+                      ? "rotateX(180deg)"
+                      : "rotateX(0deg)",
                   }}
                 >
                   <div
@@ -2985,7 +3214,9 @@ const FullInteractivePreviewModal = ({
                 {/* Embossed Seal */}
                 <div
                   className={`position-absolute nc-hero-seal-wrap ${
-                    isEnvelopeOpen ? 'nc-seal-hidden nc-no-pointer' : 'nc-seal-visible'
+                    isEnvelopeOpen
+                      ? "nc-seal-hidden nc-no-pointer"
+                      : "nc-seal-visible"
                   }`}
                   style={{ zIndex: 30 }}
                 >
@@ -2993,10 +3224,10 @@ const FullInteractivePreviewModal = ({
                     className="nc-seal-ping"
                     style={{
                       backgroundColor: isBirthday
-                        ? '#181818'
+                        ? "#181818"
                         : isWedding
-                        ? wedPalette.sealBorder
-                        : theme.colors.accent,
+                          ? wedPalette.sealBorder
+                          : theme.colors.accent,
                     }}
                   />
                   <div
@@ -3004,41 +3235,41 @@ const FullInteractivePreviewModal = ({
                     style={{
                       backgroundColor: theme.colors.waxSeal,
                       borderColor: isBirthday
-                        ? '#f1ccb0'
+                        ? "#f1ccb0"
                         : isWedding
-                        ? wedPalette.sealBorder
-                        : theme.colors.accent,
+                          ? wedPalette.sealBorder
+                          : theme.colors.accent,
                     }}
                   >
                     <div
                       className="rounded-circle d-flex align-items-center justify-content-center nc-hero-seal-inner"
                       style={{
                         borderColor: isBirthday
-                          ? 'rgba(241, 204, 176, 0.65)'
+                          ? "rgba(241, 204, 176, 0.65)"
                           : isWedding
-                          ? `${wedPalette.sealBorder}95`
-                          : `${theme.colors.accent}85`,
+                            ? `${wedPalette.sealBorder}95`
+                            : `${theme.colors.accent}85`,
                       }}
                     >
                       <span
                         className={`${
                           isBirthday
-                            ? 'nc-font-handwritten fs-4'
-                            : 'nc-font-serif small'
+                            ? "nc-font-handwritten fs-4"
+                            : "nc-font-serif small"
                         } fw-semibold`}
                         style={{
                           color: isBirthday
-                            ? '#f1ccb0'
+                            ? "#f1ccb0"
                             : isWedding
-                            ? wedPalette.sealText
-                            : theme.colors.accentLight,
+                              ? wedPalette.sealText
+                              : theme.colors.accentLight,
                         }}
                       >
                         {isBirthday
-                          ? bdayAge || '40'
+                          ? bdayAge || "40"
                           : isWedding
-                          ? coupleMonogram
-                          : 'N&C'}
+                            ? coupleMonogram
+                            : "N&C"}
                       </span>
                     </div>
                   </div>
@@ -3051,20 +3282,22 @@ const FullInteractivePreviewModal = ({
               onClick={() => setIsEnvelopeOpen(true)}
               className="btn btn-sm mt-4 rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 nc-seal-prompt-btn"
               style={{
-                color: isBirthday ? '#f3f0e8' : theme.colors.mutedText,
-                backgroundColor: isBirthday ? 'rgba(34, 34, 32, 0.78)' : 'transparent',
+                color: isBirthday ? "#f3f0e8" : theme.colors.mutedText,
+                backgroundColor: isBirthday
+                  ? "rgba(34, 34, 32, 0.78)"
+                  : "transparent",
               }}
             >
               <Sparkles
                 size={14}
-                style={{ color: isBirthday ? '#edc6a8' : theme.colors.accent }}
+                style={{ color: isBirthday ? "#edc6a8" : theme.colors.accent }}
               />
               <span>
                 {isBirthday
-                  ? `Tap the "${bdayAge || '40'}" seal to open your invitation`
+                  ? `Tap the "${bdayAge || "40"}" seal to open your invitation`
                   : isWedding
-                  ? `Tap the "${coupleMonogram}" seal to open your invitation`
-                  : 'Click the wax seal to open your invitation'}
+                    ? `Tap the "${coupleMonogram}" seal to open your invitation`
+                    : "Click the wax seal to open your invitation"}
               </span>
             </button>
           </div>
@@ -3073,14 +3306,16 @@ const FullInteractivePreviewModal = ({
           <article
             aria-live="polite"
             className={`w-100 nc-expanded-card-wrap ${
-              cardElevated ? 'nc-card-shown position-relative' : 'nc-card-hidden position-absolute nc-no-pointer'
+              cardElevated
+                ? "nc-card-shown position-relative"
+                : "nc-card-hidden position-absolute nc-no-pointer"
             }`}
           >
             {isBirthday ? (
               /* "ANOTHER ROUND" WARM PEACH & HAND-DRAWN INK BIRTHDAY CARD */
               <div className="d-flex flex-column align-items-center">
                 <div className="w-100 d-flex align-items-center justify-content-between mb-3 px-1 nc-bday-topbar">
-                  <span className="nc-micro-label" style={{ color: '#edc6a8' }}>
+                  <span className="nc-micro-label" style={{ color: "#edc6a8" }}>
                     Another Round &bull; Pulp Edition
                   </span>
                   <button
@@ -3088,12 +3323,12 @@ const FullInteractivePreviewModal = ({
                     onClick={() => setIsEnvelopeOpen(false)}
                     className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-1 px-3 py-1 nc-seal-replay-btn"
                     style={{
-                      borderColor: 'rgba(237, 198, 168, 0.5)',
-                      color: '#f3f0e8',
-                      backgroundColor: 'rgba(28, 28, 26, 0.85)',
+                      borderColor: "rgba(237, 198, 168, 0.5)",
+                      color: "#f3f0e8",
+                      backgroundColor: "rgba(28, 28, 26, 0.85)",
                     }}
                   >
-                    <RotateCcw size={12} style={{ color: '#edc6a8' }} />
+                    <RotateCcw size={12} style={{ color: "#edc6a8" }} />
                     <span>Seal Envelope</span>
                   </button>
                 </div>
@@ -3123,14 +3358,14 @@ const FullInteractivePreviewModal = ({
                     onClick={() => setIsEnvelopeOpen(false)}
                     className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-1 px-3 py-1 nc-seal-replay-btn"
                     style={{
-                      borderColor: 'rgba(197, 160, 89, 0.55)',
+                      borderColor: "rgba(197, 160, 89, 0.55)",
                       color: wedPalette.inkColor,
                       backgroundColor: wedPalette.isDark
-                        ? 'rgba(28, 28, 26, 0.85)'
-                        : 'rgba(255, 253, 249, 0.88)',
+                        ? "rgba(28, 28, 26, 0.85)"
+                        : "rgba(255, 253, 249, 0.88)",
                     }}
                   >
-                    <RotateCcw size={12} style={{ color: '#C5A059' }} />
+                    <RotateCcw size={12} style={{ color: "#C5A059" }} />
                     <span>Seal Envelope</span>
                   </button>
                 </div>
@@ -3162,7 +3397,10 @@ const FullInteractivePreviewModal = ({
                   className="position-absolute rounded-3 nc-no-pointer nc-card-inner-frame"
                   style={{ borderColor: `${theme.colors.accent}45` }}
                 />
-                <CornerFiligree color={theme.colors.accent} positionClass="nc-filigree-tl" />
+                <CornerFiligree
+                  color={theme.colors.accent}
+                  positionClass="nc-filigree-tl"
+                />
                 <CornerFiligree
                   color={theme.colors.accent}
                   positionClass="nc-filigree-tr nc-rotate-90"
@@ -3188,7 +3426,10 @@ const FullInteractivePreviewModal = ({
                       backgroundColor: `${theme.colors.pageBg}90`,
                     }}
                   >
-                    <RotateCcw size={12} style={{ color: theme.colors.accent }} />
+                    <RotateCcw
+                      size={12}
+                      style={{ color: theme.colors.accent }}
+                    />
                     <span>Seal Envelope</span>
                   </button>
                 </div>
@@ -3231,7 +3472,10 @@ const FullInteractivePreviewModal = ({
                       className="nc-crest-line"
                       style={{ backgroundColor: `${theme.colors.accent}70` }}
                     />
-                    <span className="small" style={{ color: theme.colors.accent }}>
+                    <span
+                      className="small"
+                      style={{ color: theme.colors.accent }}
+                    >
                       {theme.crestSymbol}
                     </span>
                     <span
@@ -3362,8 +3606,10 @@ const FullInteractivePreviewModal = ({
           <span
             className="px-3 py-1 rounded-pill nc-micro-label"
             style={{
-              color: isBirthday ? '#f3f0e8' : theme.colors.mutedText,
-              backgroundColor: isBirthday ? 'rgba(34, 34, 32, 0.78)' : 'transparent',
+              color: isBirthday ? "#f3f0e8" : theme.colors.mutedText,
+              backgroundColor: isBirthday
+                ? "rgba(34, 34, 32, 0.78)"
+                : "transparent",
             }}
           >
             Scroll down to respond ↓
@@ -3371,7 +3617,7 @@ const FullInteractivePreviewModal = ({
           <ChevronDown
             size={18}
             className="nc-bounce"
-            style={{ color: isBirthday ? '#edc6a8' : theme.colors.accent }}
+            style={{ color: isBirthday ? "#edc6a8" : theme.colors.accent }}
           />
         </button>
       </section>
@@ -3387,22 +3633,24 @@ const FullInteractivePreviewModal = ({
         <div
           className="w-100 d-flex flex-column align-items-center text-center rounded-4 p-4 p-sm-5 nc-rsvp-box"
           style={{
-            backgroundColor: isBirthday ? 'rgba(28, 28, 26, 0.88)' : 'transparent',
-            border: isBirthday ? '1px solid rgba(237, 198, 168, 0.28)' : 'none',
+            backgroundColor: isBirthday
+              ? "rgba(28, 28, 26, 0.88)"
+              : "transparent",
+            border: isBirthday ? "1px solid rgba(237, 198, 168, 0.28)" : "none",
           }}
         >
           <div
             className="mb-4 nc-vertical-hairline"
             style={{
               background: `linear-gradient(to bottom, transparent, ${
-                isBirthday ? '#edc6a8' : theme.colors.accent
+                isBirthday ? "#edc6a8" : theme.colors.accent
               })`,
             }}
           />
 
           <span
             className="nc-micro-label mb-2"
-            style={{ color: isBirthday ? '#edc6a8' : theme.colors.accent }}
+            style={{ color: isBirthday ? "#edc6a8" : theme.colors.accent }}
           >
             Kindly Respond
           </span>
@@ -3418,26 +3666,28 @@ const FullInteractivePreviewModal = ({
           <div className="d-inline-flex flex-wrap align-items-center justify-content-center gap-3">
             <button
               type="button"
-              onClick={(e) => handleSelectRsvp('yes', e)}
+              onClick={(e) => handleSelectRsvp("yes", e)}
               className="btn rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 nc-rsvp-btn"
               style={{
                 backgroundColor:
-                  rsvpStatus === 'yes'
+                  rsvpStatus === "yes"
                     ? isBirthday
-                      ? '#f1ccb0'
+                      ? "#f1ccb0"
                       : theme.colors.primary
                     : isBirthday
-                    ? '#262624'
-                    : 'rgba(255, 253, 249, 0.92)',
+                      ? "#262624"
+                      : "rgba(255, 253, 249, 0.92)",
                 color:
-                  rsvpStatus === 'yes'
+                  rsvpStatus === "yes"
                     ? isBirthday
-                      ? '#181818'
-                      : '#FAF7F2'
+                      ? "#181818"
+                      : "#FAF7F2"
                     : isBirthday
-                    ? '#f1ccb0'
-                    : theme.colors.primary,
-                borderColor: isBirthday ? '#edc6a8' : `${theme.colors.primary}45`,
+                      ? "#f1ccb0"
+                      : theme.colors.primary,
+                borderColor: isBirthday
+                  ? "#edc6a8"
+                  : `${theme.colors.primary}45`,
               }}
             >
               <Check size={15} />
@@ -3446,27 +3696,27 @@ const FullInteractivePreviewModal = ({
 
             <button
               type="button"
-              onClick={(e) => handleSelectRsvp('no', e)}
+              onClick={(e) => handleSelectRsvp("no", e)}
               className="btn rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 nc-rsvp-btn"
               style={{
                 backgroundColor:
-                  rsvpStatus === 'no'
+                  rsvpStatus === "no"
                     ? theme.colors.secondary
                     : isBirthday
-                    ? '#262624'
-                    : 'rgba(255, 253, 249, 0.92)',
+                      ? "#262624"
+                      : "rgba(255, 253, 249, 0.92)",
                 color:
-                  rsvpStatus === 'no'
-                    ? '#FAF7F2'
+                  rsvpStatus === "no"
+                    ? "#FAF7F2"
                     : isBirthday
-                    ? '#d6cfc4'
-                    : theme.colors.mutedText,
+                      ? "#d6cfc4"
+                      : theme.colors.mutedText,
                 borderColor:
-                  rsvpStatus === 'no'
+                  rsvpStatus === "no"
                     ? theme.colors.secondary
                     : isBirthday
-                    ? 'rgba(237, 198, 168, 0.35)'
-                    : `${theme.colors.mutedText}40`,
+                      ? "rgba(237, 198, 168, 0.35)"
+                      : `${theme.colors.mutedText}40`,
               }}
             >
               <X size={15} />
@@ -3476,23 +3726,29 @@ const FullInteractivePreviewModal = ({
 
           {/* Interactive Confirmation Card */}
           <div className="w-100 mt-4 d-flex flex-column align-items-center nc-rsvp-feedback-slot">
-            {rsvpStatus === 'yes' && (
+            {rsvpStatus === "yes" && (
               <div
                 className="card w-100 rounded-4 p-4 border shadow-sm nc-fade-in-up"
                 style={{
-                  backgroundColor: isBirthday ? '#f1ccb0' : theme.colors.cardBg,
-                  borderColor: isBirthday ? '#edc6a8' : `${theme.colors.accent}65`,
+                  backgroundColor: isBirthday ? "#f1ccb0" : theme.colors.cardBg,
+                  borderColor: isBirthday
+                    ? "#edc6a8"
+                    : `${theme.colors.accent}65`,
                 }}
               >
                 <p
                   className={`mb-0 ${
-                    isBirthday ? 'nc-font-handwritten fs-3' : 'nc-font-serif fst-italic fs-5'
+                    isBirthday
+                      ? "nc-font-handwritten fs-3"
+                      : "nc-font-serif fst-italic fs-5"
                   }`}
-                  style={{ color: isBirthday ? '#181818' : theme.colors.pageText }}
+                  style={{
+                    color: isBirthday ? "#181818" : theme.colors.pageText,
+                  }}
                 >
                   {isBirthday
                     ? `Cheers! Another round poured for ${bdayHonoree}.`
-                    : 'Delighted to have you join us at the Noel & Co. table.'}
+                    : "Delighted to have you join us at the Noel & Co. table."}
                 </p>
 
                 <form
@@ -3510,17 +3766,19 @@ const FullInteractivePreviewModal = ({
                     className="form-control form-control-sm rounded-3 bg-transparent"
                     style={{
                       borderColor: isBirthday
-                        ? 'rgba(24, 24, 24, 0.35)'
+                        ? "rgba(24, 24, 24, 0.35)"
                         : `${theme.colors.accent}60`,
-                      color: isBirthday ? '#181818' : theme.colors.pageText,
+                      color: isBirthday ? "#181818" : theme.colors.pageText,
                     }}
                   />
                   <button
                     type="submit"
                     className="btn btn-sm rounded-3 px-3 py-2 flex-shrink-0 nc-micro-label"
                     style={{
-                      backgroundColor: isBirthday ? '#181818' : theme.colors.accent,
-                      color: isBirthday ? '#f1ccb0' : '#FFFDF9',
+                      backgroundColor: isBirthday
+                        ? "#181818"
+                        : theme.colors.accent,
+                      color: isBirthday ? "#f1ccb0" : "#FFFDF9",
                     }}
                   >
                     Save
@@ -3530,7 +3788,9 @@ const FullInteractivePreviewModal = ({
                 {savedName && (
                   <p
                     className="mt-2 mb-0 nc-micro-label"
-                    style={{ color: isBirthday ? '#181818' : theme.colors.accent }}
+                    style={{
+                      color: isBirthday ? "#181818" : theme.colors.accent,
+                    }}
                   >
                     Toast reserved for {savedName} ✦
                   </p>
@@ -3538,21 +3798,26 @@ const FullInteractivePreviewModal = ({
               </div>
             )}
 
-            {rsvpStatus === 'no' && (
+            {rsvpStatus === "no" && (
               <div
                 className="card w-100 rounded-4 p-4 border shadow-sm nc-fade-in-up"
                 style={{
-                  backgroundColor: isBirthday ? '#f1ccb0' : theme.colors.cardBg,
+                  backgroundColor: isBirthday ? "#f1ccb0" : theme.colors.cardBg,
                   borderColor: `${theme.colors.accent}45`,
                 }}
               >
                 <p
                   className={`mb-0 ${
-                    isBirthday ? 'nc-font-handwritten fs-3' : 'nc-font-serif fst-italic fs-5'
+                    isBirthday
+                      ? "nc-font-handwritten fs-3"
+                      : "nc-font-serif fst-italic fs-5"
                   }`}
-                  style={{ color: isBirthday ? '#181818' : theme.colors.pageText }}
+                  style={{
+                    color: isBirthday ? "#181818" : theme.colors.pageText,
+                  }}
                 >
-                  You will be warmly missed — we&apos;ll raise a glass in your honor.
+                  You will be warmly missed — we&apos;ll raise a glass in your
+                  honor.
                 </p>
               </div>
             )}
@@ -3570,8 +3835,10 @@ const FullInteractivePreviewModal = ({
         <div
           className="container d-flex flex-column align-items-center text-center rounded-4 px-4 py-5 nc-brand-reveal-card"
           style={{
-            backgroundColor: isBirthday ? 'rgba(26, 26, 24, 0.9)' : 'transparent',
-            border: isBirthday ? '1px solid rgba(197, 160, 89, 0.35)' : 'none',
+            backgroundColor: isBirthday
+              ? "rgba(26, 26, 24, 0.9)"
+              : "transparent",
+            border: isBirthday ? "1px solid rgba(197, 160, 89, 0.35)" : "none",
             transform: `translateY(${(1 - bottomFactor) * 24}px) scale(${
               0.95 + bottomFactor * 0.05
             })`,
@@ -3612,7 +3879,8 @@ const FullInteractivePreviewModal = ({
             className="mb-0 nc-micro-label"
             style={{ color: theme.colors.mutedText }}
           >
-            CURATED GATHERINGS &amp; TIMELESS CELEBRATIONS &bull; EST. NOEL &amp; CO.
+            CURATED GATHERINGS &amp; TIMELESS CELEBRATIONS &bull; EST. NOEL
+            &amp; CO.
           </p>
 
           <div className="mt-5 d-flex flex-wrap align-items-center justify-content-center gap-3">
@@ -3634,14 +3902,14 @@ const FullInteractivePreviewModal = ({
               onClick={onClose}
               className="btn btn-sm rounded-pill border px-4 py-2 d-inline-flex align-items-center gap-2 nc-micro-label"
               style={{
-                backgroundColor: isBirthday ? '#edc6a8' : theme.colors.primary,
+                backgroundColor: isBirthday ? "#edc6a8" : theme.colors.primary,
                 borderColor: theme.colors.accent,
-                color: isBirthday ? '#181818' : '#FAF7F2',
+                color: isBirthday ? "#181818" : "#FAF7F2",
               }}
             >
               <ArrowLeft
                 size={14}
-                style={{ color: isBirthday ? '#181818' : theme.colors.accent }}
+                style={{ color: isBirthday ? "#181818" : theme.colors.accent }}
               />
               <span>
                 Template Grid ({activeSlotsCount} / {totalSlotsCount} Slots)
@@ -3663,55 +3931,60 @@ const FullInteractivePreviewModal = ({
  */
 export default function App() {
   const [templates, setTemplates] = useState(INITIAL_INVITATION_TEMPLATES);
-  const [activeFilter, setActiveFilter] = useState('all'); // 'all' | 'active' | 'empty'
+  const [activeFilter, setActiveFilter] = useState("all"); // 'all' | 'active' | 'empty'
   // Launch directly into Slot 03 ("Glimpse Into Forever — Classic Wedding")
   const [previewTemplate, setPreviewTemplate] = useState(
-    () => INITIAL_INVITATION_TEMPLATES[2]
+    () => INITIAL_INVITATION_TEMPLATES[2],
   );
-  const [addModalState, setAddModalState] = useState({ isOpen: false, targetSlot: null });
+  const [addModalState, setAddModalState] = useState({
+    isOpen: false,
+    targetSlot: null,
+  });
 
   // Dynamically inject Bootstrap 5.3.3 CSS & Google Fonts into <head>
   useEffect(() => {
     const existingBootstrap = document.querySelector(
-      'link[data-nc-bootstrap="true"], link[href*="bootstrap"]'
+      'link[data-nc-bootstrap="true"], link[href*="bootstrap"]',
     );
     if (!existingBootstrap) {
-      const linkEl = document.createElement('link');
-      linkEl.rel = 'stylesheet';
+      const linkEl = document.createElement("link");
+      linkEl.rel = "stylesheet";
       linkEl.href =
-        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css";
       linkEl.integrity =
-        'sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH';
-      linkEl.crossOrigin = 'anonymous';
-      linkEl.setAttribute('data-nc-bootstrap', 'true');
+        "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH";
+      linkEl.crossOrigin = "anonymous";
+      linkEl.setAttribute("data-nc-bootstrap", "true");
       document.head.appendChild(linkEl);
     }
 
     const existingFonts = document.querySelector(
-      'link[data-nc-fonts="true"], link[href*="Cormorant+Garamond"]'
+      'link[data-nc-fonts="true"], link[href*="Cormorant+Garamond"]',
     );
     if (!existingFonts) {
-      const fontLink = document.createElement('link');
-      fontLink.rel = 'stylesheet';
+      const fontLink = document.createElement("link");
+      fontLink.rel = "stylesheet";
       fontLink.href =
-        'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap';
-      fontLink.setAttribute('data-nc-fonts', 'true');
+        "https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap";
+      fontLink.setAttribute("data-nc-fonts", "true");
       document.head.appendChild(fontLink);
     }
   }, []);
 
-  const activeTemplates = templates.filter((t) => t.status === 'active');
-  const emptyTemplates = templates.filter((t) => t.status === 'empty');
+  const activeTemplates = templates.filter((t) => t.status === "active");
+  const emptyTemplates = templates.filter((t) => t.status === "empty");
 
   const filteredTemplates = templates.filter((t) => {
-    if (activeFilter === 'active') return t.status === 'active';
-    if (activeFilter === 'empty') return t.status === 'empty';
+    if (activeFilter === "active") return t.status === "active";
+    if (activeFilter === "empty") return t.status === "empty";
     return true;
   });
 
   const handleUpdateVideoSrc = useCallback((slotId, newVideoSrc) => {
     setTemplates((prev) =>
-      prev.map((item) => (item.id === slotId ? { ...item, videoSrc: newVideoSrc } : item))
+      prev.map((item) =>
+        item.id === slotId ? { ...item, videoSrc: newVideoSrc } : item,
+      ),
     );
   }, []);
 
@@ -3722,10 +3995,10 @@ export default function App() {
           ? {
               ...item,
               ...newDesignData,
-              status: 'active',
+              status: "active",
             }
-          : item
-      )
+          : item,
+      ),
     );
   }, []);
 
@@ -3735,15 +4008,15 @@ export default function App() {
         item.id === slotId && !item.isBuiltIn
           ? {
               ...item,
-              status: 'empty',
-              title: '',
-              editionLabel: '',
-              description: '',
+              status: "empty",
+              title: "",
+              editionLabel: "",
+              description: "",
               tags: [],
-              videoSrc: '',
+              videoSrc: "",
             }
-          : item
-      )
+          : item,
+      ),
     );
   }, []);
 
@@ -4763,9 +5036,15 @@ export default function App() {
               className="d-inline-flex flex-wrap align-items-center justify-content-center gap-1 p-1 rounded-pill border nc-filter-tabs"
             >
               {[
-                { id: 'all', label: `All Slots (${templates.length})` },
-                { id: 'active', label: `Active Designs (${activeTemplates.length})` },
-                { id: 'empty', label: `Empty Slots (${emptyTemplates.length})` },
+                { id: "all", label: `All Slots (${templates.length})` },
+                {
+                  id: "active",
+                  label: `Active Designs (${activeTemplates.length})`,
+                },
+                {
+                  id: "empty",
+                  label: `Empty Slots (${emptyTemplates.length})`,
+                },
               ].map((pill) => {
                 const isSelected = activeFilter === pill.id;
                 return (
@@ -4777,8 +5056,8 @@ export default function App() {
                     onClick={() => setActiveFilter(pill.id)}
                     className="btn btn-sm rounded-pill px-3 py-2 nc-filter-pill"
                     style={{
-                      backgroundColor: isSelected ? '#1B3B2B' : 'transparent',
-                      color: isSelected ? '#FAF7F2' : '#1C1917',
+                      backgroundColor: isSelected ? "#1B3B2B" : "transparent",
+                      color: isSelected ? "#FAF7F2" : "#1C1917",
                     }}
                   >
                     {pill.label}
@@ -4799,9 +5078,11 @@ export default function App() {
               disabled={emptyTemplates.length === 0}
               className="btn rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 shadow-sm nc-btn-pine"
             >
-              <Plus size={15} style={{ color: '#C5A059' }} />
+              <Plus size={15} style={{ color: "#C5A059" }} />
               <span>
-                {emptyTemplates.length > 0 ? 'Add New Design' : 'All 6 Slots Populated'}
+                {emptyTemplates.length > 0
+                  ? "Add New Design"
+                  : "All 6 Slots Populated"}
               </span>
             </button>
           </div>
@@ -4815,7 +5096,7 @@ export default function App() {
         <div className="row g-4">
           {filteredTemplates.map((slot) => (
             <div key={slot.id} className="col-12 col-md-6 col-lg-4">
-              {slot.status === 'active' ? (
+              {slot.status === "active" ? (
                 <ActiveTemplateCard
                   template={slot}
                   onOpenInteractive={(tpl) => setPreviewTemplate(tpl)}
@@ -4840,8 +5121,9 @@ export default function App() {
          ==================================================================== */}
       <footer className="container pb-5 pt-3 text-center">
         <div className="mx-auto mb-3 nc-footer-rule" />
-        <p className="mb-0 nc-micro-label" style={{ color: '#4A5D58' }}>
-          NOEL &amp; CO. &bull; Modular Holiday &amp; Occasion Invitation Architecture
+        <p className="mb-0 nc-micro-label" style={{ color: "#4A5D58" }}>
+          NOEL &amp; CO. &bull; Modular Holiday &amp; Occasion Invitation
+          Architecture
         </p>
       </footer>
 
@@ -4867,13 +5149,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   Sparkles,
   Check,
@@ -9,7 +9,7 @@ import {
   Calendar,
   Clock,
   MapPin,
-} from 'lucide-react';
+} from "lucide-react";
 
 /**
  * ============================================================================
@@ -20,136 +20,136 @@ import {
  */
 const HOLIDAY_THEMES = {
   christmas: {
-    id: 'christmas',
-    label: 'Christmas',
-    badge: 'Winter Edition',
-    title: 'The Christmas Eve Candlelight Soirée',
-    subtitle: 'AN INTIMATE EVENING OF WINTER WARMTH & REVELRY',
-    formalIntro: 'Noel & Co. cordially invites you to',
+    id: "christmas",
+    label: "Christmas",
+    badge: "Winter Edition",
+    title: "The Christmas Eve Candlelight Soirée",
+    subtitle: "AN INTIMATE EVENING OF WINTER WARMTH & REVELRY",
+    formalIntro: "Noel & Co. cordially invites you to",
     hostNote:
-      'As winter settles softly over the estate, join us by candlelight for seasonal tasting courses, aged vintages, and fireside conversation.',
-    dateShort: 'Dec 24 • 7:30 PM',
-    date: 'December 24, 2026',
-    time: '7:30 PM until Midnight',
-    location: 'The Grand Conservatory, Noel & Co. Estate',
-    dressCode: 'Black Tie & Deep Velvet Accents',
+      "As winter settles softly over the estate, join us by candlelight for seasonal tasting courses, aged vintages, and fireside conversation.",
+    dateShort: "Dec 24 • 7:30 PM",
+    date: "December 24, 2026",
+    time: "7:30 PM until Midnight",
+    location: "The Grand Conservatory, Noel & Co. Estate",
+    dressCode: "Black Tie & Deep Velvet Accents",
     colors: {
-      pageBg: '#F9F6F0',
-      pageText: '#0F291E',
-      mutedText: '#465A51',
-      primary: '#0F291E', // Deep Pine
-      secondary: '#8B1E24', // Berry Crimson
-      accent: '#D4AF37', // Champagne Gold
-      accentLight: '#F1E1A6',
-      envelopeBody: '#0F291E',
-      envelopeFlap: '#163829',
-      envelopePocket: '#0B2017',
-      waxSeal: '#8B1E24',
-      cardBg: '#FFFDF9',
-      cardBorder: '#D4AF37',
-      particleColors: ['#FFFFFF', '#F3E5C2', '#D4AF37'],
+      pageBg: "#F9F6F0",
+      pageText: "#0F291E",
+      mutedText: "#465A51",
+      primary: "#0F291E", // Deep Pine
+      secondary: "#8B1E24", // Berry Crimson
+      accent: "#D4AF37", // Champagne Gold
+      accentLight: "#F1E1A6",
+      envelopeBody: "#0F291E",
+      envelopeFlap: "#163829",
+      envelopePocket: "#0B2017",
+      waxSeal: "#8B1E24",
+      cardBg: "#FFFDF9",
+      cardBorder: "#D4AF37",
+      particleColors: ["#FFFFFF", "#F3E5C2", "#D4AF37"],
     },
-    particleMode: 'snow',
-    crestSymbol: '✦',
+    particleMode: "snow",
+    crestSymbol: "✦",
   },
   nye: {
-    id: 'nye',
+    id: "nye",
     label: "New Year's Eve",
-    badge: 'Midnight Edition',
-    title: 'Midnight Gala & Countdown',
-    subtitle: 'RINGING IN A NEW CHAPTER IN CHAMPAGNE GOLD & STARLIGHT',
-    formalIntro: 'Noel & Co. cordially invites you to',
+    badge: "Midnight Edition",
+    title: "Midnight Gala & Countdown",
+    subtitle: "RINGING IN A NEW CHAPTER IN CHAMPAGNE GOLD & STARLIGHT",
+    formalIntro: "Noel & Co. cordially invites you to",
     hostNote:
-      'Rise above the city skyline as the final hours of the year slip away. Expect vintage cuvées, chamber strings, and a midnight toast beneath the glass atrium.',
-    dateShort: 'Dec 31 • 9:00 PM',
-    date: 'December 31, 2026',
-    time: '9:00 PM — Midnight Countdown',
-    location: 'The Sky Atrium, Noel & Co. Tower',
-    dressCode: 'Midnight Formal & Metallic Foil',
+      "Rise above the city skyline as the final hours of the year slip away. Expect vintage cuvées, chamber strings, and a midnight toast beneath the glass atrium.",
+    dateShort: "Dec 31 • 9:00 PM",
+    date: "December 31, 2026",
+    time: "9:00 PM — Midnight Countdown",
+    location: "The Sky Atrium, Noel & Co. Tower",
+    dressCode: "Midnight Formal & Metallic Foil",
     colors: {
-      pageBg: '#F6F5F2',
-      pageText: '#0B0E17',
-      mutedText: '#495061',
-      primary: '#0B0E17', // Midnight Obsidian
-      secondary: '#262E42', // Slate Indigo
-      accent: '#E5C158', // Champagne Gold
-      accentLight: '#F5E4AE',
-      envelopeBody: '#0B0E17',
-      envelopeFlap: '#141929',
-      envelopePocket: '#070910',
-      waxSeal: '#9E7D28',
-      cardBg: '#FFFDF9',
-      cardBorder: '#E5C158',
-      particleColors: ['#E5C158', '#C0C8D8', '#FEF08A'],
+      pageBg: "#F6F5F2",
+      pageText: "#0B0E17",
+      mutedText: "#495061",
+      primary: "#0B0E17", // Midnight Obsidian
+      secondary: "#262E42", // Slate Indigo
+      accent: "#E5C158", // Champagne Gold
+      accentLight: "#F5E4AE",
+      envelopeBody: "#0B0E17",
+      envelopeFlap: "#141929",
+      envelopePocket: "#070910",
+      waxSeal: "#9E7D28",
+      cardBg: "#FFFDF9",
+      cardBorder: "#E5C158",
+      particleColors: ["#E5C158", "#C0C8D8", "#FEF08A"],
     },
-    particleMode: 'sparkle',
-    crestSymbol: '✧',
+    particleMode: "sparkle",
+    crestSymbol: "✧",
   },
   diwali: {
-    id: 'diwali',
-    label: 'Diwali',
-    badge: 'Festival of Lights',
-    title: 'Festival of Lights Soirée',
-    subtitle: 'AN EVENING OF GOLDEN LAMPS, SPICE & RADIANT HARMONY',
-    formalIntro: 'Noel & Co. cordially invites you to',
+    id: "diwali",
+    label: "Diwali",
+    badge: "Festival of Lights",
+    title: "Festival of Lights Soirée",
+    subtitle: "AN EVENING OF GOLDEN LAMPS, SPICE & RADIANT HARMONY",
+    formalIntro: "Noel & Co. cordially invites you to",
     hostNote:
-      'In celebration of light triumphing over shadow, gather in a courtyard illuminated by a thousand hand-poured diyas, artisanal sweets, and celebratory music.',
-    dateShort: 'Nov 8 • 7:00 PM',
-    date: 'November 8, 2026',
-    time: '7:00 PM onwards',
-    location: 'The Lantern Courtyard, Noel & Co. House',
-    dressCode: 'Festive Silk & Royal Jewel Tones',
+      "In celebration of light triumphing over shadow, gather in a courtyard illuminated by a thousand hand-poured diyas, artisanal sweets, and celebratory music.",
+    dateShort: "Nov 8 • 7:00 PM",
+    date: "November 8, 2026",
+    time: "7:00 PM onwards",
+    location: "The Lantern Courtyard, Noel & Co. House",
+    dressCode: "Festive Silk & Royal Jewel Tones",
     colors: {
-      pageBg: '#FCF7F0',
-      pageText: '#1E0B1A',
-      mutedText: '#583750',
-      primary: '#1E0B1A', // Royal Plum
-      secondary: '#BE185D', // Lotus Crimson
-      accent: '#F59E0B', // Saffron Gold
-      accentLight: '#FDE68A',
-      envelopeBody: '#1E0B1A',
-      envelopeFlap: '#2D1127',
-      envelopePocket: '#150712',
-      waxSeal: '#BE185D',
-      cardBg: '#FFFDF9',
-      cardBorder: '#F59E0B',
-      particleColors: ['#F59E0B', '#FDE68A', '#FB7185'],
+      pageBg: "#FCF7F0",
+      pageText: "#1E0B1A",
+      mutedText: "#583750",
+      primary: "#1E0B1A", // Royal Plum
+      secondary: "#BE185D", // Lotus Crimson
+      accent: "#F59E0B", // Saffron Gold
+      accentLight: "#FDE68A",
+      envelopeBody: "#1E0B1A",
+      envelopeFlap: "#2D1127",
+      envelopePocket: "#150712",
+      waxSeal: "#BE185D",
+      cardBg: "#FFFDF9",
+      cardBorder: "#F59E0B",
+      particleColors: ["#F59E0B", "#FDE68A", "#FB7185"],
     },
-    particleMode: 'diya',
-    crestSymbol: '❖',
+    particleMode: "diya",
+    crestSymbol: "❖",
   },
   autumn: {
-    id: 'autumn',
-    label: 'Autumn Harvest',
-    badge: 'Harvest Table',
-    title: 'Candlelit Harvest Supper',
-    subtitle: 'A SEASONAL FEAST OF GRATITUDE, HEARTH & OAK',
-    formalIntro: 'Noel & Co. cordially invites you to',
+    id: "autumn",
+    label: "Autumn Harvest",
+    badge: "Harvest Table",
+    title: "Candlelit Harvest Supper",
+    subtitle: "A SEASONAL FEAST OF GRATITUDE, HEARTH & OAK",
+    formalIntro: "Noel & Co. cordially invites you to",
     hostNote:
-      'Gathered around a single long cedar table dressed in linen and heirloom botanicals, share an unhurried evening of harvest fare and warm fellowship.',
-    dateShort: 'Nov 26 • 6:30 PM',
-    date: 'November 26, 2026',
-    time: '6:30 PM — Fireside Supper',
-    location: 'The Orchard Orangery, Noel & Co. Manor',
-    dressCode: 'Autumnal Tailored & Cashmere',
+      "Gathered around a single long cedar table dressed in linen and heirloom botanicals, share an unhurried evening of harvest fare and warm fellowship.",
+    dateShort: "Nov 26 • 6:30 PM",
+    date: "November 26, 2026",
+    time: "6:30 PM — Fireside Supper",
+    location: "The Orchard Orangery, Noel & Co. Manor",
+    dressCode: "Autumnal Tailored & Cashmere",
     colors: {
-      pageBg: '#FAF5EE',
-      pageText: '#23110D',
-      mutedText: '#59443E',
-      primary: '#23110D', // Espresso Burgundy
-      secondary: '#4D5E46', // Sage Olive
-      accent: '#D97706', // Burnished Copper
-      accentLight: '#F6D399',
-      envelopeBody: '#23110D',
-      envelopeFlap: '#331913',
-      envelopePocket: '#190C09',
-      waxSeal: '#4D5E46',
-      cardBg: '#FFFDF9',
-      cardBorder: '#D97706',
-      particleColors: ['#D97706', '#B45309', '#4D5E46'],
+      pageBg: "#FAF5EE",
+      pageText: "#23110D",
+      mutedText: "#59443E",
+      primary: "#23110D", // Espresso Burgundy
+      secondary: "#4D5E46", // Sage Olive
+      accent: "#D97706", // Burnished Copper
+      accentLight: "#F6D399",
+      envelopeBody: "#23110D",
+      envelopeFlap: "#331913",
+      envelopePocket: "#190C09",
+      waxSeal: "#4D5E46",
+      cardBg: "#FFFDF9",
+      cardBorder: "#D97706",
+      particleColors: ["#D97706", "#B45309", "#4D5E46"],
     },
-    particleMode: 'leaves',
-    crestSymbol: '❦',
+    particleMode: "leaves",
+    crestSymbol: "❦",
   },
 };
 
@@ -172,7 +172,7 @@ function useInView(threshold = 0.22) {
           setIsVisible(true);
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(element);
@@ -204,11 +204,11 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
     if (!burstTrigger) return;
     const { x, y } = burstTrigger;
     const palette = [
-      '#D4AF37',
-      '#E5C158',
+      "#D4AF37",
+      "#E5C158",
       themeRef.current.colors.accent,
       themeRef.current.colors.primary,
-      '#FFFDF9',
+      "#FFFDF9",
     ];
 
     for (let i = 0; i < 48; i++) {
@@ -232,7 +232,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let animationFrameId;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
@@ -242,7 +242,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     const particleCount = width < 640 ? 28 : 46;
     const particles = Array.from({ length: particleCount }, () => ({
@@ -266,7 +266,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
         p.phase += 0.02;
         const color = colors[p.colorIndex % colors.length];
 
-        if (mode === 'snow') {
+        if (mode === "snow") {
           p.y += p.speedY;
           p.x += Math.sin(p.phase) * 0.35 + p.speedX * 0.2;
           if (p.y > height + 10) {
@@ -280,7 +280,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
           ctx.globalAlpha = p.alpha * 0.8;
           ctx.fill();
           ctx.restore();
-        } else if (mode === 'sparkle') {
+        } else if (mode === "sparkle") {
           p.y -= p.speedY * 0.9;
           p.x += Math.sin(p.phase * 1.4) * 0.25;
           if (p.y < -10) {
@@ -301,7 +301,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
           ctx.quadraticCurveTo(0, 0, 0, -s);
           ctx.fill();
           ctx.restore();
-        } else if (mode === 'diya') {
+        } else if (mode === "diya") {
           p.y -= p.speedY * 0.55;
           p.x += Math.sin(p.phase * 0.8) * 0.4;
           if (p.y < -20) {
@@ -310,9 +310,16 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
           }
           const glow = 0.6 + 0.4 * Math.sin(p.phase * 1.5);
           const radius = p.r * 2.4;
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 2);
+          const grad = ctx.createRadialGradient(
+            p.x,
+            p.y,
+            0,
+            p.x,
+            p.y,
+            radius * 2,
+          );
           grad.addColorStop(0, color);
-          grad.addColorStop(1, 'rgba(245, 158, 11, 0)');
+          grad.addColorStop(1, "rgba(245, 158, 11, 0)");
           ctx.save();
           ctx.globalAlpha = p.alpha * glow * 0.72;
           ctx.fillStyle = grad;
@@ -320,7 +327,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
           ctx.arc(p.x, p.y, radius * 2, 0, Math.PI * 2);
           ctx.fill();
           ctx.restore();
-        } else if (mode === 'leaves') {
+        } else if (mode === "leaves") {
           p.y += p.speedY * 0.8;
           p.x += Math.sin(p.phase) * 0.7 + 0.2;
           if (p.y > height + 15) {
@@ -368,11 +375,17 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
     animationFrameId = requestAnimationFrame(render);
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="noel-particle-canvas" aria-hidden="true" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="noel-particle-canvas"
+      aria-hidden="true"
+    />
+  );
 };
 
 /**
@@ -380,7 +393,7 @@ const AmbientParticleCanvas = ({ theme, burstTrigger }) => {
  * ORNATE CORNER FILIGREE SVG COMPONENT
  * ============================================================================
  */
-const CornerFiligree = ({ color, positionClass = '' }) => (
+const CornerFiligree = ({ color, positionClass = "" }) => (
   <svg
     viewBox="0 0 64 64"
     fill="none"
@@ -424,7 +437,7 @@ const HolidaySwitcher = ({ activeHolidayId, onSelectHoliday, theme }) => {
         aria-label="Select Holiday Invitation"
         className="d-inline-flex align-items-center gap-1 p-1 rounded-pill shadow-lg border noel-nav-bar"
         style={{
-          backgroundColor: 'rgba(255, 253, 249, 0.9)',
+          backgroundColor: "rgba(255, 253, 249, 0.9)",
           borderColor: `${theme.colors.accent}66`,
         }}
       >
@@ -437,10 +450,12 @@ const HolidaySwitcher = ({ activeHolidayId, onSelectHoliday, theme }) => {
               onClick={() => onSelectHoliday(holiday.id)}
               className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-1 fw-medium noel-nav-pill"
               style={{
-                backgroundColor: isActive ? theme.colors.primary : 'transparent',
-                color: isActive ? '#FAF7F2' : theme.colors.pageText,
-                borderColor: 'transparent',
-                boxShadow: isActive ? '0 4px 12px rgba(0, 0, 0, 0.16)' : 'none',
+                backgroundColor: isActive
+                  ? theme.colors.primary
+                  : "transparent",
+                color: isActive ? "#FAF7F2" : theme.colors.pageText,
+                borderColor: "transparent",
+                boxShadow: isActive ? "0 4px 12px rgba(0, 0, 0, 0.16)" : "none",
               }}
             >
               {isActive && (
@@ -466,7 +481,13 @@ const HolidaySwitcher = ({ activeHolidayId, onSelectHoliday, theme }) => {
  * foil shimmer, "NEW INVITATION" status pill, 180deg hinged top flap, and
  * unfolded cream-ivory invitation card.
  */
-const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptClick }) => {
+const LivingEnvelopeStage = ({
+  theme,
+  isOpen,
+  onOpen,
+  onClose,
+  onScrollPromptClick,
+}) => {
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
   const [cardElevated, setCardElevated] = useState(false);
 
@@ -509,7 +530,7 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
           style={{
             borderColor: `${theme.colors.accent}70`,
             color: theme.colors.primary,
-            backgroundColor: 'rgba(255, 253, 249, 0.85)',
+            backgroundColor: "rgba(255, 253, 249, 0.85)",
           }}
         >
           <span
@@ -517,7 +538,9 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
             style={{ backgroundColor: theme.colors.accent }}
           />
           <span>
-            {isOpen ? `NOEL & CO. • ${theme.badge.toUpperCase()}` : 'NEW INVITATION'}
+            {isOpen
+              ? `NOEL & CO. • ${theme.badge.toUpperCase()}`
+              : "NEW INVITATION"}
           </span>
         </span>
       </div>
@@ -529,7 +552,7 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
            ================================================================ */}
         <div
           className={`w-100 d-flex flex-column align-items-center noel-state-transition ${
-            cardElevated ? 'noel-state-hidden' : 'noel-state-visible'
+            cardElevated ? "noel-state-hidden" : "noel-state-visible"
           }`}
         >
           <div
@@ -538,7 +561,7 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
             aria-label={`Open ${theme.title} invitation envelope`}
             onClick={onOpen}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
+              if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 onOpen();
               }
@@ -546,7 +569,7 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className={`position-relative user-select-none noel-envelope-wrapper ${
-              !isOpen ? 'noel-envelope-float' : ''
+              !isOpen ? "noel-envelope-float" : ""
             }`}
           >
             {/* Soft Ground Elevation Shadow */}
@@ -560,7 +583,7 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
               className="position-relative w-100 h-100 rounded-4 noel-envelope-3d"
               style={{
                 transform: isOpen
-                  ? 'rotateX(0deg) rotateY(0deg)'
+                  ? "rotateX(0deg) rotateY(0deg)"
                   : `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
               }}
             >
@@ -588,7 +611,7 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
                 style={{
                   backgroundColor: theme.colors.cardBg,
                   borderColor: theme.colors.cardBorder,
-                  transform: isOpen ? 'translateY(-48%)' : 'translateY(0%)',
+                  transform: isOpen ? "translateY(-48%)" : "translateY(0%)",
                   zIndex: isOpen ? 15 : 2,
                 }}
               >
@@ -665,7 +688,7 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
                 className="position-absolute top-0 start-0 w-100 noel-envelope-flap"
                 style={{
                   zIndex: isOpen ? 1 : 20,
-                  transform: isOpen ? 'rotateX(180deg)' : 'rotateX(0deg)',
+                  transform: isOpen ? "rotateX(180deg)" : "rotateX(0deg)",
                 }}
               >
                 <div
@@ -690,7 +713,7 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
               {/* 6. Embossed "N&C" Wax Seal */}
               <div
                 className={`position-absolute start-50 translate-middle noel-wax-seal-wrap ${
-                  isOpen ? 'noel-wax-seal-hidden' : ''
+                  isOpen ? "noel-wax-seal-hidden" : ""
                 }`}
                 style={{ zIndex: 30 }}
               >
@@ -739,7 +762,7 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
         <article
           aria-live="polite"
           className={`w-100 noel-card-container noel-state-transition ${
-            cardElevated ? 'noel-card-visible' : 'noel-card-hidden'
+            cardElevated ? "noel-card-visible" : "noel-card-hidden"
           }`}
         >
           <div
@@ -756,10 +779,22 @@ const LivingEnvelopeStage = ({ theme, isOpen, onOpen, onClose, onScrollPromptCli
             />
 
             {/* Four Corner Ornamental Filigrees */}
-            <CornerFiligree color={theme.colors.accent} positionClass="noel-corner-tl" />
-            <CornerFiligree color={theme.colors.accent} positionClass="noel-corner-tr" />
-            <CornerFiligree color={theme.colors.accent} positionClass="noel-corner-bl" />
-            <CornerFiligree color={theme.colors.accent} positionClass="noel-corner-br" />
+            <CornerFiligree
+              color={theme.colors.accent}
+              positionClass="noel-corner-tl"
+            />
+            <CornerFiligree
+              color={theme.colors.accent}
+              positionClass="noel-corner-tr"
+            />
+            <CornerFiligree
+              color={theme.colors.accent}
+              positionClass="noel-corner-bl"
+            />
+            <CornerFiligree
+              color={theme.colors.accent}
+              positionClass="noel-corner-br"
+            />
 
             {/* Top Right "Seal Envelope" Replay Button */}
             <div className="position-relative d-flex justify-content-end mb-2 noel-card-z">
@@ -1017,7 +1052,7 @@ const RsvpScrollStage = ({
       <div
         ref={revealRef}
         className={`w-100 d-flex flex-column align-items-center text-center noel-rsvp-box noel-rsvp-reveal ${
-          isVisible ? 'is-visible' : ''
+          isVisible ? "is-visible" : ""
         }`}
       >
         {/* Connecting Vertical Gold Thread */}
@@ -1046,23 +1081,32 @@ const RsvpScrollStage = ({
         <div className="d-inline-flex flex-wrap align-items-center justify-content-center gap-3">
           <button
             type="button"
-            onClick={(e) => onSelectRsvp('yes', e)}
+            onClick={(e) => onSelectRsvp("yes", e)}
             className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-2 px-4 py-2 fw-medium shadow-sm noel-rsvp-btn"
             style={{
               backgroundColor:
-                rsvpStatus === 'yes' ? theme.colors.primary : 'rgba(255, 253, 249, 0.94)',
-              color: rsvpStatus === 'yes' ? '#FAF7F2' : theme.colors.primary,
+                rsvpStatus === "yes"
+                  ? theme.colors.primary
+                  : "rgba(255, 253, 249, 0.94)",
+              color: rsvpStatus === "yes" ? "#FAF7F2" : theme.colors.primary,
               border: `1.5px solid ${
-                rsvpStatus === 'yes' ? theme.colors.accent : `${theme.colors.primary}4D`
+                rsvpStatus === "yes"
+                  ? theme.colors.accent
+                  : `${theme.colors.primary}4D`
               }`,
               boxShadow:
-                rsvpStatus === 'yes' ? `0 8px 22px -4px ${theme.colors.primary}55` : undefined,
+                rsvpStatus === "yes"
+                  ? `0 8px 22px -4px ${theme.colors.primary}55`
+                  : undefined,
             }}
           >
             <Check
               size={14}
               style={{
-                color: rsvpStatus === 'yes' ? theme.colors.accent : theme.colors.primary,
+                color:
+                  rsvpStatus === "yes"
+                    ? theme.colors.accent
+                    : theme.colors.primary,
               }}
             />
             <span>I&apos;ll Come</span>
@@ -1070,14 +1114,18 @@ const RsvpScrollStage = ({
 
           <button
             type="button"
-            onClick={(e) => onSelectRsvp('no', e)}
+            onClick={(e) => onSelectRsvp("no", e)}
             className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-2 px-4 py-2 fw-medium shadow-sm noel-rsvp-btn"
             style={{
               backgroundColor:
-                rsvpStatus === 'no' ? theme.colors.secondary : 'rgba(255, 253, 249, 0.94)',
-              color: rsvpStatus === 'no' ? '#FAF7F2' : theme.colors.mutedText,
+                rsvpStatus === "no"
+                  ? theme.colors.secondary
+                  : "rgba(255, 253, 249, 0.94)",
+              color: rsvpStatus === "no" ? "#FAF7F2" : theme.colors.mutedText,
               border: `1.5px solid ${
-                rsvpStatus === 'no' ? theme.colors.secondary : `${theme.colors.mutedText}48`
+                rsvpStatus === "no"
+                  ? theme.colors.secondary
+                  : `${theme.colors.mutedText}48`
               }`,
             }}
           >
@@ -1088,7 +1136,7 @@ const RsvpScrollStage = ({
 
         {/* Dynamic Confirmation & Place-Card Personalization Area */}
         <div className="w-100 mt-4 d-flex flex-column align-items-center noel-rsvp-feedback-slot">
-          {rsvpStatus === 'yes' && (
+          {rsvpStatus === "yes" && (
             <div
               className="w-100 rounded-4 p-4 border shadow-sm noel-fade-in-up"
               style={{
@@ -1121,7 +1169,7 @@ const RsvpScrollStage = ({
                   style={{
                     borderColor: `${theme.colors.accent}75`,
                     color: theme.colors.pageText,
-                    backgroundColor: '#FFFDF9',
+                    backgroundColor: "#FFFDF9",
                   }}
                 />
                 <button
@@ -1129,7 +1177,7 @@ const RsvpScrollStage = ({
                   className="btn btn-sm rounded-pill px-3 fw-medium flex-shrink-0 noel-save-btn"
                   style={{
                     backgroundColor: theme.colors.accent,
-                    color: '#FFFDF9',
+                    color: "#FFFDF9",
                     borderColor: theme.colors.accent,
                   }}
                 >
@@ -1147,14 +1195,15 @@ const RsvpScrollStage = ({
                       border: `1px solid ${theme.colors.accent}66`,
                     }}
                   >
-                    Place card reserved for {savedName} &bull; {theme.dateShort} ✦
+                    Place card reserved for {savedName} &bull; {theme.dateShort}{" "}
+                    ✦
                   </span>
                 </div>
               )}
             </div>
           )}
 
-          {rsvpStatus === 'no' && (
+          {rsvpStatus === "no" && (
             <div
               className="w-100 rounded-4 p-4 border shadow-sm noel-fade-in-up"
               style={{
@@ -1166,14 +1215,19 @@ const RsvpScrollStage = ({
                 className="noel-font-serif fst-italic mb-2 noel-feedback-quote"
                 style={{ color: theme.colors.pageText }}
               >
-                You will be warmly missed — we&apos;ll raise a glass in your honor.
+                You will be warmly missed — we&apos;ll raise a glass in your
+                honor.
               </p>
-              <p className="mb-2 noel-farewell-sub" style={{ color: theme.colors.mutedText }}>
-                Should your seasonal plans change, you are always welcome at our table.
+              <p
+                className="mb-2 noel-farewell-sub"
+                style={{ color: theme.colors.mutedText }}
+              >
+                Should your seasonal plans change, you are always welcome at our
+                table.
               </p>
               <button
                 type="button"
-                onClick={(e) => onSelectRsvp('yes', e)}
+                onClick={(e) => onSelectRsvp("yes", e)}
                 className="btn btn-sm p-0 border-0 text-decoration-underline noel-update-link"
                 style={{ color: theme.colors.accent }}
               >
@@ -1231,12 +1285,14 @@ const BrandRevealStage = ({ theme, scrollProgress, onBackToTop }) => {
             color: theme.colors.accent,
           }}
         >
-          <span className="noel-font-display fw-semibold noel-crest-text">N&amp;C</span>
+          <span className="noel-font-display fw-semibold noel-crest-text">
+            N&amp;C
+          </span>
         </div>
 
         {/* Top Expanding Champagne-Gold Horizontal Rule */}
         <div
-          className={`w-100 mb-4 mb-sm-5 noel-brand-rule ${isVisible ? 'is-expanded' : ''}`}
+          className={`w-100 mb-4 mb-sm-5 noel-brand-rule ${isVisible ? "is-expanded" : ""}`}
           style={{
             background: `linear-gradient(90deg, transparent, ${theme.colors.accent}, transparent)`,
           }}
@@ -1246,8 +1302,8 @@ const BrandRevealStage = ({ theme, scrollProgress, onBackToTop }) => {
         <h2
           className="noel-font-display fw-medium text-uppercase user-select-none mb-0 noel-brand-title"
           style={{
-            letterSpacing: isVisible ? '0.22em' : '0.12em',
-            paddingLeft: '0.22em',
+            letterSpacing: isVisible ? "0.22em" : "0.12em",
+            paddingLeft: "0.22em",
             color: theme.colors.pageText,
           }}
         >
@@ -1257,7 +1313,7 @@ const BrandRevealStage = ({ theme, scrollProgress, onBackToTop }) => {
         {/* Bottom Expanding Champagne-Gold Horizontal Rule */}
         <div
           className={`w-100 mt-4 mt-sm-5 mb-4 noel-brand-rule noel-brand-rule-delay ${
-            isVisible ? 'is-expanded' : ''
+            isVisible ? "is-expanded" : ""
           }`}
           style={{
             background: `linear-gradient(90deg, transparent, ${theme.colors.accent}, transparent)`,
@@ -1269,7 +1325,8 @@ const BrandRevealStage = ({ theme, scrollProgress, onBackToTop }) => {
           className="text-uppercase fw-medium mb-0 noel-brand-tagline"
           style={{ color: theme.colors.mutedText }}
         >
-          CURATED GATHERINGS &amp; TIMELESS CELEBRATIONS &bull; EST. NOEL &amp; CO.
+          CURATED GATHERINGS &amp; TIMELESS CELEBRATIONS &bull; EST. NOEL &amp;
+          CO.
         </p>
 
         {/* Smooth Scroll-to-Top Bootstrap Button */}
@@ -1280,7 +1337,7 @@ const BrandRevealStage = ({ theme, scrollProgress, onBackToTop }) => {
           style={{
             borderColor: `${theme.colors.accent}66`,
             color: theme.colors.mutedText,
-            backgroundColor: 'rgba(255, 253, 249, 0.75)',
+            backgroundColor: "rgba(255, 253, 249, 0.75)",
           }}
         >
           <ArrowUp size={14} style={{ color: theme.colors.accent }} />
@@ -1297,11 +1354,11 @@ const BrandRevealStage = ({ theme, scrollProgress, onBackToTop }) => {
  * ============================================================================
  */
 export default function App() {
-  const [activeHolidayId, setActiveHolidayId] = useState('christmas');
+  const [activeHolidayId, setActiveHolidayId] = useState("christmas");
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [rsvpStatus, setRsvpStatus] = useState(null); // 'yes' | 'no' | null
-  const [guestName, setGuestName] = useState('');
-  const [savedName, setSavedName] = useState('');
+  const [guestName, setGuestName] = useState("");
+  const [savedName, setSavedName] = useState("");
   const [burstTrigger, setBurstTrigger] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -1312,12 +1369,13 @@ export default function App() {
   useEffect(() => {
     const existingBootstrap = document.querySelector('link[href*="bootstrap"]');
     if (!existingBootstrap) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href =
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css";
       link.integrity =
-        'sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH';
-      link.crossOrigin = 'anonymous';
+        "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH";
+      link.crossOrigin = "anonymous";
       document.head.appendChild(link);
     }
   }, []);
@@ -1328,8 +1386,10 @@ export default function App() {
     const updateScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const docHeight =
-        document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const progress =
+        docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
       setScrollProgress(progress);
       ticking = false;
     };
@@ -1341,9 +1401,9 @@ export default function App() {
       }
     };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     updateScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const handleSelectHoliday = useCallback((holidayId) => {
@@ -1352,7 +1412,7 @@ export default function App() {
 
   const handleSelectRsvp = useCallback((choice, event) => {
     setRsvpStatus(choice);
-    if (choice === 'yes' && event) {
+    if (choice === "yes" && event) {
       const rect = event.currentTarget.getBoundingClientRect();
       setBurstTrigger({
         x: rect.left + rect.width / 2,
@@ -1370,11 +1430,14 @@ export default function App() {
   }, [guestName]);
 
   const scrollToRsvp = () => {
-    rsvpSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    rsvpSectionRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -1954,7 +2017,10 @@ export default function App() {
       `}</style>
 
       {/* Tactile Fine-Paper Grain Overlay */}
-      <div className="position-fixed top-0 start-0 w-100 h-100 noel-paper-grain" aria-hidden="true" />
+      <div
+        className="position-fixed top-0 start-0 w-100 h-100 noel-paper-grain"
+        aria-hidden="true"
+      />
 
       {/* Champagne Gold Scroll Progress Bar */}
       <div

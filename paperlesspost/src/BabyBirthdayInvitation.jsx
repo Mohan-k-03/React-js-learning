@@ -1,34 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   Sparkles,
   Check,
@@ -42,7 +12,7 @@ import {
   Gift,
   Heart,
   Star,
-} from 'lucide-react';
+} from "lucide-react";
 
 /**
  * ============================================================================
@@ -54,111 +24,111 @@ import {
  */
 const BABY_THEMES = {
   sunnyTeddy: {
-    id: 'sunnyTeddy',
-    label: 'Sunny Teddy',
-    badge: 'Sweet One • Honey & Cream',
-    babyName: 'Baby Aarav',
-    ageLabel: '1st',
+    id: "sunnyTeddy",
+    label: "Sunny Teddy",
+    badge: "Sweet One • Honey & Cream",
+    babyName: "Baby Aarav",
+    ageLabel: "1st",
     title: "Aarav's First Birthday Bash!",
-    subtitle: 'ONE WHOLE YEAR OF GIGGLES, CUDDLES & FIRST STEPS',
+    subtitle: "ONE WHOLE YEAR OF GIGGLES, CUDDLES & FIRST STEPS",
     storyNote:
-      'Come join us for balloons, smash cake, bubble machines, and lots of hugs as our little sunshine turns ONE!',
-    dateShort: 'Sat, Dec 12 • 4:00 PM',
-    date: 'Saturday, December 12, 2026',
-    time: '4:00 PM — Cake Smash at 5:30 PM',
-    location: 'Sunshine Garden Pavilion, Blossom Lane',
-    dressCode: 'Comfy Pastel Casual & Party Socks',
-    treatsNote: 'Mini Cupcakes, Fruit Pops & Bubble Play Zone',
+      "Come join us for balloons, smash cake, bubble machines, and lots of hugs as our little sunshine turns ONE!",
+    dateShort: "Sat, Dec 12 • 4:00 PM",
+    date: "Saturday, December 12, 2026",
+    time: "4:00 PM — Cake Smash at 5:30 PM",
+    location: "Sunshine Garden Pavilion, Blossom Lane",
+    dressCode: "Comfy Pastel Casual & Party Socks",
+    treatsNote: "Mini Cupcakes, Fruit Pops & Bubble Play Zone",
     colors: {
-      pageBg: '#FFFDF7',
-      pageText: '#4A3728',
-      mutedText: '#7D6654',
-      primary: '#F59E0B', // Warm Honey Gold
-      secondary: '#FB7185', // Coral Cheek Pink
-      accent: '#38BDF8', // Sky Balloon Blue
-      mint: '#34D399', // Soft Mint
-      lavender: '#A78BFA',
-      coverBg: '#FEF3C7', // Butter Cream Cover
-      coverBorder: '#FBBF24',
-      innerBg: '#FFFFFF',
-      innerCardTint: '#FFFBEB',
-      skinTone: '#FCD5B5',
-      cheekColor: '#FDA4AF',
-      onesieColor: '#38BDF8',
-      onesieAccent: '#FDE047',
-      bulbs: ['#FB7185', '#FBBF24', '#34D399', '#38BDF8', '#A78BFA'],
+      pageBg: "#FFFDF7",
+      pageText: "#4A3728",
+      mutedText: "#7D6654",
+      primary: "#F59E0B", // Warm Honey Gold
+      secondary: "#FB7185", // Coral Cheek Pink
+      accent: "#38BDF8", // Sky Balloon Blue
+      mint: "#34D399", // Soft Mint
+      lavender: "#A78BFA",
+      coverBg: "#FEF3C7", // Butter Cream Cover
+      coverBorder: "#FBBF24",
+      innerBg: "#FFFFFF",
+      innerCardTint: "#FFFBEB",
+      skinTone: "#FCD5B5",
+      cheekColor: "#FDA4AF",
+      onesieColor: "#38BDF8",
+      onesieAccent: "#FDE047",
+      bulbs: ["#FB7185", "#FBBF24", "#34D399", "#38BDF8", "#A78BFA"],
     },
   },
   cloudDream: {
-    id: 'cloudDream',
-    label: 'Cloud Dream',
-    badge: 'Little Star • Sky & Mint',
-    babyName: 'Baby Leo',
-    ageLabel: '1st',
+    id: "cloudDream",
+    label: "Cloud Dream",
+    badge: "Little Star • Sky & Mint",
+    babyName: "Baby Leo",
+    ageLabel: "1st",
     title: "Leo's Cloud Nine 1st Birthday!",
-    subtitle: 'FLOATING AMONG CLOUDS, STARS & SWEET TREATS',
+    subtitle: "FLOATING AMONG CLOUDS, STARS & SWEET TREATS",
     storyNote:
-      'Twelve months of tiny toes and big smiles! Float over to celebrate our little dreamer’s very first trip around the sun.',
-    dateShort: 'Sun, Dec 13 • 3:30 PM',
-    date: 'Sunday, December 13, 2026',
-    time: '3:30 PM — Wish & Candle at 5:00 PM',
-    location: 'The Cloud Loft Playroom, Meadow Park',
-    dressCode: 'Sky Blue, White & Mint Pastels',
-    treatsNote: 'Cloud Cotton Candy, Berry Tarts & Soft Play',
+      "Twelve months of tiny toes and big smiles! Float over to celebrate our little dreamer’s very first trip around the sun.",
+    dateShort: "Sun, Dec 13 • 3:30 PM",
+    date: "Sunday, December 13, 2026",
+    time: "3:30 PM — Wish & Candle at 5:00 PM",
+    location: "The Cloud Loft Playroom, Meadow Park",
+    dressCode: "Sky Blue, White & Mint Pastels",
+    treatsNote: "Cloud Cotton Candy, Berry Tarts & Soft Play",
     colors: {
-      pageBg: '#F4FBFF',
-      pageText: '#1E3A5F',
-      mutedText: '#537194',
-      primary: '#0EA5E9', // Cheerful Sky Blue
-      secondary: '#10B981', // Fresh Mint
-      accent: '#F59E0B', // Starlight Yellow
-      mint: '#6EE7B7',
-      lavender: '#818CF8',
-      coverBg: '#E0F2FE', // Powder Sky Cover
-      coverBorder: '#7DD3FC',
-      innerBg: '#FFFFFF',
-      innerCardTint: '#F0F9FF',
-      skinTone: '#F8CFA9',
-      cheekColor: '#FCA5A5',
-      onesieColor: '#34D399',
-      onesieAccent: '#FEF08A',
-      bulbs: ['#38BDF8', '#34D399', '#FBBF24', '#FB7185', '#818CF8'],
+      pageBg: "#F4FBFF",
+      pageText: "#1E3A5F",
+      mutedText: "#537194",
+      primary: "#0EA5E9", // Cheerful Sky Blue
+      secondary: "#10B981", // Fresh Mint
+      accent: "#F59E0B", // Starlight Yellow
+      mint: "#6EE7B7",
+      lavender: "#818CF8",
+      coverBg: "#E0F2FE", // Powder Sky Cover
+      coverBorder: "#7DD3FC",
+      innerBg: "#FFFFFF",
+      innerCardTint: "#F0F9FF",
+      skinTone: "#F8CFA9",
+      cheekColor: "#FCA5A5",
+      onesieColor: "#34D399",
+      onesieAccent: "#FEF08A",
+      bulbs: ["#38BDF8", "#34D399", "#FBBF24", "#FB7185", "#818CF8"],
     },
   },
   berryBlossom: {
-    id: 'berryBlossom',
-    label: 'Berry Blossom',
-    badge: 'Wildflower One • Peach & Lilac',
-    babyName: 'Baby Maya',
-    ageLabel: '1st',
+    id: "berryBlossom",
+    label: "Berry Blossom",
+    badge: "Wildflower One • Peach & Lilac",
+    babyName: "Baby Maya",
+    ageLabel: "1st",
     title: "Maya's Berry Sweet 1st Party!",
-    subtitle: 'CUPCAKES, BUTTERFLIES & ONE MAGICAL YEAR',
+    subtitle: "CUPCAKES, BUTTERFLIES & ONE MAGICAL YEAR",
     storyNote:
-      'Our sweetest little berry is turning one! Bring your brightest smiles for storytime, confetti pops, and strawberry cake.',
-    dateShort: 'Sat, Dec 19 • 4:00 PM',
-    date: 'Saturday, December 19, 2026',
-    time: '4:00 PM — First Candle at 5:30 PM',
-    location: 'The Rosewater Conservatory, Willow Street',
-    dressCode: 'Peach, Lilac & Floral Pastels',
-    treatsNote: 'Strawberry Shortcake, Macarons & Ball Pit',
+      "Our sweetest little berry is turning one! Bring your brightest smiles for storytime, confetti pops, and strawberry cake.",
+    dateShort: "Sat, Dec 19 • 4:00 PM",
+    date: "Saturday, December 19, 2026",
+    time: "4:00 PM — First Candle at 5:30 PM",
+    location: "The Rosewater Conservatory, Willow Street",
+    dressCode: "Peach, Lilac & Floral Pastels",
+    treatsNote: "Strawberry Shortcake, Macarons & Ball Pit",
     colors: {
-      pageBg: '#FFF8FA',
-      pageText: '#4C283B',
-      mutedText: '#82586E',
-      primary: '#F43F5E', // Strawberry Coral
-      secondary: '#A855F7', // Soft Lilac
-      accent: '#FBBF24', // Buttercup Gold
-      mint: '#34D399',
-      lavender: '#C084FC',
-      coverBg: '#FFE4E6', // Blush Peach Cover
-      coverBorder: '#FDA4AF',
-      innerBg: '#FFFFFF',
-      innerCardTint: '#FFF1F2',
-      skinTone: '#F6C6A5',
-      cheekColor: '#FB7185',
-      onesieColor: '#C084FC',
-      onesieAccent: '#FDE68A',
-      bulbs: ['#F43F5E', '#A855F7', '#FBBF24', '#34D399', '#38BDF8'],
+      pageBg: "#FFF8FA",
+      pageText: "#4C283B",
+      mutedText: "#82586E",
+      primary: "#F43F5E", // Strawberry Coral
+      secondary: "#A855F7", // Soft Lilac
+      accent: "#FBBF24", // Buttercup Gold
+      mint: "#34D399",
+      lavender: "#C084FC",
+      coverBg: "#FFE4E6", // Blush Peach Cover
+      coverBorder: "#FDA4AF",
+      innerBg: "#FFFFFF",
+      innerCardTint: "#FFF1F2",
+      skinTone: "#F6C6A5",
+      cheekColor: "#FB7185",
+      onesieColor: "#C084FC",
+      onesieAccent: "#FDE68A",
+      bulbs: ["#F43F5E", "#A855F7", "#FBBF24", "#34D399", "#38BDF8"],
     },
   },
 };
@@ -182,7 +152,7 @@ function useInView(threshold = 0.22) {
           setIsVisible(true);
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(element);
@@ -214,12 +184,12 @@ const PastelConfettiCanvas = ({ theme, burstTrigger }) => {
     if (!burstTrigger) return;
     const { x, y } = burstTrigger;
     const colors = [
-      '#FB7185',
-      '#FBBF24',
-      '#34D399',
-      '#38BDF8',
-      '#A78BFA',
-      '#F472B6',
+      "#FB7185",
+      "#FBBF24",
+      "#34D399",
+      "#38BDF8",
+      "#A78BFA",
+      "#F472B6",
     ];
 
     for (let i = 0; i < 55; i++) {
@@ -232,7 +202,7 @@ const PastelConfettiCanvas = ({ theme, burstTrigger }) => {
         vy: Math.sin(angle) * speed - 2.6,
         size: 4 + Math.random() * 4.5,
         color: colors[Math.floor(Math.random() * colors.length)],
-        shape: i % 3 === 0 ? 'circle' : i % 3 === 1 ? 'star' : 'ribbon',
+        shape: i % 3 === 0 ? "circle" : i % 3 === 1 ? "star" : "ribbon",
         alpha: 1,
         decay: 0.013 + Math.random() * 0.01,
         rotation: Math.random() * Math.PI * 2,
@@ -244,7 +214,7 @@ const PastelConfettiCanvas = ({ theme, burstTrigger }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let animationFrameId;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
@@ -254,7 +224,7 @@ const PastelConfettiCanvas = ({ theme, burstTrigger }) => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     const count = width < 640 ? 22 : 36;
     const floaters = Array.from({ length: count }, (_, idx) => ({
@@ -264,7 +234,7 @@ const PastelConfettiCanvas = ({ theme, burstTrigger }) => {
       vy: 0.25 + Math.random() * 0.45,
       vx: (Math.random() - 0.5) * 0.35,
       phase: Math.random() * Math.PI * 2,
-      kind: idx % 3 === 0 ? 'bubble' : idx % 3 === 1 ? 'star' : 'dot',
+      kind: idx % 3 === 0 ? "bubble" : idx % 3 === 1 ? "star" : "dot",
       colorIdx: idx % 5,
     }));
 
@@ -302,13 +272,13 @@ const PastelConfettiCanvas = ({ theme, burstTrigger }) => {
         ctx.save();
         ctx.globalAlpha = 0.28 + 0.14 * Math.sin(f.phase);
 
-        if (f.kind === 'bubble') {
+        if (f.kind === "bubble") {
           ctx.strokeStyle = color;
           ctx.lineWidth = 1.5;
           ctx.beginPath();
           ctx.arc(f.x, f.y, f.r * 1.4, 0, Math.PI * 2);
           ctx.stroke();
-        } else if (f.kind === 'star') {
+        } else if (f.kind === "star") {
           ctx.fillStyle = color;
           drawMiniStar(f.x, f.y, 5, f.r * 1.25, f.r * 0.55);
         } else {
@@ -341,11 +311,11 @@ const PastelConfettiCanvas = ({ theme, burstTrigger }) => {
         ctx.globalAlpha = Math.max(0, b.alpha);
         ctx.fillStyle = b.color;
 
-        if (b.shape === 'circle') {
+        if (b.shape === "circle") {
           ctx.beginPath();
           ctx.arc(0, 0, b.size * 0.65, 0, Math.PI * 2);
           ctx.fill();
-        } else if (b.shape === 'star') {
+        } else if (b.shape === "star") {
           drawMiniStar(0, 0, 5, b.size, b.size * 0.45);
         } else {
           ctx.fillRect(-b.size / 2, -b.size / 3, b.size, b.size * 0.55);
@@ -359,7 +329,7 @@ const PastelConfettiCanvas = ({ theme, burstTrigger }) => {
     animationFrameId = requestAnimationFrame(render);
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -381,15 +351,15 @@ const PastelConfettiCanvas = ({ theme, burstTrigger }) => {
  */
 const BlinkingFairyLights = ({ bulbColors }) => {
   const bulbs = [
-    { cx: 28, cy: 24, delay: '0s', dur: '1.4s' },
-    { cx: 68, cy: 33, delay: '0.35s', dur: '1.7s' },
-    { cx: 112, cy: 38, delay: '0.7s', dur: '1.3s' },
-    { cx: 158, cy: 36, delay: '0.15s', dur: '1.6s' },
-    { cx: 204, cy: 29, delay: '0.55s', dur: '1.5s' },
-    { cx: 250, cy: 36, delay: '0.9s', dur: '1.35s' },
-    { cx: 296, cy: 38, delay: '0.25s', dur: '1.75s' },
-    { cx: 340, cy: 32, delay: '0.65s', dur: '1.45s' },
-    { cx: 378, cy: 22, delay: '0.4s', dur: '1.6s' },
+    { cx: 28, cy: 24, delay: "0s", dur: "1.4s" },
+    { cx: 68, cy: 33, delay: "0.35s", dur: "1.7s" },
+    { cx: 112, cy: 38, delay: "0.7s", dur: "1.3s" },
+    { cx: 158, cy: 36, delay: "0.15s", dur: "1.6s" },
+    { cx: 204, cy: 29, delay: "0.55s", dur: "1.5s" },
+    { cx: 250, cy: 36, delay: "0.9s", dur: "1.35s" },
+    { cx: 296, cy: 38, delay: "0.25s", dur: "1.75s" },
+    { cx: 340, cy: 32, delay: "0.65s", dur: "1.45s" },
+    { cx: 378, cy: 22, delay: "0.4s", dur: "1.6s" },
   ];
 
   return (
@@ -592,10 +562,7 @@ const LivingCartoonBaby = ({ theme }) => {
         fill={colors.onesieColor}
       />
       {/* Cute Yellow Star Bib */}
-      <path
-        d="M 114 146 Q 140 176 166 146 Z"
-        fill={colors.onesieAccent}
-      />
+      <path d="M 114 146 Q 140 176 166 146 Z" fill={colors.onesieAccent} />
       <text
         x="140"
         y="186"
@@ -682,14 +649,8 @@ const LivingCartoonBaby = ({ theme }) => {
       />
 
       {/* Happy Giggling Smile */}
-      <path
-        d="M 128 118 Q 140 131 152 118 Z"
-        fill="#FB7185"
-      />
-      <path
-        d="M 133 123 Q 140 128 147 123"
-        fill="#FDA4AF"
-      />
+      <path d="M 128 118 Q 140 131 152 118 Z" fill="#FB7185" />
+      <path d="M 133 123 Q 140 128 147 123" fill="#FDA4AF" />
     </svg>
   );
 };
@@ -752,7 +713,7 @@ const BabyThemeBar = ({ activeThemeId, onSelectTheme, theme }) => {
         aria-label="Choose Baby Birthday Storybook Theme"
         className="d-inline-flex align-items-center gap-1 p-1 rounded-pill shadow-sm border baby-bday-nav-pillbox"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.92)',
+          backgroundColor: "rgba(255, 255, 255, 0.92)",
           borderColor: theme.colors.coverBorder,
         }}
       >
@@ -765,15 +726,15 @@ const BabyThemeBar = ({ activeThemeId, onSelectTheme, theme }) => {
               onClick={() => onSelectTheme(item.id)}
               className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-1 fw-semibold baby-bday-nav-btn"
               style={{
-                backgroundColor: active ? theme.colors.primary : 'transparent',
-                color: active ? '#FFFFFF' : theme.colors.pageText,
-                borderColor: 'transparent',
+                backgroundColor: active ? theme.colors.primary : "transparent",
+                color: active ? "#FFFFFF" : theme.colors.pageText,
+                borderColor: "transparent",
               }}
             >
               <span
                 className="rounded-circle baby-bday-theme-dot"
                 style={{
-                  backgroundColor: active ? '#FFFFFF' : item.colors.primary,
+                  backgroundColor: active ? "#FFFFFF" : item.colors.primary,
                 }}
               />
               <span>{item.label}</span>
@@ -838,7 +799,7 @@ const LivingStorybookStage = ({
         <span
           className="badge rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 shadow-sm border baby-bday-top-badge"
           style={{
-            backgroundColor: '#FFFFFF',
+            backgroundColor: "#FFFFFF",
             color: theme.colors.pageText,
             borderColor: theme.colors.coverBorder,
           }}
@@ -847,7 +808,7 @@ const LivingStorybookStage = ({
           <span>
             {isOpen
               ? `${theme.babyName.toUpperCase()} • ${theme.badge.toUpperCase()}`
-              : 'YOU HAVE A CUTE PARTY INVITATION!'}
+              : "YOU HAVE A CUTE PARTY INVITATION!"}
           </span>
         </span>
       </div>
@@ -859,7 +820,7 @@ const LivingStorybookStage = ({
            ================================================================ */}
         <div
           className={`w-100 d-flex flex-column align-items-center baby-bday-transition ${
-            showInside ? 'baby-bday-hidden' : 'baby-bday-visible'
+            showInside ? "baby-bday-hidden" : "baby-bday-visible"
           }`}
         >
           <div
@@ -868,7 +829,7 @@ const LivingStorybookStage = ({
             aria-label={`Open ${theme.babyName}'s 1st Birthday Card`}
             onClick={onOpenCard}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
+              if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 onOpenCard();
               }
@@ -886,13 +847,13 @@ const LivingStorybookStage = ({
             {/* 3D Storybook Cover Assembly */}
             <div
               className={`position-relative w-100 rounded-5 shadow-lg overflow-hidden baby-bday-outer-card ${
-                isOpen ? 'is-opening' : 'baby-bday-card-breathe'
+                isOpen ? "is-opening" : "baby-bday-card-breathe"
               }`}
               style={{
                 backgroundColor: theme.colors.coverBg,
                 border: `4px solid ${theme.colors.coverBorder}`,
                 transform: isOpen
-                  ? 'perspective(1400px) rotateY(-155deg) scale(0.96)'
+                  ? "perspective(1400px) rotateY(-155deg) scale(0.96)"
                   : `perspective(1400px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
               }}
             >
@@ -913,7 +874,7 @@ const LivingStorybookStage = ({
                   className="badge rounded-pill px-3 py-1 mb-1 baby-bday-age-pill"
                   style={{
                     backgroundColor: theme.colors.secondary,
-                    color: '#FFFFFF',
+                    color: "#FFFFFF",
                   }}
                 >
                   Turning {theme.ageLabel}!
@@ -943,7 +904,7 @@ const LivingStorybookStage = ({
                   className="btn btn-sm rounded-pill px-4 py-2 fw-bold shadow-sm d-inline-flex align-items-center gap-2 baby-bday-open-clasp"
                   style={{
                     backgroundColor: theme.colors.primary,
-                    color: '#FFFFFF',
+                    color: "#FFFFFF",
                   }}
                 >
                   <Gift size={16} />
@@ -960,7 +921,7 @@ const LivingStorybookStage = ({
         <article
           aria-live="polite"
           className={`w-100 baby-bday-inner-wrap baby-bday-transition ${
-            showInside ? 'baby-bday-inner-visible' : 'baby-bday-inner-hidden'
+            showInside ? "baby-bday-inner-visible" : "baby-bday-inner-hidden"
           }`}
         >
           <div
@@ -1056,7 +1017,7 @@ const LivingStorybookStage = ({
                     <div className="d-flex align-items-start gap-2">
                       <span
                         className="rounded-circle p-2 d-inline-flex flex-shrink-0"
-                        style={{ backgroundColor: '#FFFFFF' }}
+                        style={{ backgroundColor: "#FFFFFF" }}
                       >
                         <Calendar
                           size={16}
@@ -1084,7 +1045,7 @@ const LivingStorybookStage = ({
                     <div className="d-flex align-items-start gap-2">
                       <span
                         className="rounded-circle p-2 d-inline-flex flex-shrink-0"
-                        style={{ backgroundColor: '#FFFFFF' }}
+                        style={{ backgroundColor: "#FFFFFF" }}
                       >
                         <Clock
                           size={16}
@@ -1112,7 +1073,7 @@ const LivingStorybookStage = ({
                     <div className="d-flex align-items-start gap-2">
                       <span
                         className="rounded-circle p-2 d-inline-flex flex-shrink-0"
-                        style={{ backgroundColor: '#FFFFFF' }}
+                        style={{ backgroundColor: "#FFFFFF" }}
                       >
                         <MapPin
                           size={16}
@@ -1140,12 +1101,9 @@ const LivingStorybookStage = ({
                     <div className="d-flex align-items-start gap-2">
                       <span
                         className="rounded-circle p-2 d-inline-flex flex-shrink-0"
-                        style={{ backgroundColor: '#FFFFFF' }}
+                        style={{ backgroundColor: "#FFFFFF" }}
                       >
-                        <Gift
-                          size={16}
-                          style={{ color: theme.colors.mint }}
-                        />
+                        <Gift size={16} style={{ color: theme.colors.mint }} />
                       </span>
                       <div>
                         <small
@@ -1218,7 +1176,7 @@ const BabyRsvpStage = ({
       <div
         ref={revealRef}
         className={`w-100 d-flex flex-column align-items-center text-center baby-bday-rsvp-box baby-bday-reveal ${
-          isVisible ? 'is-visible' : ''
+          isVisible ? "is-visible" : ""
         }`}
       >
         {/* Playful Star Divider */}
@@ -1258,20 +1216,19 @@ const BabyRsvpStage = ({
         <div className="d-inline-flex flex-wrap align-items-center justify-content-center gap-3">
           <button
             type="button"
-            onClick={(e) => onSelectRsvp('yes', e)}
+            onClick={(e) => onSelectRsvp("yes", e)}
             className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-2 px-4 py-2 fw-bold shadow-sm baby-bday-rsvp-btn"
             style={{
               backgroundColor:
-                rsvpStatus === 'yes' ? theme.colors.primary : '#FFFFFF',
-              color: rsvpStatus === 'yes' ? '#FFFFFF' : theme.colors.pageText,
+                rsvpStatus === "yes" ? theme.colors.primary : "#FFFFFF",
+              color: rsvpStatus === "yes" ? "#FFFFFF" : theme.colors.pageText,
               border: `2px solid ${theme.colors.primary}`,
             }}
           >
             <Check
               size={15}
               style={{
-                color:
-                  rsvpStatus === 'yes' ? '#FFFFFF' : theme.colors.primary,
+                color: rsvpStatus === "yes" ? "#FFFFFF" : theme.colors.primary,
               }}
             />
             <span>I&apos;ll Come</span>
@@ -1279,15 +1236,14 @@ const BabyRsvpStage = ({
 
           <button
             type="button"
-            onClick={(e) => onSelectRsvp('no', e)}
+            onClick={(e) => onSelectRsvp("no", e)}
             className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-2 px-4 py-2 fw-bold shadow-sm baby-bday-rsvp-btn"
             style={{
               backgroundColor:
-                rsvpStatus === 'no' ? theme.colors.secondary : '#FFFFFF',
-              color:
-                rsvpStatus === 'no' ? '#FFFFFF' : theme.colors.mutedText,
+                rsvpStatus === "no" ? theme.colors.secondary : "#FFFFFF",
+              color: rsvpStatus === "no" ? "#FFFFFF" : theme.colors.mutedText,
               border: `2px solid ${
-                rsvpStatus === 'no'
+                rsvpStatus === "no"
                   ? theme.colors.secondary
                   : theme.colors.coverBorder
               }`,
@@ -1300,11 +1256,11 @@ const BabyRsvpStage = ({
 
         {/* Dynamic Playful Feedback Card */}
         <div className="w-100 mt-4 d-flex flex-column align-items-center baby-bday-feedback-slot">
-          {rsvpStatus === 'yes' && (
+          {rsvpStatus === "yes" && (
             <div
               className="w-100 rounded-4 p-4 shadow-sm baby-bday-pop-in"
               style={{
-                backgroundColor: '#FFFFFF',
+                backgroundColor: "#FFFFFF",
                 border: `2.5px solid ${theme.colors.coverBorder}`,
               }}
             >
@@ -1339,7 +1295,7 @@ const BabyRsvpStage = ({
                   className="btn btn-sm rounded-pill px-3 fw-bold flex-shrink-0"
                   style={{
                     backgroundColor: theme.colors.secondary,
-                    color: '#FFFFFF',
+                    color: "#FFFFFF",
                     borderColor: theme.colors.secondary,
                   }}
                 >
@@ -1364,11 +1320,11 @@ const BabyRsvpStage = ({
             </div>
           )}
 
-          {rsvpStatus === 'no' && (
+          {rsvpStatus === "no" && (
             <div
               className="w-100 rounded-4 p-4 shadow-sm baby-bday-pop-in"
               style={{
-                backgroundColor: '#FFFFFF',
+                backgroundColor: "#FFFFFF",
                 border: `2.5px solid ${theme.colors.coverBorder}`,
               }}
             >
@@ -1387,7 +1343,7 @@ const BabyRsvpStage = ({
               </p>
               <button
                 type="button"
-                onClick={(e) => onSelectRsvp('yes', e)}
+                onClick={(e) => onSelectRsvp("yes", e)}
                 className="btn btn-sm p-0 border-0 fw-bold text-decoration-underline"
                 style={{ color: theme.colors.primary }}
               >
@@ -1438,7 +1394,7 @@ const BrandSignatureStage = ({ theme, scrollProgress, onBackToTop }) => {
         <div
           className="rounded-pill px-3 py-1 mb-3 d-inline-flex align-items-center gap-2 shadow-sm border"
           style={{
-            backgroundColor: '#FFFFFF',
+            backgroundColor: "#FFFFFF",
             borderColor: theme.colors.coverBorder,
             color: theme.colors.primary,
           }}
@@ -1468,7 +1424,7 @@ const BrandSignatureStage = ({ theme, scrollProgress, onBackToTop }) => {
           onClick={onBackToTop}
           className="btn btn-sm rounded-pill d-inline-flex align-items-center gap-2 px-4 py-2 fw-bold shadow-sm border"
           style={{
-            backgroundColor: '#FFFFFF',
+            backgroundColor: "#FFFFFF",
             borderColor: theme.colors.coverBorder,
             color: theme.colors.pageText,
           }}
@@ -1487,11 +1443,11 @@ const BrandSignatureStage = ({ theme, scrollProgress, onBackToTop }) => {
  * ============================================================================
  */
 export default function App() {
-  const [activeThemeId, setActiveThemeId] = useState('sunnyTeddy');
+  const [activeThemeId, setActiveThemeId] = useState("sunnyTeddy");
   const [isCardOpen, setIsCardOpen] = useState(false);
   const [rsvpStatus, setRsvpStatus] = useState(null);
-  const [guestName, setGuestName] = useState('');
-  const [savedName, setSavedName] = useState('');
+  const [guestName, setGuestName] = useState("");
+  const [savedName, setSavedName] = useState("");
   const [burstTrigger, setBurstTrigger] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -1502,13 +1458,13 @@ export default function App() {
   useEffect(() => {
     const existingBootstrap = document.querySelector('link[href*="bootstrap"]');
     if (!existingBootstrap) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
       link.href =
-        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css";
       link.integrity =
-        'sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH';
-      link.crossOrigin = 'anonymous';
+        "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH";
+      link.crossOrigin = "anonymous";
       document.head.appendChild(link);
     }
   }, []);
@@ -1534,9 +1490,9 @@ export default function App() {
       }
     };
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     updateScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const handleOpenCard = useCallback(() => {
@@ -1550,7 +1506,7 @@ export default function App() {
 
   const handleSelectRsvp = useCallback((choice, event) => {
     setRsvpStatus(choice);
-    if (choice === 'yes' && event) {
+    if (choice === "yes" && event) {
       const rect = event.currentTarget.getBoundingClientRect();
       setBurstTrigger({
         x: rect.left + rect.width / 2,
@@ -1569,13 +1525,13 @@ export default function App() {
 
   const scrollToRsvp = () => {
     rsvpSectionRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
+      behavior: "smooth",
+      block: "center",
     });
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
